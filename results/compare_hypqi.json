@@ -1,0 +1,757 @@
+{
+  "config": {
+    "primary": "contains",
+    "tags": [
+      "50k",
+      "90k"
+    ]
+  },
+  "results": {
+    "50k": {
+      "config": {
+        "n_index_items": 50000,
+        "n_passages": 70199,
+        "k_questions": 1,
+        "n_gen_questions": 70197,
+        "encoder": "intfloat/e5-base-v2",
+        "top_k": 2,
+        "context_k": 2,
+        "seed": 0,
+        "tag": "50k",
+        "gen_model": "/home/jun/models/Qwen2.5-7B-Instruct-AWQ",
+        "qgen_prompt": "Here is a passage.\n\n{ctx}\n\nWrite {k} question(s) that this passage can answer. Output only the question(s), one per line. Do not answer them.",
+        "qa_prompt": "Answer ONLY using the given context.\nIf the answer is not in the context, say \"I don't know\".\n\nContext:\n{ctx}\n\nQuestion:\n{q}\n\nAnswer:",
+        "gold_all_in_P": 0.282,
+        "gold_any_in_P": 0.6735,
+        "timestamp": "2026-09-16 16:00:46"
+      },
+      "variants": {
+        "original": {
+          "scores": {
+            "E) HypQI": {
+              "n": 2000,
+              "abstain_rate": 0.8075,
+              "EM": 0.041,
+              "F1": 0.07548819409366175,
+              "contains": 0.1305,
+              "sel": 0.6779220779220779,
+              "wrong_rate": 0.062,
+              "risk_ratio": 0.47509578544061304,
+              "gold_0": 0.611,
+              "gold_1": 0.283,
+              "gold_2": 0.106,
+              "cond_full": 0.27249357326478146
+            },
+            "C) QI-RAG": {
+              "n": 2000,
+              "abstain_rate": 0.8035,
+              "EM": 0.0575,
+              "F1": 0.09527422035238667,
+              "contains": 0.14,
+              "sel": 0.712468193384224,
+              "wrong_rate": 0.0565,
+              "risk_ratio": 0.4035714285714286,
+              "gold_0": 0.605,
+              "gold_1": 0.2375,
+              "gold_2": 0.1575,
+              "cond_full": 0.3987341772151899
+            },
+            "D) vanilla": {
+              "n": 2000,
+              "abstain_rate": 0.7185,
+              "EM": 0.0675,
+              "F1": 0.12281059605105023,
+              "contains": 0.187,
+              "sel": 0.6642984014209592,
+              "wrong_rate": 0.0945,
+              "risk_ratio": 0.5053475935828877,
+              "gold_0": 0.473,
+              "gold_1": 0.354,
+              "gold_2": 0.173,
+              "cond_full": 0.32827324478178366
+            }
+          },
+          "decomposition": {
+            "hypqi_vs_qirag": {
+              "a": 0.1305,
+              "b": 0.14,
+              "diff": 0.0095,
+              "ci_lo": -0.0065,
+              "ci_hi": 0.0245,
+              "significant": false,
+              "mcnemar": {
+                "n01": 139,
+                "n10": 120,
+                "p": 0.2633681996409331
+              }
+            },
+            "vanilla_vs_qirag": {
+              "a": 0.187,
+              "b": 0.14,
+              "diff": -0.047,
+              "ci_lo": -0.0635,
+              "ci_hi": -0.0315,
+              "significant": true,
+              "mcnemar": {
+                "n01": 89,
+                "n10": 183,
+                "p": 1.7108694121977876e-08
+              }
+            },
+            "vanilla_vs_hypqi": {
+              "a": 0.187,
+              "b": 0.1305,
+              "diff": -0.0565,
+              "ci_lo": -0.07,
+              "ci_hi": -0.044,
+              "significant": true,
+              "mcnemar": {
+                "n01": 32,
+                "n10": 145,
+                "p": 3.815450906315449e-17
+              }
+            }
+          }
+        },
+        "keyword": {
+          "scores": {
+            "E) HypQI": {
+              "n": 2000,
+              "abstain_rate": 0.903,
+              "EM": 0.007,
+              "F1": 0.01696406653761416,
+              "contains": 0.0295,
+              "sel": 0.30412371134020616,
+              "wrong_rate": 0.0675,
+              "risk_ratio": 2.288135593220339,
+              "gold_0": 0.6355,
+              "gold_1": 0.28,
+              "gold_2": 0.0845,
+              "cond_full": 0.23182441700960219
+            },
+            "C) QI-RAG": {
+              "n": 2000,
+              "abstain_rate": 0.869,
+              "EM": 0.0105,
+              "F1": 0.027050557626914554,
+              "contains": 0.051,
+              "sel": 0.3893129770992366,
+              "wrong_rate": 0.08,
+              "risk_ratio": 1.5686274509803921,
+              "gold_0": 0.621,
+              "gold_1": 0.247,
+              "gold_2": 0.132,
+              "cond_full": 0.3482849604221636
+            },
+            "D) vanilla": {
+              "n": 2000,
+              "abstain_rate": 0.8335,
+              "EM": 0.0135,
+              "F1": 0.032648534865209966,
+              "contains": 0.0575,
+              "sel": 0.34534534534534533,
+              "wrong_rate": 0.109,
+              "risk_ratio": 1.8956521739130434,
+              "gold_0": 0.5205,
+              "gold_1": 0.349,
+              "gold_2": 0.1305,
+              "cond_full": 0.2721584984358707
+            }
+          },
+          "decomposition": {
+            "hypqi_vs_qirag": {
+              "a": 0.0295,
+              "b": 0.051,
+              "diff": 0.0215,
+              "ci_lo": 0.011,
+              "ci_hi": 0.0325,
+              "significant": true,
+              "mcnemar": {
+                "n01": 79,
+                "n10": 36,
+                "p": 8.983629365100631e-05
+              }
+            },
+            "vanilla_vs_qirag": {
+              "a": 0.0575,
+              "b": 0.051,
+              "diff": -0.0065,
+              "ci_lo": -0.018,
+              "ci_hi": 0.0045,
+              "significant": false,
+              "mcnemar": {
+                "n01": 58,
+                "n10": 71,
+                "p": 0.29072107953069615
+              }
+            },
+            "vanilla_vs_hypqi": {
+              "a": 0.0575,
+              "b": 0.0295,
+              "diff": -0.028,
+              "ci_lo": -0.037,
+              "ci_hi": -0.02,
+              "significant": true,
+              "mcnemar": {
+                "n01": 11,
+                "n10": 67,
+                "p": 4.738651128688528e-10
+              }
+            }
+          }
+        },
+        "noisy": {
+          "scores": {
+            "E) HypQI": {
+              "n": 2000,
+              "abstain_rate": 0.852,
+              "EM": 0.0315,
+              "F1": 0.05964999113019025,
+              "contains": 0.096,
+              "sel": 0.6486486486486487,
+              "wrong_rate": 0.052,
+              "risk_ratio": 0.5416666666666666,
+              "gold_0": 0.662,
+              "gold_1": 0.266,
+              "gold_2": 0.072,
+              "cond_full": 0.21301775147928995
+            },
+            "C) QI-RAG": {
+              "n": 2000,
+              "abstain_rate": 0.8515,
+              "EM": 0.0455,
+              "F1": 0.07210184604641862,
+              "contains": 0.1055,
+              "sel": 0.7104377104377104,
+              "wrong_rate": 0.043,
+              "risk_ratio": 0.4075829383886256,
+              "gold_0": 0.647,
+              "gold_1": 0.2275,
+              "gold_2": 0.1255,
+              "cond_full": 0.3555240793201133
+            },
+            "D) vanilla": {
+              "n": 2000,
+              "abstain_rate": 0.78,
+              "EM": 0.05,
+              "F1": 0.09424510616150289,
+              "contains": 0.144,
+              "sel": 0.6545454545454545,
+              "wrong_rate": 0.076,
+              "risk_ratio": 0.5277777777777778,
+              "gold_0": 0.527,
+              "gold_1": 0.355,
+              "gold_2": 0.118,
+              "cond_full": 0.24947145877378435
+            }
+          },
+          "decomposition": {
+            "hypqi_vs_qirag": {
+              "a": 0.096,
+              "b": 0.1055,
+              "diff": 0.0095,
+              "ci_lo": -0.005,
+              "ci_hi": 0.024,
+              "significant": false,
+              "mcnemar": {
+                "n01": 118,
+                "n10": 99,
+                "p": 0.22173802513948618
+              }
+            },
+            "vanilla_vs_qirag": {
+              "a": 0.144,
+              "b": 0.1055,
+              "diff": -0.0385,
+              "ci_lo": -0.054,
+              "ci_hi": -0.023,
+              "significant": true,
+              "mcnemar": {
+                "n01": 88,
+                "n10": 165,
+                "p": 1.7697779674036483e-06
+              }
+            },
+            "vanilla_vs_hypqi": {
+              "a": 0.144,
+              "b": 0.096,
+              "diff": -0.048,
+              "ci_lo": -0.0605,
+              "ci_hi": -0.0365,
+              "significant": true,
+              "mcnemar": {
+                "n01": 25,
+                "n10": 121,
+                "p": 3.7727615955593725e-15
+              }
+            }
+          }
+        },
+        "paraphrase_llm": {
+          "scores": {
+            "E) HypQI": {
+              "n": 2000,
+              "abstain_rate": 0.8105,
+              "EM": 0.0335,
+              "F1": 0.06674048237462103,
+              "contains": 0.122,
+              "sel": 0.6437994722955145,
+              "wrong_rate": 0.0675,
+              "risk_ratio": 0.5532786885245902,
+              "gold_0": 0.608,
+              "gold_1": 0.286,
+              "gold_2": 0.106,
+              "cond_full": 0.27040816326530615
+            },
+            "C) QI-RAG": {
+              "n": 2000,
+              "abstain_rate": 0.8,
+              "EM": 0.0485,
+              "F1": 0.08213669345281287,
+              "contains": 0.134,
+              "sel": 0.67,
+              "wrong_rate": 0.066,
+              "risk_ratio": 0.4925373134328358,
+              "gold_0": 0.6125,
+              "gold_1": 0.2255,
+              "gold_2": 0.162,
+              "cond_full": 0.4180645161290323
+            },
+            "D) vanilla": {
+              "n": 2000,
+              "abstain_rate": 0.735,
+              "EM": 0.0565,
+              "F1": 0.10608284493130017,
+              "contains": 0.1725,
+              "sel": 0.6509433962264151,
+              "wrong_rate": 0.0925,
+              "risk_ratio": 0.5362318840579711,
+              "gold_0": 0.4825,
+              "gold_1": 0.3515,
+              "gold_2": 0.166,
+              "cond_full": 0.3207729468599034
+            }
+          },
+          "decomposition": {
+            "hypqi_vs_qirag": {
+              "a": 0.122,
+              "b": 0.134,
+              "diff": 0.012,
+              "ci_lo": -0.0035,
+              "ci_hi": 0.027,
+              "significant": false,
+              "mcnemar": {
+                "n01": 139,
+                "n10": 115,
+                "p": 0.14897868513195808
+              }
+            },
+            "vanilla_vs_qirag": {
+              "a": 0.1725,
+              "b": 0.134,
+              "diff": -0.0385,
+              "ci_lo": -0.054,
+              "ci_hi": -0.024,
+              "significant": true,
+              "mcnemar": {
+                "n01": 88,
+                "n10": 165,
+                "p": 1.7697779674036483e-06
+              }
+            },
+            "vanilla_vs_hypqi": {
+              "a": 0.1725,
+              "b": 0.122,
+              "diff": -0.0505,
+              "ci_lo": -0.064,
+              "ci_hi": -0.0385,
+              "significant": true,
+              "mcnemar": {
+                "n01": 34,
+                "n10": 135,
+                "p": 1.4450458455852965e-14
+              }
+            }
+          }
+        }
+      }
+    },
+    "90k": {
+      "config": {
+        "run_mode": "full",
+        "n_eval": 2000,
+        "variants_run": [
+          "original",
+          "keyword",
+          "noisy",
+          "paraphrase_llm"
+        ],
+        "n_index_items": 90447,
+        "n_passages": 105947,
+        "k_questions": 1,
+        "n_gen_questions": 105943,
+        "encoder": "intfloat/e5-base-v2",
+        "top_k": 2,
+        "context_k": 2,
+        "seed": 0,
+        "tag": "90k",
+        "gen_model": "/home/jun/models/Qwen2.5-7B-Instruct-AWQ",
+        "qgen_prompt": "Here is a passage.\n\n{ctx}\n\nWrite {k} question(s) that this passage can answer. Output only the question(s), one per line. Do not answer them.",
+        "qa_prompt": "Answer ONLY using the given context.\nAnswer with the shortest possible phrase.\nIf the answer is not in the context, say \"I don't know\".\n\nContext:\n{ctx}\n\nQuestion:\n{q}\n\nAnswer:",
+        "gold_all_in_P": 0.4145,
+        "gold_any_in_P": 0.802,
+        "timestamp": "2026-09-17 10:45:16"
+      },
+      "variants": {
+        "original": {
+          "scores": {
+            "E) HypQI": {
+              "n": 2000,
+              "abstain_rate": 0.714,
+              "EM": 0.1395,
+              "F1": 0.17748504911754912,
+              "contains": 0.155,
+              "sel": 0.541958041958042,
+              "wrong_rate": 0.131,
+              "risk_ratio": 0.8451612903225807,
+              "gold_0": 0.54,
+              "gold_1": 0.312,
+              "gold_2": 0.148,
+              "cond_full": 0.3217391304347826
+            },
+            "C) QI-RAG": {
+              "n": 2000,
+              "abstain_rate": 0.6985,
+              "EM": 0.159,
+              "F1": 0.2059033793983794,
+              "contains": 0.1805,
+              "sel": 0.5986733001658375,
+              "wrong_rate": 0.121,
+              "risk_ratio": 0.6703601108033241,
+              "gold_0": 0.506,
+              "gold_1": 0.2825,
+              "gold_2": 0.2115,
+              "cond_full": 0.42813765182186236
+            },
+            "D) vanilla": {
+              "n": 2000,
+              "abstain_rate": 0.582,
+              "EM": 0.2195,
+              "F1": 0.2755783896658897,
+              "contains": 0.2435,
+              "sel": 0.5825358851674641,
+              "wrong_rate": 0.1745,
+              "risk_ratio": 0.7166324435318275,
+              "gold_0": 0.3785,
+              "gold_1": 0.381,
+              "gold_2": 0.2405,
+              "cond_full": 0.38696701528559935
+            }
+          },
+          "decomposition": {
+            "hypqi_vs_qirag": {
+              "a": 0.155,
+              "b": 0.1805,
+              "diff": 0.0255,
+              "ci_lo": 0.008,
+              "ci_hi": 0.0425,
+              "significant": true,
+              "mcnemar": {
+                "n01": 187,
+                "n10": 136,
+                "p": 0.005401265296787179
+              }
+            },
+            "vanilla_vs_qirag": {
+              "a": 0.2435,
+              "b": 0.1805,
+              "diff": -0.063,
+              "ci_lo": -0.0805,
+              "ci_hi": -0.046,
+              "significant": true,
+              "mcnemar": {
+                "n01": 100,
+                "n10": 226,
+                "p": 4.418353593307571e-12
+              }
+            },
+            "vanilla_vs_hypqi": {
+              "a": 0.2435,
+              "b": 0.155,
+              "diff": -0.0885,
+              "ci_lo": -0.103,
+              "ci_hi": -0.0745,
+              "significant": true,
+              "mcnemar": {
+                "n01": 30,
+                "n10": 207,
+                "p": 2.8794133170037032e-30
+              }
+            }
+          }
+        },
+        "keyword": {
+          "scores": {
+            "E) HypQI": {
+              "n": 2000,
+              "abstain_rate": 0.7975,
+              "EM": 0.0315,
+              "F1": 0.049361267327443795,
+              "contains": 0.0405,
+              "sel": 0.2,
+              "wrong_rate": 0.162,
+              "risk_ratio": 4.0,
+              "gold_0": 0.565,
+              "gold_1": 0.3225,
+              "gold_2": 0.1125,
+              "cond_full": 0.25862068965517243
+            },
+            "C) QI-RAG": {
+              "n": 2000,
+              "abstain_rate": 0.719,
+              "EM": 0.048,
+              "F1": 0.07046713410559319,
+              "contains": 0.0605,
+              "sel": 0.21530249110320285,
+              "wrong_rate": 0.2205,
+              "risk_ratio": 3.644628099173554,
+              "gold_0": 0.5325,
+              "gold_1": 0.288,
+              "gold_2": 0.1795,
+              "cond_full": 0.3839572192513369
+            },
+            "D) vanilla": {
+              "n": 2000,
+              "abstain_rate": 0.719,
+              "EM": 0.0505,
+              "F1": 0.07854762906512133,
+              "contains": 0.0685,
+              "sel": 0.24377224199288255,
+              "wrong_rate": 0.2125,
+              "risk_ratio": 3.102189781021898,
+              "gold_0": 0.4355,
+              "gold_1": 0.3875,
+              "gold_2": 0.177,
+              "cond_full": 0.31355181576616475
+            }
+          },
+          "decomposition": {
+            "hypqi_vs_qirag": {
+              "a": 0.0405,
+              "b": 0.0605,
+              "diff": 0.02,
+              "ci_lo": 0.0095,
+              "ci_hi": 0.0305,
+              "significant": true,
+              "mcnemar": {
+                "n01": 81,
+                "n10": 41,
+                "p": 0.00041415753540326416
+              }
+            },
+            "vanilla_vs_qirag": {
+              "a": 0.0685,
+              "b": 0.0605,
+              "diff": -0.008,
+              "ci_lo": -0.019,
+              "ci_hi": 0.003,
+              "significant": false,
+              "mcnemar": {
+                "n01": 55,
+                "n10": 71,
+                "p": 0.18144920772142034
+              }
+            },
+            "vanilla_vs_hypqi": {
+              "a": 0.0685,
+              "b": 0.0405,
+              "diff": -0.028,
+              "ci_lo": -0.037,
+              "ci_hi": -0.02,
+              "significant": true,
+              "mcnemar": {
+                "n01": 11,
+                "n10": 67,
+                "p": 4.738651128688528e-10
+              }
+            }
+          }
+        },
+        "noisy": {
+          "scores": {
+            "E) HypQI": {
+              "n": 2000,
+              "abstain_rate": 0.7715,
+              "EM": 0.1035,
+              "F1": 0.13177910783660784,
+              "contains": 0.113,
+              "sel": 0.49452954048140046,
+              "wrong_rate": 0.1155,
+              "risk_ratio": 1.0221238938053097,
+              "gold_0": 0.5965,
+              "gold_1": 0.309,
+              "gold_2": 0.0945,
+              "cond_full": 0.2342007434944238
+            },
+            "C) QI-RAG": {
+              "n": 2000,
+              "abstain_rate": 0.732,
+              "EM": 0.14,
+              "F1": 0.17655057720057718,
+              "contains": 0.1555,
+              "sel": 0.5802238805970149,
+              "wrong_rate": 0.1125,
+              "risk_ratio": 0.7234726688102894,
+              "gold_0": 0.5495,
+              "gold_1": 0.272,
+              "gold_2": 0.1785,
+              "cond_full": 0.39622641509433965
+            },
+            "D) vanilla": {
+              "n": 2000,
+              "abstain_rate": 0.6595,
+              "EM": 0.17,
+              "F1": 0.2165362715062715,
+              "contains": 0.1875,
+              "sel": 0.5506607929515418,
+              "wrong_rate": 0.153,
+              "risk_ratio": 0.816,
+              "gold_0": 0.434,
+              "gold_1": 0.4045,
+              "gold_2": 0.1615,
+              "cond_full": 0.28533568904593637
+            }
+          },
+          "decomposition": {
+            "hypqi_vs_qirag": {
+              "a": 0.113,
+              "b": 0.1555,
+              "diff": 0.0425,
+              "ci_lo": 0.0265,
+              "ci_hi": 0.058,
+              "significant": true,
+              "mcnemar": {
+                "n01": 168,
+                "n10": 83,
+                "p": 1.1452014193442916e-07
+              }
+            },
+            "vanilla_vs_qirag": {
+              "a": 0.1875,
+              "b": 0.1555,
+              "diff": -0.032,
+              "ci_lo": -0.049,
+              "ci_hi": -0.016,
+              "significant": true,
+              "mcnemar": {
+                "n01": 111,
+                "n10": 175,
+                "p": 0.00019510775078646094
+              }
+            },
+            "vanilla_vs_hypqi": {
+              "a": 0.1875,
+              "b": 0.113,
+              "diff": -0.0745,
+              "ci_lo": -0.0885,
+              "ci_hi": -0.061,
+              "significant": true,
+              "mcnemar": {
+                "n01": 28,
+                "n10": 177,
+                "p": 4.804672657048972e-25
+              }
+            }
+          }
+        },
+        "paraphrase_llm": {
+          "scores": {
+            "E) HypQI": {
+              "n": 2000,
+              "abstain_rate": 0.709,
+              "EM": 0.1375,
+              "F1": 0.17457010711510715,
+              "contains": 0.156,
+              "sel": 0.5360824742268041,
+              "wrong_rate": 0.135,
+              "risk_ratio": 0.8653846153846154,
+              "gold_0": 0.536,
+              "gold_1": 0.3175,
+              "gold_2": 0.1465,
+              "cond_full": 0.31573275862068967
+            },
+            "C) QI-RAG": {
+              "n": 2000,
+              "abstain_rate": 0.698,
+              "EM": 0.162,
+              "F1": 0.20254501609501607,
+              "contains": 0.182,
+              "sel": 0.6026490066225165,
+              "wrong_rate": 0.12,
+              "risk_ratio": 0.6593406593406593,
+              "gold_0": 0.509,
+              "gold_1": 0.2695,
+              "gold_2": 0.2215,
+              "cond_full": 0.4511201629327902
+            },
+            "D) vanilla": {
+              "n": 2000,
+              "abstain_rate": 0.5985,
+              "EM": 0.192,
+              "F1": 0.2483946076146076,
+              "contains": 0.2175,
+              "sel": 0.5417185554171855,
+              "wrong_rate": 0.184,
+              "risk_ratio": 0.8459770114942529,
+              "gold_0": 0.3855,
+              "gold_1": 0.3795,
+              "gold_2": 0.235,
+              "cond_full": 0.3824247355573637
+            }
+          },
+          "decomposition": {
+            "hypqi_vs_qirag": {
+              "a": 0.156,
+              "b": 0.182,
+              "diff": 0.026,
+              "ci_lo": 0.01,
+              "ci_hi": 0.043,
+              "significant": true,
+              "mcnemar": {
+                "n01": 177,
+                "n10": 125,
+                "p": 0.003338485564733358
+              }
+            },
+            "vanilla_vs_qirag": {
+              "a": 0.2175,
+              "b": 0.182,
+              "diff": -0.0355,
+              "ci_lo": -0.052,
+              "ci_hi": -0.019,
+              "significant": true,
+              "mcnemar": {
+                "n01": 118,
+                "n10": 189,
+                "p": 6.46639444371526e-05
+              }
+            },
+            "vanilla_vs_hypqi": {
+              "a": 0.2175,
+              "b": 0.156,
+              "diff": -0.0615,
+              "ci_lo": -0.0755,
+              "ci_hi": -0.047,
+              "significant": true,
+              "mcnemar": {
+                "n01": 48,
+                "n10": 171,
+                "p": 1.6655270371649663e-16
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
