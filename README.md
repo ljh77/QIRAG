@@ -1,5 +1,9 @@
 # QI-RAG: Query-Indexed Retrieval-Augmented Generation(2026.4)
 
+> **Status:** manuscript under review.
+> Licensing terms pending institutional review — see [License](#license).
+>
+> 
 ## Overview
 QI-RAG is a retrieval framework that indexes queries instead of documents.
 It is designed to improve robustness under noisy queries and reduce hallucination in large language models (LLMs).
