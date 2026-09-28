@@ -1,1 +1,25 @@
+# QI-RAG — RePAQ baseline environment (Python 3.8.20)
+#
+# The official PAQ repository pins transformers 4.1.0 and cannot share an
+# environment with the main pipeline. Versions below are those used in the
+# reported experiments.
+#
+#   conda create -n repaq python=3.8
+#   conda activate repaq
+#   pip install -r requirements-repaq.txt
+#   git clone https://github.com/facebookresearch/PAQ ~/PAQ
+#
+# The PAQ repository has no setup.py; run its modules from the repository
+# root:
+#   cd ~/PAQ && python -m paq.retrievers.retrieve ...
+#
+# The embedding step was run on CPU and took approximately 2.5 hours for
+# 90,447 index questions. See docs/REPAQ_SETUP.md for the full command
+# sequence.
 
+torch==1.13.1+cpu
+transformers==4.1.0
+tokenizers==0.9.4
+sentencepiece==0.2.0
+faiss-cpu==1.8.0.post1
+numpy==1.24.4
