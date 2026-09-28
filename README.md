@@ -25,12 +25,17 @@ Unlike standard RAG, which retrieves documents directly, QI-RAG:
 ## Implementation Note
 This repository provides a simplified implementation for research purposes.
 
-## Installation
-pip install -r requirements.txt
-
 ## Results
 QI-RAG demonstrates improved robustness compared to standard RAG
 under noisy and adversarial query settings.
+
+## License
+
+This repository accompanies a manuscript under review. The software was
+developed under Grant RS-2025-25459094 (MCST/KOCCA); copyright is held by
+the Gwangju Institute of Science and Technology. Licensing terms are being
+finalized; until a license file is added, the code is provided for review
+and reproduction of the reported experiments.
 
 ## Contact 
 Jun-Hyeong Lee
