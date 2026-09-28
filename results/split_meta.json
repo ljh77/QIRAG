@@ -1,0 +1,55 @@
+{
+  "config": {
+    "split_mode": "split",
+    "n_index": null,
+    "n_eval": 2000,
+    "context_mode": "gold",
+    "seed": 0,
+    "variants": [
+      "original",
+      "keyword",
+      "noisy",
+      "paraphrase_llm"
+    ],
+    "noise_word_frac": 0.25,
+    "min_q_per_passage": 2,
+    "max_q_per_passage": 8,
+    "level_filter": [],
+    "type_filter": [],
+    "yesno_keep": true
+  },
+  "stats": {
+    "index": 90447,
+    "eval": 2000,
+    "leak_overlap": 0,
+    "gold_in_index": 1604,
+    "gold_in_index_rate": 0.802,
+    "groups": 36126,
+    "group_size_hist": {
+      "3": 8262,
+      "2": 18632,
+      "4": 4109,
+      "5": 2218,
+      "6": 1248,
+      "8": 991,
+      "7": 666
+    },
+    "index_type": {
+      "bridge": 72991,
+      "comparison": 17456
+    },
+    "index_level": {
+      "medium": 56814,
+      "hard": 15661,
+      "easy": 17972
+    },
+    "llm_paraphrase_fallback": 1,
+    "eval_type": {
+      "comparison": 399,
+      "bridge": 1601
+    },
+    "eval_level": {
+      "hard": 2000
+    }
+  }
+}

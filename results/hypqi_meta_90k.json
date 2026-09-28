@@ -1,0 +1,110 @@
+{
+  "question_quality": {
+    "n": 105943,
+    "no_question_mark": 0,
+    "too_short": 3567,
+    "prefix_left": 0,
+    "overlap_median": 0.75,
+    "overlap_low": 0.18133333333333335,
+    "len_median_gen": 10,
+    "len_median_eval": 15.0,
+    "unique": 105630,
+    "dup_rate": 0.002954418885627177,
+    "pass": true
+  },
+  "config": {
+    "run_mode": "full",
+    "n_eval": 2000,
+    "variants_run": [
+      "original",
+      "keyword",
+      "noisy",
+      "paraphrase_llm"
+    ],
+    "n_index_items": 90447,
+    "n_passages": 105947,
+    "k_questions": 1,
+    "n_gen_questions": 105943,
+    "encoder": "intfloat/e5-base-v2",
+    "top_k": 2,
+    "context_k": 2,
+    "seed": 0,
+    "tag": "90k",
+    "gen_model": "/home/jun/models/Qwen2.5-7B-Instruct-AWQ",
+    "qgen_prompt": "Here is a passage.\n\n{ctx}\n\nWrite {k} question(s) that this passage can answer. Output only the question(s), one per line. Do not answer them.",
+    "qa_prompt": "Answer ONLY using the given context.\nAnswer with the shortest possible phrase.\nIf the answer is not in the context, say \"I don't know\".\n\nContext:\n{ctx}\n\nQuestion:\n{q}\n\nAnswer:",
+    "gold_all_in_P": 0.4145,
+    "gold_any_in_P": 0.802,
+    "timestamp": "2026-09-17 10:45:16"
+  },
+  "summary": {
+    "original": {
+      "hypqi": {
+        "n": 2000,
+        "gold_all": 0.148,
+        "gold_one_only": 0.312
+      },
+      "qiragsub": {
+        "n": 2000,
+        "gold_all": 0.2115,
+        "gold_one_only": 0.2825
+      },
+      "vanillasub": {
+        "n": 2000,
+        "gold_all": 0.2405,
+        "gold_one_only": 0.381
+      }
+    },
+    "keyword": {
+      "hypqi": {
+        "n": 2000,
+        "gold_all": 0.1125,
+        "gold_one_only": 0.3225
+      },
+      "qiragsub": {
+        "n": 2000,
+        "gold_all": 0.1795,
+        "gold_one_only": 0.288
+      },
+      "vanillasub": {
+        "n": 2000,
+        "gold_all": 0.177,
+        "gold_one_only": 0.3875
+      }
+    },
+    "noisy": {
+      "hypqi": {
+        "n": 2000,
+        "gold_all": 0.0945,
+        "gold_one_only": 0.309
+      },
+      "qiragsub": {
+        "n": 2000,
+        "gold_all": 0.1785,
+        "gold_one_only": 0.272
+      },
+      "vanillasub": {
+        "n": 2000,
+        "gold_all": 0.1615,
+        "gold_one_only": 0.4045
+      }
+    },
+    "paraphrase_llm": {
+      "hypqi": {
+        "n": 2000,
+        "gold_all": 0.1465,
+        "gold_one_only": 0.3175
+      },
+      "qiragsub": {
+        "n": 2000,
+        "gold_all": 0.2215,
+        "gold_one_only": 0.2695
+      },
+      "vanillasub": {
+        "n": 2000,
+        "gold_all": 0.235,
+        "gold_one_only": 0.3795
+      }
+    }
+  }
+}

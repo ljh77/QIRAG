@@ -1,0 +1,244 @@
+{
+  "config": {
+    "task": "QA",
+    "n_rows": 5934,
+    "labels": {
+      "Evident Baseless Info": 1562,
+      "Subtle Baseless Info": 893,
+      "Evident Conflict": 423,
+      "Subtle Conflict": 49
+    }
+  },
+  "a_label_structure": {
+    "Evident Baseless Info": {
+      "n": 1561,
+      "median": 0.6578947368421053,
+      "mean": 0.6323853743303951
+    },
+    "baseless": {
+      "n": 2452,
+      "median": 0.6666666666666666,
+      "mean": 0.6543441887412089
+    },
+    "Subtle Baseless Info": {
+      "n": 891,
+      "median": 0.7142857142857143,
+      "mean": 0.6928152429446659
+    },
+    "Evident Conflict": {
+      "n": 423,
+      "median": 0.25,
+      "mean": 0.3032136354615937
+    },
+    "conflict": {
+      "n": 472,
+      "median": 0.25,
+      "mean": 0.30491014456523385
+    },
+    "Subtle Conflict": {
+      "n": 49,
+      "median": 0.3333333333333333,
+      "mean": 0.31955551907216784
+    },
+    "clean": {
+      "n": 3974,
+      "median": 0.1774193548387097,
+      "mean": 0.20929602084833734
+    }
+  },
+  "b_lexical_judge": {
+    "threshold": 0.22,
+    "overall": {
+      "precision": 0.2880184331797235,
+      "recall": 0.78125,
+      "f1": 0.42087542087542085,
+      "tp": 125,
+      "fp": 309,
+      "fn": 35,
+      "kappa": 0.2176286263014252
+    },
+    "baseless": {
+      "precision": 0.2534562211981567,
+      "recall": 0.7971014492753623,
+      "f1": 0.38461538461538464,
+      "tp": 110,
+      "fp": 324,
+      "fn": 28,
+      "kappa": 0.19800716932984994
+    },
+    "conflict": {
+      "precision": 0.041474654377880185,
+      "recall": 0.6923076923076923,
+      "f1": 0.0782608695652174,
+      "tp": 18,
+      "fp": 416,
+      "fn": 8,
+      "kappa": 0.025118028163256794
+    },
+    "trivial": {
+      "precision": 0.17777777777777778,
+      "recall": 1.0,
+      "f1": 0.3018867924528302,
+      "tp": 160,
+      "fp": 740,
+      "fn": 0,
+      "kappa": 0.0
+    },
+    "base_rate": 0.17777777777777778
+  },
+  "c_m2_simulation": {
+    "strict": {
+      "keep": 0.7699309812401022,
+      "baseless_survive": 0.4875805981405874
+    },
+    "with_func": {
+      "keep": 0.8936991814180028,
+      "baseless_survive": 0.5697309584047539
+    },
+    "content_level_survive": 0.3456558112587911,
+    "top_removed": [
+      [
+        "passages",
+        1589
+      ],
+      [
+        "based",
+        1297
+      ],
+      [
+        "given",
+        948
+      ],
+      [
+        "on",
+        566
+      ],
+      [
+        "answer",
+        472
+      ],
+      [
+        "provided",
+        440
+      ],
+      [
+        "can",
+        432
+      ],
+      [
+        "it",
+        361
+      ],
+      [
+        "steps",
+        331
+      ],
+      [
+        "therefore",
+        330
+      ],
+      [
+        "these",
+        326
+      ],
+      [
+        "here",
+        320
+      ],
+      [
+        "are",
+        310
+      ],
+      [
+        "as",
+        299
+      ],
+      [
+        "by",
+        295
+      ],
+      [
+        "how",
+        294
+      ],
+      [
+        "using",
+        261
+      ],
+      [
+        "question",
+        258
+      ],
+      [
+        "that",
+        257
+      ],
+      [
+        "is",
+        247
+      ],
+      [
+        "unable",
+        244
+      ],
+      [
+        "also",
+        243
+      ],
+      [
+        "provide",
+        242
+      ],
+      [
+        "them",
+        231
+      ],
+      [
+        "this",
+        227
+      ]
+    ]
+  },
+  "d_llm_judge": {
+    "server": "http://172.25.121.170:8005/v1",
+    "model": "/home/jun/models/Qwen2.5-7B-Instruct-AWQ",
+    "n": 900,
+    "base_rate": 0.17777777777777778,
+    "prompts": {
+      "base": {
+        "precision": 0.22540983606557377,
+        "recall": 0.34375,
+        "f1": 0.2722772277227723,
+        "tp": 55,
+        "fp": 189,
+        "fn": 105,
+        "kappa": 0.07326982347996638,
+        "elapsed_sec": 86.94379615783691,
+        "pred_positive_rate": 0.27111111111111114
+      },
+      "typed": {
+        "precision": 0.2832512315270936,
+        "recall": 0.71875,
+        "f1": 0.4063604240282685,
+        "tp": 115,
+        "fp": 291,
+        "fn": 45,
+        "kappa": 0.20312005902814384,
+        "elapsed_sec": 82.94185543060303,
+        "pred_positive_rate": 0.45111111111111113
+      },
+      "strict": {
+        "precision": 0.2370242214532872,
+        "recall": 0.85625,
+        "f1": 0.3712737127371274,
+        "tp": 137,
+        "fp": 441,
+        "fn": 23,
+        "kappa": 0.128620315499541,
+        "elapsed_sec": 79.30183243751526,
+        "pred_positive_rate": 0.6422222222222222
+      }
+    },
+    "best_prompt": "typed"
+  }
+}
