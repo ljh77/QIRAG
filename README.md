@@ -1,4 +1,4 @@
-# QI-RAG: Question-Indexed Retrieval-Augmented Generation
+# An Empirical Evaluation of Evidence Retrieval, Answer-Candidate Coverage, and Selective Answering in Question-Indexed RA(QI-RAG)
 
 > **Status:** Manuscript under review (October 2026)  
 > **Manuscript:** *An Empirical Evaluation of Evidence Retrieval, Answer-Candidate Coverage, and Selective Answering in Question-Indexed RAG*  
