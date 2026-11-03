@@ -46,8 +46,6 @@ The **baseline** question index uses existing reference questions. Synthetic que
 
 ![QI-RAG Processing Flow](docs/flowchart.png)
 
-The two figures above use the existing repository paths. They should be checked against the final manuscript architecture before being treated as identical to its Figure 1.
-
 ## 3. Evaluation Setup
 
 | Component | Reported configuration |
