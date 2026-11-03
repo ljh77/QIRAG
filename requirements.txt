@@ -1,14 +1,9 @@
 # QI-RAG — main environment (Python 3.10)
 #
-# --- retrieval ---
 torch==2.10.0
-sentence-transformers==6.0.1
-transformers==5.17.0
-tokenizers==0.23.2
-faiss-cpu==1.15.0          # optional; scripts fall back to numpy exact search
-
-# --- numerics ---
-numpy==2.2.6
-
-# --- utilities ---
-tqdm==4.67.3
+sentence-transformers==5.1.1
+transformers==4.43.3
+tokenizers==0.19.1
+faiss-cpu==1.12.0
+numpy==1.26.4
+tqdm==4.67.1
