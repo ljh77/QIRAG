@@ -8,8 +8,8 @@
   "end_to_end_execution_verified": false,
   "publication_package_complete": false,
   "remaining_items": [
-    "Table 10 final scoring provenance remains unresolved.",
-    "Table 13 subtype and Both-Gold Hit rows remain incomplete.",
+    "Table 10: Both STRICT rows match the manuscript at the reported precision. The results CSV identifies the source JSON file and the score key for each row.",
+    "Table 13: The results CSV includes all five manuscript rows and identifies their sources. The Both-Gold Hit values match the recorded audit; an independent historical reference hash was unavailable.",
     "English translation requires review; behavioral strings must be preserved.",
     "Historical source hashes remain unchanged.",
     "Dynamic Python references require individual review.",
