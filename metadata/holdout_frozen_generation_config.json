@@ -1,0 +1,21 @@
+{
+  "frozen_at": "2026-10-23T11:13:54+09:00",
+  "config_sha256": "44931f1e6898314d820b752a7322fbae391761208f1c22528eed663dd579b19f",
+  "config": {
+    "model": "Qwen2.5-7B-Instruct-AWQ",
+    "temperature": 0.0,
+    "max_tokens": 128,
+    "P": 2,
+    "conds": [
+      "QI_STRICT",
+      "VAN_STRICT",
+      "QA_STRICT",
+      "QI_CAND",
+      "VAN_CAND"
+    ],
+    "strict_sha": "69a9b1875f2fcd7a15dd7b776661ae890c443a3e5fd38abc54419827741f7872",
+    "cand_sha": "20903b8eee965d5c43bc8188cc79eb935b6ead4a76513042fec6314aa655ed81"
+  },
+  "retrieval_predictions_sha256": "4592253a0c4c46711e3525f38a51f89cf64b56e181986b9ce2acdafc9f6cfff7",
+  "rule": "생성 시작 후 프롬프트·설정·검색 결과를 바꾸지 않는다."
+}

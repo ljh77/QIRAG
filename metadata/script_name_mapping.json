@@ -1,0 +1,20 @@
+{
+  "01_run_generate_v2.py": "A01_table09_generate_common2000_qirag_vanilla_responses.py",
+  "02_score_report_v2.py": "S00_table09_table19_table20_score_answers_em_f1_coverage.py",
+  "e1a_retrieve.py": "A05_table13_retrieve_holdout_supporting_documents.py",
+  "e1a_score.py": "A05_table13_evaluate_supporting_document_retrieval.py",
+  "llm_experiments_v2.py": "S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py",
+  "e1b2_qi_expansion.py": "A07_table16_evaluate_synthetic_question_index_expansion.py",
+  "p17_post_payload_reuse_v12.py": "A04_table12_analyze_stored_answer_and_passage_payload_availability.py",
+  "qi_abl05_delivery_reconstruct_v6_1.py": "A06_table14_table15_reconstruct_top2_stored_answer_payload.py",
+  "qi_abl05_failure_attribution_v7.py": "A06_table14_table15_analyze_stored_answer_candidate_funnel.py",
+  "post18d_h3_fixed_order_v2.py": "A08_table17_evaluate_fixed_order_passage_selection.py",
+  "post18f_exact_batch_holdout_v3_2.py": "A09_table18_evaluate_matched_budget_selective_answering.py",
+  "qi_common.py": "S00_qi_common.py",
+  "retrieval_policy.py": "S00_retrieval_policy.py",
+  "qi_ablation_integrated_v3.py": "S00_dependency_qi_ablation_integrated_v3.py",
+  "post18d_g2_qa_v3.py": "S00_dependency_post18d_g2_qa_v3.py",
+  "qi_abl05_candidate_audit_v4.py": "S00_dependency_qi_abl05_candidate_audit_v4.py",
+  "post18d_holdout_g2_v1.py": "S00_dependency_post18d_holdout_g2_v1.py",
+  "p18d_goldblind_ablation_v11.py": "S00_dependency_p18d_goldblind_ablation_v11.py"
+}

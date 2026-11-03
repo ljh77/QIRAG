@@ -1,0 +1,12 @@
+﻿packaging_experiment_id_and_tables,description
+A01-table09,Common 2000-question system comparison
+A02-table10,Frozen-holdout STRICT answering
+A03-table11,Auxiliary retriever and payload comparison
+A04-table12,Payload answer availability
+A05-table13,Supporting-document retrieval
+A06-table14-table15,Stored-answer candidate funnel and retained subgroup
+A07-table16,Question-index expansion
+A08-table17,Fixed-order passage-selection intervention
+A09-table18,Matched-budget selective answering
+A10-table19-table20,QPN question variations
+S00,Shared inputs and utilities

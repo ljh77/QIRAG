@@ -1,0 +1,44 @@
+[
+  {
+    "file": "S00-table09-table19-table20_common2000_queries_sample.jsonl",
+    "source": "data/_split/eval_queries.jsonl",
+    "count": 20,
+    "selection": "first 20 nonempty JSONL records in original order",
+    "representativeness": "schema examples; not a stratified sample"
+  },
+  {
+    "file": "S00-table09-table19-table20_original_questions_sample.jsonl",
+    "source": "data/_split/eval_qa_q.jsonl",
+    "count": 20,
+    "selection": "first 20 nonempty JSONL records in original order",
+    "representativeness": "schema examples; not a stratified sample"
+  },
+  {
+    "file": "A10-table19-table20_paraphrase_questions_sample.jsonl",
+    "source": "data/_split/eval_qa_pl.jsonl",
+    "count": 20,
+    "selection": "first 20 nonempty JSONL records in original order",
+    "representativeness": "schema examples; not a stratified sample"
+  },
+  {
+    "file": "A10-table19-table20_noisy_questions_sample.jsonl",
+    "source": "data/_split/eval_qa_n.jsonl",
+    "count": 20,
+    "selection": "first 20 nonempty JSONL records in original order",
+    "representativeness": "schema examples; not a stratified sample"
+  },
+  {
+    "file": "S00_reference_question_index_sample.jsonl",
+    "source": "data/_split/index_items.jsonl",
+    "count": 20,
+    "selection": "first 20 nonempty JSONL records in original order",
+    "representativeness": "schema examples; not a stratified sample"
+  },
+  {
+    "file": "A05-table13_holdout_retrieval_sample.jsonl",
+    "source": "out/holdout_locked/retrieval_predictions.jsonl",
+    "count": 20,
+    "selection": "first 20 nonempty JSONL records in original order",
+    "representativeness": "schema examples; not a stratified sample"
+  }
+]

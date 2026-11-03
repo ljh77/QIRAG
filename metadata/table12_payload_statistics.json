@@ -1,0 +1,522 @@
+{
+  "analysis_note": "탐색적 구조 분석. 확증 결과 아님. 신규 LLM 생성 없음.",
+  "A2_frozen_main": {
+    "label": "holdout_frozen_A2_boundary",
+    "n": 3843,
+    "coverage_QA": 0.0781,
+    "coverage_QC": 0.3544,
+    "diff_QC_minus_QA": 0.2763,
+    "ci95_question_bootstrap": [
+      0.262,
+      0.2909
+    ],
+    "ci95_cluster_bootstrap": [
+      0.2415,
+      0.3043
+    ],
+    "cluster_note": null,
+    "sample_cluster_trust": {
+      "n_clusters": 2521,
+      "largest_cluster": 908,
+      "largest_share": 0.2363,
+      "trusted": true,
+      "reason": null
+    },
+    "crosstab": {
+      "both": 300,
+      "QA_only": 0,
+      "QC_only": 1062,
+      "neither": 2481
+    },
+    "bootstrap": {
+      "iters": 10000,
+      "seed": 0,
+      "method": "paired percentile, 95%"
+    }
+  },
+  "A2_supplier_audit": {
+    "n": 3843,
+    "rows_with_multi_supplier": 1419,
+    "rate_with_multi_supplier": 0.3692,
+    "total_multi_supplier_docs": 1795,
+    "max_suppliers_per_doc": 8
+  },
+  "A2_supplier_sensitivity": {
+    "n": 3843,
+    "first_supplier_coverage": 0.0781,
+    "last_supplier_coverage": 0.0913,
+    "delta_last_minus_first": 0.0133,
+    "n_changed_hit": 119,
+    "method": "first_vs_last_ranked_supplier"
+  },
+  "A2_cluster_mapping": {
+    "unfiltered_clusters": 2737,
+    "filtered_clusters": 2521,
+    "mapping_consistent": true
+  },
+  "A2_zero_length_QA_count": 0,
+  "A2_ratio_strata_n": 3843,
+  "A2_aux_substring": {
+    "label": "holdout_frozen_A2_substring",
+    "n": 3843,
+    "coverage_QA": 0.0791,
+    "coverage_QC": 0.3573,
+    "diff_QC_minus_QA": 0.2782,
+    "ci95_question_bootstrap": [
+      0.2639,
+      0.2927
+    ],
+    "ci95_cluster_bootstrap": [
+      0.243,
+      0.3063
+    ],
+    "cluster_note": null,
+    "sample_cluster_trust": {
+      "n_clusters": 2521,
+      "largest_cluster": 908,
+      "largest_share": 0.2363,
+      "trusted": true,
+      "reason": null
+    },
+    "crosstab": {
+      "both": 304,
+      "QA_only": 0,
+      "QC_only": 1069,
+      "neither": 2470
+    },
+    "bootstrap": {
+      "iters": 10000,
+      "seed": 0,
+      "method": "paired percentile, 95%"
+    }
+  },
+  "A2_sensitivity_no_trivial_filter": {
+    "label": "holdout_frozen_A2_sensitivity_no_trivial_filter",
+    "n": 4404,
+    "coverage_QA": 0.0863,
+    "coverage_QC": 0.3315,
+    "diff_QC_minus_QA": 0.2452,
+    "ci95_question_bootstrap": [
+      0.2321,
+      0.2589
+    ],
+    "ci95_cluster_bootstrap": [
+      0.2295,
+      0.2564
+    ],
+    "cluster_note": null,
+    "sample_cluster_trust": {
+      "n_clusters": 2737,
+      "largest_cluster": 1148,
+      "largest_share": 0.2607,
+      "trusted": true,
+      "reason": null
+    },
+    "crosstab": {
+      "both": 320,
+      "QA_only": 60,
+      "QC_only": 1140,
+      "neither": 2884
+    },
+    "bootstrap": {
+      "iters": 10000,
+      "seed": 0,
+      "method": "paired percentile, 95%"
+    }
+  },
+  "A2_by_type": {
+    "bridge": {
+      "label": "bridge",
+      "n": 3224,
+      "coverage_QA": 0.0645,
+      "coverage_QC": 0.3114,
+      "diff_QC_minus_QA": 0.2469,
+      "crosstab": {
+        "both": 208,
+        "QA_only": 0,
+        "QC_only": 796,
+        "neither": 2220
+      }
+    },
+    "comparison": {
+      "label": "comparison",
+      "n": 619,
+      "coverage_QA": 0.1486,
+      "coverage_QC": 0.5784,
+      "diff_QC_minus_QA": 0.4297,
+      "crosstab": {
+        "both": 92,
+        "QA_only": 0,
+        "QC_only": 266,
+        "neither": 261
+      }
+    }
+  },
+  "A2_by_level": {
+    "hard": {
+      "label": "hard",
+      "n": 3843,
+      "coverage_QA": 0.0781,
+      "coverage_QC": 0.3544,
+      "diff_QC_minus_QA": 0.2763,
+      "crosstab": {
+        "both": 300,
+        "QA_only": 0,
+        "QC_only": 1062,
+        "neither": 2481
+      }
+    }
+  },
+  "A2_ratio_strata": {
+    "label": "A2_ratio_strata",
+    "bins": [
+      {
+        "range": "4.59-42.0",
+        "n": 960,
+        "coverage_QA": 0.1062,
+        "coverage_QC": 0.3312,
+        "diff": 0.225
+      },
+      {
+        "range": "42.0-66.65",
+        "n": 961,
+        "coverage_QA": 0.0832,
+        "coverage_QC": 0.334,
+        "diff": 0.2508
+      },
+      {
+        "range": "66.65-113.66",
+        "n": 961,
+        "coverage_QA": 0.0739,
+        "coverage_QC": 0.3736,
+        "diff": 0.2997
+      },
+      {
+        "range": "113.66-909.0",
+        "n": 961,
+        "coverage_QA": 0.0489,
+        "coverage_QC": 0.3788,
+        "diff": 0.3299
+      }
+    ],
+    "weighted_mean_diff": 0.2763,
+    "note": "층화 차이의 가중 평균. 순수 재사용 효과가 아니다."
+  },
+  "A2_length_strata": {
+    "label": "A2_qc_chars_strata",
+    "bins": [
+      {
+        "range": "149.0-599.0",
+        "n": 958,
+        "coverage_QA": 0.0772,
+        "coverage_QC": 0.3299,
+        "diff": 0.2526
+      },
+      {
+        "range": "599.0-794.0",
+        "n": 958,
+        "coverage_QA": 0.0772,
+        "coverage_QC": 0.3403,
+        "diff": 0.263
+      },
+      {
+        "range": "794.0-1021.5",
+        "n": 966,
+        "coverage_QA": 0.0807,
+        "coverage_QC": 0.3799,
+        "diff": 0.2992
+      },
+      {
+        "range": "1021.5-2730.0",
+        "n": 961,
+        "coverage_QA": 0.077,
+        "coverage_QC": 0.3673,
+        "diff": 0.2903
+      }
+    ],
+    "weighted_mean_diff": 0.2763,
+    "note": "층화 차이의 가중 평균. 순수 재사용 효과가 아니다."
+  },
+  "A2_excluded": {
+    "numeric": 263,
+    "short": 167,
+    "yesno": 130,
+    "no_gold": 1,
+    "collision_key_selected": 1
+  },
+  "A2_unfiltered_excluded": {
+    "collision_key_selected": 1
+  },
+  "collision_policy": "exclude_selected_collision_keys",
+  "collision_unique_keys": 28,
+  "A2_boundary_disagreement": {
+    "total": 14,
+    "sampled": 14
+  },
+  "A1_top1_supplementary": {
+    "label": "holdout_top1_A1_boundary",
+    "n": 3843,
+    "coverage_QA": 0.0781,
+    "coverage_QC": 0.3544,
+    "diff_QC_minus_QA": 0.2763,
+    "ci95_question_bootstrap": [
+      0.262,
+      0.2909
+    ],
+    "ci95_cluster_bootstrap": [
+      0.2415,
+      0.3043
+    ],
+    "cluster_note": null,
+    "sample_cluster_trust": {
+      "n_clusters": 2521,
+      "largest_cluster": 908,
+      "largest_share": 0.2363,
+      "trusted": true,
+      "reason": null
+    },
+    "crosstab": {
+      "both": 300,
+      "QA_only": 0,
+      "QC_only": 1062,
+      "neither": 2481
+    },
+    "bootstrap": {
+      "iters": 10000,
+      "seed": 0,
+      "method": "paired percentile, 95%"
+    }
+  },
+  "A1_excluded": {
+    "numeric": 263,
+    "short": 167,
+    "yesno": 130,
+    "no_gold": 1,
+    "collision_key_selected": 1
+  },
+  "LOO_definition": "shared_document_cross_question_reuse",
+  "LOO_document_removed": false,
+  "loo_all": {
+    "label": "loo_all_boundary",
+    "n": 62309,
+    "coverage_QA": 0.1325,
+    "coverage_QC": 0.8004,
+    "diff_QC_minus_QA": 0.6678,
+    "ci95_question_bootstrap": [
+      0.664,
+      0.6714
+    ],
+    "ci95_cluster_bootstrap": [
+      0.6401,
+      0.7019
+    ],
+    "cluster_note": null,
+    "sample_cluster_trust": {
+      "n_clusters": 13940,
+      "largest_cluster": 18107,
+      "largest_share": 0.2906,
+      "trusted": true,
+      "reason": null
+    },
+    "crosstab": {
+      "both": 8245,
+      "QA_only": 14,
+      "QC_only": 41626,
+      "neither": 12424
+    },
+    "bootstrap": {
+      "iters": 10000,
+      "seed": 0,
+      "method": "paired percentile, 95%"
+    }
+  },
+  "loo_all_substring": {
+    "label": "loo_all_substring",
+    "n": 62309,
+    "coverage_QA": 0.1331,
+    "coverage_QC": 0.802,
+    "diff_QC_minus_QA": 0.6689,
+    "ci95_question_bootstrap": [
+      0.6651,
+      0.6725
+    ],
+    "ci95_cluster_bootstrap": [
+      0.6412,
+      0.7029
+    ],
+    "cluster_note": null,
+    "sample_cluster_trust": {
+      "n_clusters": 13940,
+      "largest_cluster": 18107,
+      "largest_share": 0.2906,
+      "trusted": true,
+      "reason": null
+    },
+    "crosstab": {
+      "both": 8278,
+      "QA_only": 14,
+      "QC_only": 41694,
+      "neither": 12323
+    },
+    "bootstrap": {
+      "iters": 10000,
+      "seed": 0,
+      "method": "paired percentile, 95%"
+    }
+  },
+  "loo_diff_supplementary": {
+    "label": "loo_diff_boundary",
+    "n": 54902,
+    "coverage_QA": 0.0156,
+    "coverage_QC": 0.7737,
+    "diff_QC_minus_QA": 0.7581,
+    "ci95_question_bootstrap": [
+      0.7544,
+      0.7616
+    ],
+    "ci95_cluster_bootstrap": [
+      0.7224,
+      0.8019
+    ],
+    "cluster_note": null,
+    "sample_cluster_trust": {
+      "n_clusters": 12947,
+      "largest_cluster": 16218,
+      "largest_share": 0.2954,
+      "trusted": true,
+      "reason": null
+    },
+    "crosstab": {
+      "both": 853,
+      "QA_only": 2,
+      "QC_only": 41623,
+      "neither": 12424
+    },
+    "bootstrap": {
+      "iters": 10000,
+      "seed": 0,
+      "method": "paired percentile, 95%"
+    }
+  },
+  "loo_match": {
+    "label": "loo_match_boundary",
+    "n": 7407,
+    "coverage_QA": 0.9996,
+    "coverage_QC": 0.9984,
+    "diff_QC_minus_QA": -0.0012,
+    "ci95_question_bootstrap": [
+      -0.0023,
+      -0.0003
+    ],
+    "ci95_cluster_bootstrap": [
+      -0.0025,
+      0.0002
+    ],
+    "cluster_note": null,
+    "sample_cluster_trust": {
+      "n_clusters": 3019,
+      "largest_cluster": 1889,
+      "largest_share": 0.255,
+      "trusted": true,
+      "reason": null
+    },
+    "crosstab": {
+      "both": 7392,
+      "QA_only": 12,
+      "QC_only": 3,
+      "neither": 0
+    },
+    "bootstrap": {
+      "iters": 10000,
+      "seed": 0,
+      "method": "paired percentile, 95%"
+    }
+  },
+  "loo_selected_shares_target_doc_rate": 0.9975,
+  "loo_by_shared_doc_selection": {
+    "selected_shares_target_doc_1": {
+      "label": "loo_shared_doc_selected",
+      "n": 62154,
+      "coverage_QA": 0.1327,
+      "coverage_QC": 0.802,
+      "diff_QC_minus_QA": 0.6693,
+      "ci95_question_bootstrap": [
+        0.6656,
+        0.6729
+      ],
+      "ci95_cluster_bootstrap": [
+        0.6422,
+        0.7028
+      ],
+      "cluster_note": null,
+      "sample_cluster_trust": {
+        "n_clusters": 13937,
+        "largest_cluster": 18026,
+        "largest_share": 0.29,
+        "trusted": true,
+        "reason": null
+      },
+      "crosstab": {
+        "both": 8240,
+        "QA_only": 9,
+        "QC_only": 41607,
+        "neither": 12298
+      },
+      "bootstrap": {
+        "iters": 10000,
+        "seed": 0,
+        "method": "paired percentile, 95%"
+      }
+    },
+    "selected_shares_target_doc_0": {
+      "label": "loo_shared_doc_not_selected",
+      "n": 155,
+      "coverage_QA": 0.0645,
+      "coverage_QC": 0.1548,
+      "diff_QC_minus_QA": 0.0903,
+      "ci95_question_bootstrap": [
+        0.0323,
+        0.1484
+      ],
+      "ci95_cluster_bootstrap": null,
+      "cluster_note": "클러스터 CI 미보고: 표본 연결요소 52개 (최소 30) 또는 최대 점유율 0.523 (상한 0.5) 기준 미달",
+      "sample_cluster_trust": {
+        "n_clusters": 52,
+        "largest_cluster": 81,
+        "largest_share": 0.5226,
+        "trusted": false,
+        "reason": "표본 연결요소 52개 (최소 30) 또는 최대 점유율 0.523 (상한 0.5) 기준 미달"
+      },
+      "crosstab": {
+        "both": 5,
+        "QA_only": 5,
+        "QC_only": 19,
+        "neither": 126
+      },
+      "bootstrap": {
+        "iters": 10000,
+        "seed": 0,
+        "method": "paired percentile, 95%"
+      }
+    }
+  },
+  "A2_frozen_validation_all_holdout": {
+    "checked_all_holdout": 4405,
+    "title_mismatch": 0,
+    "frozen_mismatch": 0
+  },
+  "loo_excluded": {
+    "no_neighbor": 14428,
+    "target_short": 3328,
+    "target_numeric": 7616,
+    "target_yesno": 2748,
+    "no_eligible_neighbor": 17,
+    "target_no_gold": 1
+  },
+  "loo_salt_qid_sets_equal": true,
+  "pre09_reference": {
+    "answer_payload_accuracy": 0.423,
+    "passage_payload_accuracy": 0.69,
+    "note": "참고값. 이 실행 결과와 강제로 맞추지 않는다."
+  }
+}

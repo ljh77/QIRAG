@@ -1,0 +1,53 @@
+{
+  "category_counts": {
+    "document_set_changed": 183,
+    "identical": 3367,
+    "order_only": 855
+  },
+  "changed_sets": 183,
+  "config": {
+    "max_tokens": 128,
+    "model": "Qwen2.5-7B-Instruct-AWQ",
+    "prompt_template_sha256": "69a9b1875f2fcd7a15dd7b776661ae890c443a3e5fd38abc54419827741f7872",
+    "temperature": 0.0
+  },
+  "files_sha256": {
+    "changed_qids.jsonl": "fe2eb0bfa1250ab3e4308869b8484e7d878b15436d696a77208d38557cbf809b",
+    "jobs.jsonl": "1394114944357f161e32742febcdc4a02b939fafbdf24fb3ef474b7afa823e5b"
+  },
+  "fixed_order": "title.casefold(), title, document_key",
+  "limitations": [
+    "Post-hoc mechanistic control on previously inspected Holdout",
+    "Same-set 4222 QIDs have paired delta=0; absolute H3 outcomes not generated",
+    "All changed-set G0/G2 generations are fresh and not H2-reused",
+    "Deterministic order does not eliminate all positional effects or stochasticity",
+    "Cluster CI descriptive, no preregistration",
+    "Wrong is answered and EM=0, NOT semantic hallucination"
+  ],
+  "n_fresh_required": 366,
+  "n_jobs": 366,
+  "n_qids": 4405,
+  "n_reused": 0,
+  "protocol": "H3-v2: lexical Gold-Blind fixed-order, fresh paired generation for all changed sets",
+  "reference_h2_output": "/home/jun/2610-qi-rag/out/p18d_g2_qa_v3",
+  "scheduled_first_counts": {
+    "G0": 91,
+    "G2": 92
+  },
+  "scope": "qid_disjoint_posthoc_validation",
+  "script_sha256": "a862d4604e9e64eabcade7017fd1900cb3df4ae4fc3dd1ab3b063213ecafd4e4",
+  "source_hashes": {
+    "h2_jobs": "b647e47be9606340c42d1057791bb3cebc1f70cb6a83860c7d7a97db480467b3",
+    "h2_manifest": "a75f2c427e0391d9a1600096fd63282ab1a9e6ba5914732835d42d109998b975",
+    "h2_responses": "65ca4033d5aca45435e9f5bcea874cbe2d0d3c6e243a95b51ad8308a75d9f833",
+    "h2_score_items": "f591813ffb151c1a71f9ccec23d1c13df9b6ffc1d37a04236fd2e314577048e1",
+    "h2_score_report": "5ccc3a39f2a30b1fda9c17a589f078530ab76b612984d863d750126506000cc1",
+    "h2_script": "17bf88ecc4f2db9387a2e7c8501463377e192e431460e57d0f004de82163ab7f",
+    "qa_source_code": "17bf88ecc4f2db9387a2e7c8501463377e192e431460e57d0f004de82163ab7f",
+    "stage1_manifest": "fb6272e9e090f3d92e2e22c47d64e378bd65d91a42f43f8dd1f4394af4ddf1ed",
+    "stage1_plan": "b6e29db3d393bfc9e19b73f054ac663fefd70f7856601cf325d2c7f9956ad0d7",
+    "stage1_score_items": "a7ab43ef3b3fe43e75fcb68c7a772f3f45c1ebbc3826b0f170f67df9746fdea5",
+    "stage1_score_report": "0804fa9f94b6916dd58ec5a67cee585d0a9a1ad8578db3684b96139083f42e70"
+  },
+  "url": "http://172.25.121.198:7777/v1/chat/completions"
+}

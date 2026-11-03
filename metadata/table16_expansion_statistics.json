@@ -1,0 +1,78 @@
+{
+  "n": 4405,
+  "results": {
+    "QI_base": 0.2791146424517594,
+    "QI_25k": 0.27832009080590236,
+    "QI_50k": 0.2791146424517594,
+    "VAN_base": 0.43473325766174803,
+    "VAN_25k": 0.43530079455164583,
+    "VAN_50k": 0.43575482406356414
+  },
+  "paired": {
+    "QI_25k_minus_QI_base": {
+      "diff": -0.0007945516458569807,
+      "ci95": [
+        -0.0022701475595913734,
+        0.0005675368898978433
+      ]
+    },
+    "QI_50k_minus_QI_base": {
+      "diff": 0.0,
+      "ci95": [
+        -0.0019296254256526673,
+        0.0019296254256526673
+      ]
+    },
+    "VAN_25k_minus_VAN_base": {
+      "diff": 0.0005675368898978433,
+      "ci95": [
+        -0.0014755959137343927,
+        0.0026106696935300796
+      ]
+    },
+    "VAN_50k_minus_VAN_base": {
+      "diff": 0.0010215664018161181,
+      "ci95": [
+        -0.0019296254256526673,
+        0.003972758229284903
+      ]
+    },
+    "QI_25k_minus_VAN_25k": {
+      "diff": -0.15698070374574347,
+      "ci95": [
+        -0.16674233825198637,
+        -0.147105561861521
+      ]
+    },
+    "QI_50k_minus_VAN_50k": {
+      "diff": -0.15664018161180476,
+      "ci95": [
+        -0.16651532349602724,
+        -0.14676503972758229
+      ]
+    },
+    "QI_base_minus_VAN_base": {
+      "diff": -0.15561861520998865,
+      "ci95": [
+        -0.16538024971623155,
+        -0.14574347332576618
+      ]
+    }
+  },
+  "generated_questions": 50000,
+  "analysis": "post-hoc exploratory; existing holdout was previously analyzed; no new confirmatory claim",
+  "input_sha256": {
+    "e1b": "cd6baa86fdab9025803328f3ce61f22dbeebb1d8d88a7d457cb1ff81a63d1828",
+    "h1": "4592253a0c4c46711e3525f38a51f89cf64b56e181986b9ce2acdafc9f6cfff7",
+    "qgen": "952f34e922c5fabe5d672885123d55729e32f2747d425f378c23beead2246a7b",
+    "retrieval": "fc8fa772ac2c8782268e68f4f7b845bf6198735bddf99323af13798e45ed27eb"
+  },
+  "qi_25k_final_docs_from_extra": 361,
+  "qi_25k_questions_with_extra_doc": 288,
+  "qi_50k_final_docs_from_extra": 628,
+  "qi_50k_questions_with_extra_doc": 468,
+  "qi_25k_gold_gained": 22,
+  "qi_25k_gold_lost": 29,
+  "qi_50k_gold_gained": 46,
+  "qi_50k_gold_lost": 46
+}

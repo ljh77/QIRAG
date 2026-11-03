@@ -1,0 +1,498 @@
+script	line	text
+A01_table09_generate_common2000_qirag_vanilla_responses.py	4	QI-RAG 와 vanilla RAG 를 '문단 예산 P' 를 맞춰 비교하는 검색·생성 스크립트.
+A01_table09_generate_common2000_qirag_vanilla_responses.py	6	조건
+A01_table09_generate_common2000_qirag_vanilla_responses.py	7	  REPAQ_TOP1     RePAQ 공식 결과의 top-1 답 (생성 없음, 참조용)
+A01_table09_generate_common2000_qirag_vanilla_responses.py	8	  E5_TOP1        E5 로 질문 인덱스 검색 후 top-1 답 (생성 없음). 검색기만 E5 로 맞춘 대조군
+A01_table09_generate_common2000_qirag_vanilla_responses.py	9	  QIRAG_P{P}     질의 -> 질문 인덱스 상위 항목 -> 매핑된 문단을 앞에서부터 P 개로 자름 -> 생성
+A01_table09_generate_common2000_qirag_vanilla_responses.py	10	  VANILLA_P{P}   질의 -> 문단 인덱스 상위 P 개 -> 생성
+A01_table09_generate_common2000_qirag_vanilla_responses.py	11	  RANDOM_P{P}    같은 문단 수 P 를 코퍼스에서 무작위로 뽑아 생성 (정답 문단 제외). 길이 통제용
+A01_table09_generate_common2000_qirag_vanilla_responses.py	12	  ORACLE         평가 질문의 정답 문단 전부 (예산 무관, 코퍼스에 있는 것만). 근거가 주어졌을 때의 상한
+A01_table09_generate_common2000_qirag_vanilla_responses.py	13	  QAGEN_K{K}     질의 -> 질문 인덱스 상위 K 개의 저장 답을 문맥으로 넘겨 생성 (페이로드 통제용)
+A01_table09_generate_common2000_qirag_vanilla_responses.py	15	ORACLE 행의 gold_full 은 정답 문단이 전부 코퍼스에 있는지 여부다.
+A01_table09_generate_common2000_qirag_vanilla_responses.py	16	  True 인 문항만 모은 부분집합에서 조건을 비교하면 상한과 비교가 공정해진다 (02 에서 사용).
+A01_table09_generate_common2000_qirag_vanilla_responses.py	18	생성 조건은 모두 같은 프롬프트(strict)와 같은 생성기를 쓴다.
+A01_table09_generate_common2000_qirag_vanilla_responses.py	20	입력 (DATA_DIR 기준)
+A01_table09_generate_common2000_qirag_vanilla_responses.py	23	  _result/result_repaq_{q,p,n,pl}.jsonl   (있을 때만)
+A01_table09_generate_common2000_qirag_vanilla_responses.py	24	"  hotpotqa/hotpot_train.jsonl             (CORPUS_SOURCE = ""hotpot"" 일 때만)"
+A01_table09_generate_common2000_qirag_vanilla_responses.py	26	출력 (OUT_ROOT/<모드>/)
+A01_table09_generate_common2000_qirag_vanilla_responses.py	27	  <조건>_<변형>.jsonl   문항별 원시 출력 (02_score_report_v2.py 가 읽는다)
+A01_table09_generate_common2000_qirag_vanilla_responses.py	28	  run_log.txt           실행 로그 (누적)
+A01_table09_generate_common2000_qirag_vanilla_responses.py	30	실행 (qi-rag-test 폴더에서)
+A01_table09_generate_common2000_qirag_vanilla_responses.py	32	  메뉴: 1) 샘플 (먼저 실행해 점검)  2) 전체  3) 종료
+A01_table09_generate_common2000_qirag_vanilla_responses.py	104	"    """"""저장 답이 리스트여도 첫 문자열만 남긴다. 채점에서 ['x'] 형식 때문에 틀리는 일을 막는다."""""""
+A01_table09_generate_common2000_qirag_vanilla_responses.py	115	"    """"""'[제목] 본문 [제목] 본문' 형식을 문단 목록으로 나눈다."""""""
+A01_table09_generate_common2000_qirag_vanilla_responses.py	180	        log(f'  임베딩 캐시 사용: {os.path.basename(path)}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	185	    log(f'  임베딩 {len(texts):,}건 {_pkg_resolve((time.time() - t0) / 60):.1f}분 -> {os.path.basename(path)}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	209	"    """"""성공 시 (텍스트, 'ok'). 모든 재시도가 실패하면 ('', 'error: ...')."
+A01_table09_generate_common2000_qirag_vanilla_responses.py	210	"    오류를 빈 답으로 바꾸지 않는다. 빈 답은 유보로 세므로 오류와 구분해야 한다."""""""
+A01_table09_generate_common2000_qirag_vanilla_responses.py	230	"    """"""질문 인덱스 상위 항목에서 매핑된 문단을 앞에서부터 모아 P 개에서 자른다."""""""
+A01_table09_generate_common2000_qirag_vanilla_responses.py	251	"    """"""정답 문단을 제외하고 코퍼스에서 P 개를 무작위로 뽑는다."
+A01_table09_generate_common2000_qirag_vanilla_responses.py	252	"    시드를 질문·변형·예산별로 고정해서 다시 실행해도 같은 문맥이 나온다."""""""
+A01_table09_generate_common2000_qirag_vanilla_responses.py	290	"    log(f""  {'조건':<16}{'n':>6}{'오류':>6}{'유보율':>8}{'단어':>8}{'문단':>6}{'검색적중':>9}"")"
+A01_table09_generate_common2000_qirag_vanilla_responses.py	295	    log('\n  [샘플 점검]')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	301	                tag = '통과' if share >= 0.95 else '주의 (예산이 P 에 못 미침)'
+A01_table09_generate_common2000_qirag_vanilla_responses.py	302	                log(f'    {name}: 문단 수가 P={P} 인 비율 {share:.3f} -> {tag}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	306	        log(f'    ORACLE: 정답 문단 전부 코퍼스에 있는 문항 비율 {full:.3f} (02 에서 이 부분집합으로 따로 판정한다)')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	311	        tag = '통과' if 0.8 <= ratio <= 1.25 else '주의 (문맥 길이가 다름)'
+A01_table09_generate_common2000_qirag_vanilla_responses.py	312	        log(f'    P=2 단어 수 비 QI/vanilla = {ratio:.2f} -> {tag}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	317	        log(f'    P=2 단어 수 비 RANDOM/QI = {ratio:.2f} (참고: 1 에 가까울수록 대조가 깔끔)')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	321	            log(f'    {name}: 오류 {err}건 (5% 초과) -> 서버 상태를 확인하세요')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	324	"        log(f""    예) 질의: {first[i]['query']}   정답: {first[i]['gold']}"")"
+A01_table09_generate_common2000_qirag_vanilla_responses.py	327	"            log(f""       {name:<16} 제목 {r['retrieved_titles']}  답: {str(r['pred'])[:80]}"")"
+A01_table09_generate_common2000_qirag_vanilla_responses.py	336	            log(f'[실패] 파일 없음: {p}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	341	        log(f'[실패] 생성 서버 접속 불가: {type(e).__name__}: {e}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	351	    log(f'\n==== {mode} 실행 ====')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	352	    log(f'인덱스 {len(items):,} / 평가 {len(evals):,} / 변형 {variants}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	353	    log(f'예산 P={BUDGETS}  TOP_ITEMS={TOP_ITEMS}  코퍼스={CORPUS_SOURCE}  QAGEN_K={QAGEN_K}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	354	    log(f'대조군: E5_TOP1={RUN_E5_TOP1}  RANDOM={RUN_RANDOM}  ORACLE={RUN_ORACLE}  VANILLA={RUN_VANILLA}  QAGEN={RUN_QAGEN}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	358	    log(f'[파싱] 문단 0개 항목 {n_zero}/{len(items)}, 항목당 평균 문단 {mean_p:.2f}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	360	        log('  주의: 문단 파싱 실패가 많습니다. 문맥 형식을 확인하세요.')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	362	    log(f'[인코더] {ENCODER_MODEL} ({device})')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	371	        log(f'[코퍼스] {CORPUS_SOURCE} 고유 문단 {len(docs):,}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	382	            log(f'[건너뜀] {v} 필드 없음')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	384	        log(f'\n[{v}] 검색')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	402	            log(f'  RePAQ 매칭 {matched}/{len(evals)} (중복 질문 키 {dup}건 제외)')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	404	            log('  RePAQ 결과 없음 -> REPAQ_TOP1 건너뜀')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	467	            log(f'  생성 {cond} ({len(rows)}건)')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	473	"            log(f""    오류 {sum((1 for r in rows if r['status'] == 'error'))}/{len(rows)}"")"
+A01_table09_generate_common2000_qirag_vanilla_responses.py	479	            log(f'  저장 {fp}')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	484	    log('\n완료. 다음: python 02_score_report_v2.py')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	500	        log(f'소요 {_pkg_resolve((time.time() - t0) / 60):.1f}분')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	504	    print('qi-rag-test 검색·생성 실행 (v2)')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	506	        print('\n  1) 샘플 실행 (N_SAMPLE 문항, 먼저 실행해 점검)')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	507	        print('  2) 전체 실행')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	508	        print('  3) 종료')
+A01_table09_generate_common2000_qirag_vanilla_responses.py	509	        c = input('  선택: ').strip()
+A01_table09_generate_common2000_qirag_vanilla_responses.py	513	            ok = input('  전체 실행은 오래 걸립니다. 계속할까요? (y/n): ').strip().lower()
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	2	p17  POST-17 Passage-Payload Information Reuse Audit v12 (탐색적 구조 분석, 신규 LLM 생성 없음)
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	4	입력 (probe 로 확인된 구조)
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	5	  data/_split/index_items.jsonl            : qid, answer(list), context(str). 행 번호 = 색인 item id
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	6	  out/holdout_locked/split_ids.json        : 'holdout' 키에 Holdout qid 목록 (4,405개)
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	8	  data/hotpotqa/hotpot_dev_distractor.jsonl: id, answer(str), type, level  (Holdout 정답 출처)
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	9	  retrieval_policy.qi_policy, qi_common.split_paragraphs / para_key 는 import 해서 그대로 호출
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	11	두 가지 Holdout 조건 (둘 다 보고, 역할을 구분)
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	12	  A2 (정식 주 분석, 동결 재현 조건):
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	13	     Q-C = 동결 전체 순위 qi_top_items 로 qi_policy(P=2) 가 고른 문서 (동결 기록 qi_titles 와 제목 일치 검증)
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	14	     Q-A = 그 P=2 문서를 공급한 순위 항목들(문서마다 순위에서 처음 등장한 항목)의 정답 문자열
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	15	     두 조건은 같은 항목 집합에서 나온 정보이므로 정보 출처가 대응한다.
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	16	  A1 (보조, Top-1 조건):
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	17	     Q-A = 상위 1개 항목의 정답, Q-C = qi_policy([top1], P=2). 동결 재현 조건이 아니다.
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	19	LOO 보조 분석
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	20	  색인 항목마다 근거 문서 키를 공유하는 이웃 후보(정답 비어 있지 않음) 중 해시로 1개 선택 (정답 미사용).
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	21	  Q-A = 이웃 정답, Q-C = qi_policy([이웃], P=2). 공유 문서가 선정 문서에 포함되는 비율을 따로 기록.
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	23	검증 범위
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	24	  - 동결 검증은 문서 '제목' 수준이다. 제목이 같은 서로 다른 문서는 구분되지 않는다.
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	25	  - Gold 출처 검증은 dev 파일의 id 연결과 정답 형식까지다. 평가 분할 원본과의 동일성은 manifest 의 해시로만 기록한다.
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	26	  - 정답 포함은 문자열 포함 여부일 뿐 생성 답변의 정확도가 아니다.
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	28	명령
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	29	  probe   입력 파일 존재 확인
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	30	  run     분석 실행 (--limit-holdout N, --limit-loo N 은 양의 정수만 허용, 스모크는 smoke_ 폴더)
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	69	PRE09_REFERENCE = {'answer_payload_accuracy': 0.423, 'passage_payload_accuracy': 0.69, 'note': '참고값. 이 실행 결과와 강제로 맞추지 않는다.'}
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	88	        sys.exit(f'모듈 없음: {path}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	147	        raise argparse.ArgumentTypeError('양의 정수만 허용')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	157	    reason = None if trusted else f'표본 연결요소 {n_cl}개 (최소 {MIN_CLUSTERS}) 또는 최대 점유율 {share:.3f} (상한 {MAX_CLUSTER_SHARE}) 기준 미달'
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	204	        return {'label': label, 'n': 0, 'note': '대상 없음'}
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	212	"        (ci_cl, cl_note) = (None, f""클러스터 CI 미보고: {trust['reason']}"")"
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	217	        return {'note': '대상 없음'}
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	221	        return {'note': '값의 분산이 없어 층화 불가', 'label': label}
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	234	    return {'label': label, 'bins': bins, 'weighted_mean_diff': round(_pkg_resolve(weighted / total_n), 4) if total_n else None, 'note': '층화 차이의 가중 평균. 순수 재사용 효과가 아니다.'}
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	245	"        print(f""{p}: {('있음' if p.exists() else '없음')}"")"
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	247	"        print(f""{m}: {('있음' if _pkg_resolve(ROOT / m).exists() else '없음')}"")"
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	252	            sys.exit(f'필수 파일 없음: {p}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	255	"        sys.exit(""split_ids.json 에 'holdout' 키가 없음"")"
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	258	        sys.exit('Holdout ID 중복')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	260	        sys.exit('Holdout ID 는 비지 않은 문자열이어야 함')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	262	        sys.exit(f'Holdout 수 {len(hold_ids)} != 기대값 {args.expect_n}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	267	            sys.exit(f'색인 행 {i} 의 qid 가 문자열이 아님')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	269	"            sys.exit(f""색인 qid 중복: {r['qid']}"")"
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	274	"            sys.exit(f""dev id 중복: {r['id']}"")"
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	279	            sys.exit(f'Holdout qid 가 dev 파일에 없음: {q}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	282	            sys.exit(f'dev 정답이 비었거나 문자열이 아님 (id={q})')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	287	"            sys.exit(f""예측 파일 qid 중복: {r.get('qid')}"")"
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	291	        sys.exit(f'Holdout 중 동결 예측이 없는 qid {len(missing_pred)}건')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	297	            sys.exit(f'빈 순위 또는 형식 오류: {q}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	302	                sys.exit(f'순위 item 범위 오류 (qid={q}): {it}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	305	            sys.exit(f'순위 item 중복 (qid={q})')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	308	            sys.exit(f'qi_titles 형식 오류 (qid={q}): {qt!r}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	311	        sys.exit(f'Holdout 과 색인의 qid 겹침 {len(overlap)}건. 중단합니다.')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	312	    inputs = {'index_items': {'path': str(INDEX_FILE), 'sha256': sha256_file(INDEX_FILE), 'rows': n_items}, 'split_ids': {'path': str(SPLIT_IDS_FILE), 'sha256': sha256_file(SPLIT_IDS_FILE), 'holdout_n': len(hold_ids)}, 'frozen_predictions': {'path': str(PRED_FILE), 'sha256': sha256_file(PRED_FILE), 'rows': len(preds)}, 'gold_source_hotpot_dev': {'path': str(HOTPOT_DEV_FILE), 'sha256': sha256_file(HOTPOT_DEV_FILE), 'dev_rows': len(dev_by_id), 'matched_holdout': len(gold_map), 'validation_scope': 'id 연결과 정답 문자열 형식만 검사'}, 'overlap_holdout_index': len(overlap), 'holdout_qid_list_sha256': sha256_text('\n'.join(sorted(hold_ids)))}
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	338	"    """"""strict=True: P 개 문서를 확보하지 못하면 중단. strict=False: 부족하면 None 을 돌려준다."""""""
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	350	            sys.exit(f'P=2 선정 결과 중복: {out}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	353	                sys.exit(f'P=2 선정 결과 길이 이상: {out}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	357	                sys.exit(f'선정 문서 키가 본문 사전에 없음: {k[:80]!r}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	362	"    """"""결정적 Union-Find 메타 클러스터."""""""
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	382	"    """"""평가 대상 필터링 이전에, Holdout 전체에 대해 동결 정책과 참조 제목을 검증한다."""""""
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	394	        sys.exit(f'상위 항목 제목이 색인 행과 불일치 {len(title_bad)}건 (전체 Holdout 검사). 중단합니다.')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	396	        sys.exit(f'동결 기록 qi_titles 와 재계산 제목 불일치 {len(frozen_bad)}건 (전체 Holdout 검사). 중단합니다.')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	400	"    """"""선정된 각 문서 키를 처음 공급한 순위 항목 (순위 순서, 중복 제거)."""""""
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	416	            raise ValueError(f'공급자 없는 문서: {k!r}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	436	                raise ValueError(f'공급자 누락: {qid}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	446	            raise ValueError(f'기존 A2 결과 불일치: {qid}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	451	        return {'n': 0, 'note': '대상 없음'}
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	458	        raise ValueError('Holdout ID 중복')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	487	            sys.exit(f'공급 항목이 없는 선정 문서가 있음 (qid={qid})')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	627	"    """"""산출물 존재, 행 수, JSON 집계, 교차표, 분석 수 합계를 검사한다."""""""
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	632	            problems.append(f'파일 없음 또는 비어 있음: {name}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	637	            problems.append(f'{name}: 행 {got} != 기대 {n}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	644	"            problems.append(f""{key} crosstab 불일치: csv={ct} json={stats[key].get('crosstab')}"")"
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	647	            problems.append(f'{name} 합계 불일치: {total} != {parts}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	649	        problems.append('salt 간 평가 질문 집합이 다름')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	651	        sys.exit('출력 교차 검증 실패: ' + '; '.join(problems))
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	667	"    print(f""충돌 고유 키: {len(COLLISION_KEYS)}개 / 충돌 출현: {doc_checks['key_collisions_diff_text']}회"")"
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	679	        print('경고: --allow-overlap 디버깅 실행. debug_ 폴더에 저장되며 정식 결과가 아님.')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	683	            sys.exit(f'상위 항목 제목이 색인 행과 불일치 {title_mis}건. 중단합니다 (행 번호 해석 오류 의심).')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	685	            sys.exit(f'동결 기록 qi_titles 와 재계산 제목 불일치 {frozen_mis}건. 중단합니다.')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	736	        stats_obj = {'analysis_note': '탐색적 구조 분석. 확증 결과 아님. 신규 LLM 생성 없음.', 'A2_frozen_main': a2_stats, 'A2_supplier_audit': supplier_stats, 'A2_supplier_sensitivity': supplier_sensitivity_stats, 'A2_cluster_mapping': cluster_audit, 'A2_zero_length_QA_count': n_zero_qa_chars, 'A2_ratio_strata_n': len(ratio_rows), 'A2_aux_substring': a2_sub, 'A2_sensitivity_no_trivial_filter': a2_nofilter, 'A2_by_type': by_type, 'A2_by_level': by_level, 'A2_ratio_strata': ratio_strata, 'A2_length_strata': length_strata, 'A2_excluded': dict(a2_excl), 'A2_unfiltered_excluded': dict(a2_all_excl), 'collision_policy': 'exclude_selected_collision_keys', 'collision_unique_keys': len(COLLISION_KEYS), 'A2_boundary_disagreement': {'total': len(dis_a2), 'sampled': len(dis_sample)}, 'A1_top1_supplementary': a1_stats, 'A1_excluded': dict(a1_excl), 'LOO_definition': 'shared_document_cross_question_reuse', 'LOO_document_removed': False, 'loo_all': loo_all, 'loo_all_substring': loo_all_sub, 'loo_diff_supplementary': loo_diff, 'loo_match': loo_match, 'loo_selected_shares_target_doc_rate': round(shared_rate, 4) if shared_rate is not None else None, 'loo_by_shared_doc_selection': loo_by_shared, 'A2_frozen_validation_all_holdout': frozen_all, 'loo_excluded': dict(loo_excl), 'loo_salt_qid_sets_equal': salt_sets_equal, 'pre09_reference': PRE09_REFERENCE}
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	739	        consistency = verify_outputs(tmp, {'files': files, 'csv_rows': {'holdout_frozen_A2.csv': len(a2_rows), 'holdout_top1_A1.csv': len(a1_rows), 'loo_payload_comparison.csv': len(loo_rows), 'loo_salt_sensitivity.csv': len(SALTS), 'boundary_disagreement_sample.csv': len(dis_sample), 'random_audit_sample.csv': len(rnd_sample)}, 'json_n': {'A2_frozen_main': len(a2_rows), 'A1_top1_supplementary': len(a1_rows), 'loo_all': len(loo_rows), 'loo_diff_supplementary': len(diff_rows), 'loo_match': len(match_rows)}, 'json_crosstab': {'A2_frozen_main': crosstab_from_rows(a2_rows, 'qa_hit', 'qc_hit'), 'loo_all': crosstab_from_rows(loo_rows, 'qa_hit', 'qc_hit')}, 'sum_checks': [('holdout 분석+제외', len(a2_rows) + sum(a2_excl.values()), len(hold_ids)), ('loo 분석+제외', len(loo_rows) + sum(loo_excl.values()), min(args.limit_loo, len(index_rows)) if args.limit_loo is not None else len(index_rows))], 'salt_sets_equal': salt_sets_equal})
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	740	"        report = ['p17 POST-17 v12 감사 보고서', f""실행 시각: {ts}  [{('스모크' if smoke else '정식')}]"", '주 분석 A2 = 동결 전체 순위 P=2 재현 조건. 보조 A1 = Top-1 조건 (동결 재현 아님).', f""A2 복수 공급자 포함 질문: {supplier_stats['rows_with_multi_supplier']}건"", f""A2 복수 공급자 질문 비율: {supplier_stats['rate_with_multi_supplier']}"", f""A2 공급자 변경 시 QA 판정 변화: {supplier_sensitivity_stats['n_changed_hit']}건"", f""A2 첫/마지막 공급자 Coverage: {supplier_sensitivity_stats['first_supplier_coverage']} / {supplier_sensitivity_stats['last_supplier_coverage']}"", f'A2 QA 길이 0 표본: {n_zero_qa_chars}건', f""A2 공통 클러스터 수(전체/필터): {cluster_audit['unfiltered_clusters']}/{cluster_audit['filtered_clusters']}"", 'A2 Q-A는 선정 문서별 최초 순위 공급 항목의 정답을 사용함.', f'충돌 고유 키: {len(COLLISION_KEYS)}개', f""A2 충돌 제외: {a2_excl.get('collision_key_selected', 0)}건"", f""A2 무필터 충돌 제외: {a2_all_excl.get('collision_key_selected', 0)}건"", f""A1 충돌 제외: {a1_excl.get('collision_key_selected', 0)}건"", 'LOO: 충돌 키가 선정되는 이웃을 Salt 선택 전에 제외함.', '충돌 본문은 임의 복원하지 않고 분석에서 격리함.', 'LOO는 문서를 제거한 실험이 아닌 공유 문서 기반 질문 간 재사용 분석임.', f'동결 기록 대조(제목 수준): 불일치 {frozen_mis}건 (0이어야 함, 아니면 중단됨)', f'상위 항목 제목과 색인 행 제목 불일치: {title_mis}건 (0이어야 함, 아니면 중단됨)', '검증 범위: 동결 대조는 제목 수준. 같은 제목의 다른 문서는 구분되지 않는다.', f'Holdout 행: {len(hold_ids)} / A2 분석: {len(a2_rows)} / 제외: {dict(a2_excl)}', f""A2 표본 클러스터 게이트: {('보고 가능' if a2_stats['sample_cluster_trust']['trusted'] else a2_stats['cluster_note'])}"", f'LOO 분석: {len(loo_rows)} / 제외: {dict(loo_excl)}', f""LOO 공유 문서가 선정 문서에 포함된 비율: {stats_obj['loo_selected_shares_target_doc_rate']}"", f""LOO 표본 클러스터 게이트: {('보고 가능' if loo_all['sample_cluster_trust']['trusted'] else loo_all['cluster_note'])}"", f""색인 문단 키 충돌(같은 키, 다른 본문): {doc_checks['key_collisions_diff_text']}건"", f'salt 간 평가 질문 집합 동일: {salt_sets_equal}', 'exact_answer_set_* 는 정규화된 정답 집합의 완전 일치일 뿐 의미 동일성이 아님.', 'LOO 주 결과는 전체(all). diff 층은 보조 해석만 한다.', '클러스터 기준은 사전 지정 진단 휴리스틱이며 검증된 임계값이 아니다.', '정답 판정: primary=토큰 경계, auxiliary=부분 문자열. 불일치와 무작위 감사 표본을 수동 검토용으로 저장.', 'Holdout 정답 출처: HotpotQA dev 의 id/answer. 평가 분할 원본과의 동일성은 manifest 해시로만 기록.', '길이 층화는 순수 재사용 효과가 아니다. 길이 비율 층화(A2_ratio_strata)도 함께 본다.', f'출력 교차 검증: {consistency}', 'PRE-09 참고값은 비교 기준이 아니다.']"
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	754	            sys.exit(f'최종 산출물 해시 재검증 실패: {bad}, 파일 집합 일치: {present == set(recheck)}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	758	    print(f'저장 완료: {base}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	759	    print(f'A2 주 분석: {json.dumps(a2_stats, ensure_ascii=False)}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	760	    print(f'LOO 전체: {json.dumps(loo_all, ensure_ascii=False)}')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	765	    sub.add_parser('probe', help='입력 파일 존재 확인')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	766	    r = sub.add_parser('run', help='분석 실행')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	768	    r.add_argument('--limit-holdout', type=positive_int, default=None, help='스모크: Holdout 앞 N개')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	769	    r.add_argument('--limit-loo', type=positive_int, default=None, help='스모크: LOO 대상 앞 N개')
+A04_table12_analyze_stored_answer_and_passage_payload_availability.py	770	    r.add_argument('--allow-overlap', action='store_true', help='디버깅 전용 (debug_ 폴더)')
+A05_table13_evaluate_supporting_document_retrieval.py	2	e1a_score.py  (E1-A 채점기: Gold Document Recall@2, H1 판정)
+A05_table13_evaluate_supporting_document_retrieval.py	4	실행 위치: ~/2610-qi-rag
+A05_table13_evaluate_supporting_document_retrieval.py	6	  python e1a_score.py --sample     탐색 50문항 채점 배선 확인 -> out/e1a/sample_scores/ (탐색 결과)
+A05_table13_evaluate_supporting_document_retrieval.py	7	  python e1a_score.py --holdout    동결 Holdout 채점 -> out/holdout_final/ (확증 결과)
+A05_table13_evaluate_supporting_document_retrieval.py	9	Gold 사용 시점
+A05_table13_evaluate_supporting_document_retrieval.py	10	  - Gold 는 채점 단계에서만 읽는다. 검색 단계는 Gold 를 읽지 않는다.
+A05_table13_evaluate_supporting_document_retrieval.py	11	  - --holdout 은 아래 게이트를 모두 통과해야 실행된다.
+A05_table13_evaluate_supporting_document_retrieval.py	12	      1) FREEZE.json 존재, 분할 해시 일치
+A05_table13_evaluate_supporting_document_retrieval.py	13	      2) retrieval_manifest.json 의 예측 파일 해시가 현재 파일과 일치
+A05_table13_evaluate_supporting_document_retrieval.py	14	      3) 분할 해시가 manifest 와 FREEZE 에서 같음
+A05_table13_evaluate_supporting_document_retrieval.py	15	      4) 결과 파일이 아직 없음 (덮어쓰기 금지)
+A05_table13_evaluate_supporting_document_retrieval.py	17	판정 규칙 (protocol_v2.1 H1)
+A05_table13_evaluate_supporting_document_retrieval.py	18	  R_i = |Top2(q_i) ∩ G_i| / |G_i|        (G_i: 공식 Gold 제목 집합)
+A05_table13_evaluate_supporting_document_retrieval.py	20	  95% 양측 percentile CI 하한 > 0 이면 H1 지지, 아니면 미지지로 보고
+A05_table13_evaluate_supporting_document_retrieval.py	21	  Bootstrap: 10,000회, 시드 0, 별도 RNG 인스턴스 (PCG64)
+A05_table13_evaluate_supporting_document_retrieval.py	23	Gold 처리
+A05_table13_evaluate_supporting_document_retrieval.py	24	  - 공식 Gold 제목이 있으면 코퍼스 존재 여부와 무관하게 포함. 검색되지 않으면 0.
+A05_table13_evaluate_supporting_document_retrieval.py	25	  - 공식 Gold 목록이 비어 있는 문항만 제외하고 개수를 보고.
+A05_table13_evaluate_supporting_document_retrieval.py	26	  - 코퍼스 접근 가능성은 별도 분포로만 보고 (분석 제외 기준으로 쓰지 않음).
+A05_table13_evaluate_supporting_document_retrieval.py	65	        problems.append('FREEZE.json 없음')
+A05_table13_evaluate_supporting_document_retrieval.py	69	        problems.append('분할 파일 해시가 동결 기록과 다름')
+A05_table13_evaluate_supporting_document_retrieval.py	71	        problems.append('retrieval_manifest.json 없음 (e1a_retrieve.py --holdout 필요)')
+A05_table13_evaluate_supporting_document_retrieval.py	75	        problems.append('검색 결과 파일 해시가 기록과 다름 (결과가 바뀌었을 수 있음)')
+A05_table13_evaluate_supporting_document_retrieval.py	77	        problems.append('manifest 의 분할 해시가 동결 기록과 다름')
+A05_table13_evaluate_supporting_document_retrieval.py	79	        problems.append('검색 단계에서 Gold 사용 기록이 있음')
+A05_table13_evaluate_supporting_document_retrieval.py	121	            print('[채점 안 함] 게이트 실패:')
+A05_table13_evaluate_supporting_document_retrieval.py	125	        (pred_path, out_dir, label) = (HOLD_PRED, OUT_HOLD, '확증 (Holdout)')
+A05_table13_evaluate_supporting_document_retrieval.py	128	            print('[채점 안 함] out/holdout_final 에 결과가 이미 있음 (덮어쓰기 금지)')
+A05_table13_evaluate_supporting_document_retrieval.py	131	        (pred_path, out_dir, label) = (SAMPLE_PRED, OUT_SAMPLE, '탐색 샘플 (배선 확인용, 확증 아님)')
+A05_table13_evaluate_supporting_document_retrieval.py	151	        print('채점할 문항이 없습니다.')
+A05_table13_evaluate_supporting_document_retrieval.py	157	    decision = 'H1 지지 (CI 하한 > 0)' if lo > 0 else 'H1 미지지 (CI 하한 <= 0). 결과 그대로 보고'
+A05_table13_evaluate_supporting_document_retrieval.py	166	"    lines = [f'E1-A Gold Document Recall@2  [{label}]', '=' * 60, f'채점 문항: {len(recs):,}   제외(공식 Gold 없음): {excluded}', f""QI-RAG 평균 Recall@2:  {stats['qi_mean']:.4f}"", f""Vanilla 평균 Recall@2: {stats['va_mean']:.4f}"", f""차이 (QI - Vanilla):   {stats['delta_mean']:+.4f}"", f'95% CI (paired bootstrap {N_BOOT:,}회, 시드 {BOOT_SEED}): [{lo:+.4f}, {hi:+.4f}]', f'판정: {decision}', '', f""공식 Gold 개수 분포: {stats['gold_count_distribution']}"", f""코퍼스에 존재하는 Gold 개수 분포: {stats['gold_in_corpus_distribution']}"", f""부족 사례 QI {stats['qi_short_count']} / Vanilla {stats['va_short_count']}"", '', '해석 제한: 이 결과는 질문 색인 검색 구조의 차이만 보며, 생성 답변 정확도가 아니다.']"
+A05_table13_evaluate_supporting_document_retrieval.py	170	    print(f'\n저장: {out_dir}')
+A05_table13_retrieve_holdout_supporting_documents.py	2	e1a_retrieve.py  (E1-A 검색 실행기, Gold 미사용)
+A05_table13_retrieve_holdout_supporting_documents.py	4	실행 위치: ~/2610-qi-rag
+A05_table13_retrieve_holdout_supporting_documents.py	6	  python e1a_retrieve.py --sample     탐색 50문항 검색 점검 -> out/e1a/sample_*.{jsonl,json}
+A05_table13_retrieve_holdout_supporting_documents.py	7	  python e1a_retrieve.py --holdout    동결 Holdout 4,405문항 검색 -> out/holdout_locked/
+A05_table13_retrieve_holdout_supporting_documents.py	9	Gold 미사용 원칙
+A05_table13_retrieve_holdout_supporting_documents.py	10	  - 질문 텍스트(question, original)만 읽는다. 정답, supporting_facts, gold_titles 는 읽지 않는다.
+A05_table13_retrieve_holdout_supporting_documents.py	11	  - 결과 파일에 정답 관련 필드가 없다. 채점은 e1a_score.py 가 동결 후에 한다.
+A05_table13_retrieve_holdout_supporting_documents.py	13	정책 (protocol_v2.1 과 동일)
+A05_table13_retrieve_holdout_supporting_documents.py	14	  - 질문 인덱스 상위 8개 -> 연결 문서를 순회 -> 고유 문서 P=2
+A05_table13_retrieve_holdout_supporting_documents.py	15	  - 문서 인덱스 상위 10개 -> 고유 문서 P=2
+A05_table13_retrieve_holdout_supporting_documents.py	16	  - 부족은 기록만 하고 임의로 채우지 않는다
+A05_table13_retrieve_holdout_supporting_documents.py	18	--holdout 게이트 (하나라도 실패하면 실행 안 함)
+A05_table13_retrieve_holdout_supporting_documents.py	19	  1) out/holdout_locked/FREEZE.json 존재, 분할 파일 해시 일치
+A05_table13_retrieve_holdout_supporting_documents.py	20	  2) out/e1a/sample_status.json 이 PASS, 기록된 코드 해시가 현재 파일과 일치
+A05_table13_retrieve_holdout_supporting_documents.py	21	  3) 예측 파일이 아직 없음 (덮어쓰기 금지)
+A05_table13_retrieve_holdout_supporting_documents.py	22	  명세 위반(불변식 실패)이 있으면 예측 파일을 저장하지 않는다.
+A05_table13_retrieve_holdout_supporting_documents.py	83	            raise RuntimeError('임베딩 행 수가 인덱스·코퍼스와 다릅니다. 실행 중단.')
+A05_table13_retrieve_holdout_supporting_documents.py	120	                viol.append((r['qid'], name, 'I2 개수 초과'))
+A05_table13_retrieve_holdout_supporting_documents.py	122	                viol.append((r['qid'], name, 'I1 중복'))
+A05_table13_retrieve_holdout_supporting_documents.py	124	                viol.append((r['qid'], name, '빈 제목 반환'))
+A05_table13_retrieve_holdout_supporting_documents.py	128	                viol.append((r['qid'], name, 'I6 점수 정렬 오류'))
+A05_table13_retrieve_holdout_supporting_documents.py	130	            viol.append((r['qid'], 'qi_short', '부족 표시 불일치'))
+A05_table13_retrieve_holdout_supporting_documents.py	132	            viol.append((r['qid'], 'va_short', '부족 표시 불일치'))
+A05_table13_retrieve_holdout_supporting_documents.py	150	    print(f'샘플 검색 {len(rows1)}문항 (탐색 데이터, Gold 미사용)')
+A05_table13_retrieve_holdout_supporting_documents.py	151	"    print(f""불변식 위반 {len(viol)}건 / 재현성 {('일치' if reproducible else '불일치')}"")"
+A05_table13_retrieve_holdout_supporting_documents.py	154	    print(f'판정: {status}')
+A05_table13_retrieve_holdout_supporting_documents.py	155	    print(f'저장: {SAMPLE_PRED}')
+A05_table13_retrieve_holdout_supporting_documents.py	156	    print(f'저장: {SAMPLE_STATUS}')
+A05_table13_retrieve_holdout_supporting_documents.py	157	    print('다음: e1a_score.py --sample 로 채점 배선 확인 (탐색용)')
+A05_table13_retrieve_holdout_supporting_documents.py	162	        problems.append('FREEZE.json 없음 (동결 필요)')
+A05_table13_retrieve_holdout_supporting_documents.py	166	            problems.append('분할 파일 해시가 동결 기록과 다름')
+A05_table13_retrieve_holdout_supporting_documents.py	168	        problems.append('sample_status.json 없음 (--sample 먼저 실행)')
+A05_table13_retrieve_holdout_supporting_documents.py	172	            problems.append('샘플 검증이 PASS가 아님')
+A05_table13_retrieve_holdout_supporting_documents.py	174	            problems.append('샘플 검증 이후 검색 코드가 바뀜 (--sample 다시 실행)')
+A05_table13_retrieve_holdout_supporting_documents.py	176	        problems.append('retrieval_predictions.jsonl 이미 있음 (덮어쓰기 금지)')
+A05_table13_retrieve_holdout_supporting_documents.py	192	        raise RuntimeError(f'Holdout 개수 불일치: 기대 {HOLDOUT_N}, 분할 {len(want)}, 찾음 {len(qmap)}')
+A05_table13_retrieve_holdout_supporting_documents.py	198	        print('[실행 안 함] 게이트 실패:')
+A05_table13_retrieve_holdout_supporting_documents.py	207	        print(f'[저장 안 함] 명세 위반 {len(viol)}건. 원인을 확인하고 명세 8번 기준으로만 수정하십시오.')
+A05_table13_retrieve_holdout_supporting_documents.py	215	    print(f'Holdout 검색 완료: {len(rows)}문항 (Gold 미사용)')
+A05_table13_retrieve_holdout_supporting_documents.py	216	"    print(f""예측 파일 해시 {man['predictions_sha256'][:16]}..."")"
+A05_table13_retrieve_holdout_supporting_documents.py	217	    print(f'저장: {HOLD_PRED}')
+A05_table13_retrieve_holdout_supporting_documents.py	218	    print(f'저장: {HOLD_MAN}')
+A05_table13_retrieve_holdout_supporting_documents.py	219	    print('다음: e1a_score.py --holdout 로 채점. 이 단계 이후 검색 결과를 바꾸지 않습니다.')
+A07_table16_evaluate_synthetic_question_index_expansion.py	5	  python e1b2_qi_expansion.py prepare            # 기본: 198, 170 두 서버에 번갈아 요청
+A07_table16_evaluate_synthetic_question_index_expansion.py	6	  python e1b2_qi_expansion.py prepare --urls http://172.25.121.198:7777/v1/chat/completions   # 한 대만
+A07_table16_evaluate_synthetic_question_index_expansion.py	89	        need(p.is_file(), f'필수 파일 없음: {p}')
+A07_table16_evaluate_synthetic_question_index_expansion.py	91	    need(sha(EXTRA) == bm['extra_docs_sha256'], 'E1-B 문서 해시 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	92	    need(int(bm['n_extra']) == N and int(bm['n_b1']) == N25 and bm['nested'], 'E1-B 확장 조건 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	93	    need(sha(SPLIT) == json.loads(FREEZE.read_text(encoding='utf-8'))['split_ids_sha256'], 'FREEZE 분할 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	95	    need(sha(BASEPRED) == mainman['predictions_sha256'], '기존 H1 예측 파일 해시 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	97	    need(sha(E1B) == e1bm['pred_sha256'], 'E1-B 예측 파일 해시 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	99	    need(len(extra) == N, f'추가 문서 수 불일치: {len(extra)}')
+A07_table16_evaluate_synthetic_question_index_expansion.py	101	    need(len(set(titles)) == len(titles), '추가 문서 제목 중복')
+A07_table16_evaluate_synthetic_question_index_expansion.py	103	    need(len(want) == 4405, 'Holdout 수가 4,405가 아님')
+A07_table16_evaluate_synthetic_question_index_expansion.py	106	    need(set(main) == set(vb) == want, 'Holdout / H1 / E1-B 문항 집합 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	107	    need(all((set(main[q]['va_titles']) == set(vb[q]['base_titles']) for q in want)), 'E1-B Vanilla 기준선 재현 실패')
+A07_table16_evaluate_synthetic_question_index_expansion.py	113	    need(path.is_file(), f'기준 구현 없음: {path}')
+A07_table16_evaluate_synthetic_question_index_expansion.py	117	    need(mod.CORPUS_SOURCE == 'index', '기준 CORPUS_SOURCE 설정 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	141	"    """"""모든 서버가 같은 모델 ID 를 서빙하고, 5개 프롬프트에 같은 답을 내는지 점검. 메타를 servers.json 에 기록."
+A07_table16_evaluate_synthetic_question_index_expansion.py	142	    주의: vLLM API 는 가중치 해시를 노출하지 않는다. 모델 파일 해시(config.json/safetensors sha)는
+A07_table16_evaluate_synthetic_question_index_expansion.py	143	"    각 서버 호스트에서 따로 구해 servers.json 의 host_attestation 에 적어야 한다."""""""
+A07_table16_evaluate_synthetic_question_index_expansion.py	150	"        need(meta is not None, f""서버 {u} 가 모델 {model} 을 서빙하지 않음: {[m.get('id') for m in data]}"")"
+A07_table16_evaluate_synthetic_question_index_expansion.py	154	        records.append({'url': u, 'model_id': meta.get('id'), 'root': meta.get('root'), 'max_model_len': meta.get('max_model_len'), 'created': meta.get('created'), 'probe_fingerprint_sha256': fp, 'probe_answers': answers, 'host_attestation': {'config_json_sha1': None, 'weights_sha256': None, 'vllm_version': None, 'note': '서버 호스트에서 채워 넣을 것'}})
+A07_table16_evaluate_synthetic_question_index_expansion.py	155	"    need(len(set(fingerprints)) == 1, '서버 간 5개 프롬프트 응답 지문 불일치: ' + '; '.join((f""{r['url']} {r['probe_fingerprint_sha256'][:12]}"" for r in records)))"
+A07_table16_evaluate_synthetic_question_index_expansion.py	156	"    need(len(set((r['root'] for r in records))) == 1, f""서버 간 모델 root 경로 불일치: {[r['root'] for r in records]}"")"
+A07_table16_evaluate_synthetic_question_index_expansion.py	157	    need(len(set((r['max_model_len'] for r in records))) == 1, '서버 간 max_model_len 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	161	        need(old['probe_fingerprint_sha256'] == fingerprints[0], '이전 실행과 서버 응답 지문이 다름 (설정 변경 의심)')
+A07_table16_evaluate_synthetic_question_index_expansion.py	163	        atomic_json(sp, {'checked_at': now(), 'model': model, 'probe_prompts_sha256': hashlib.sha256(json.dumps(PROBES).encode()).hexdigest(), 'probe_fingerprint_sha256': fingerprints[0], 'servers': records, 'limitation': 'API 로는 가중치 동일성을 증명할 수 없음. host_attestation 을 각 서버에서 채울 것'})
+A07_table16_evaluate_synthetic_question_index_expansion.py	164	    print(f'[PASS] 서버 {len(urls)}대 모델 ID·root·max_model_len·5개 응답 지문 일치 ({fingerprints[0][:12]})')
+A07_table16_evaluate_synthetic_question_index_expansion.py	167	"    """"""문서 i 는 urls[i % n] 서버에 먼저 보내고, 재시도까지 실패하면 다음 서버로 넘어간다."""""""
+A07_table16_evaluate_synthetic_question_index_expansion.py	190	        print('[DRY RUN] 문서', len(extra), '전반 25k', len(extra[:N25]), '후반 25k', len(extra[N25:]))
+A07_table16_evaluate_synthetic_question_index_expansion.py	192	            need(json.loads(path.read_text(encoding='utf-8')) == config, '저널과 입력 설정 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	195	        need(json.loads(path.read_text(encoding='utf-8')) == config, '이미 사용된 입력과 불일치. 별도 --out 사용')
+A07_table16_evaluate_synthetic_question_index_expansion.py	204	                need(0 <= i < N and r['title'] == extra[i]['title'], '저널 인덱스/제목 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	205	                need(i not in done or done[i] == r['question'], '저널 내 질문 충돌')
+A07_table16_evaluate_synthetic_question_index_expansion.py	208	    print(f'추가 문서={N}, 이전 생성 성공={len(done)}, 남은 생성={len(pending)}')
+A07_table16_evaluate_synthetic_question_index_expansion.py	210	        need(not pending, '저장된 질문 인덱스가 불완전함')
+A07_table16_evaluate_synthetic_question_index_expansion.py	211	        need(sha(_pkg_resolve(OUT / 'questions.jsonl')) == json.loads(_pkg_resolve(OUT / 'prepare_manifest.json').read_text())['questions_sha256'], '질문 인덱스 해시 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	212	        print('[PASS] 준비 이미 완료')
+A07_table16_evaluate_synthetic_question_index_expansion.py	268	"            print(f""{cur}/{N} 완료  [{srv}]  failover {stats['failover']}  실패 {len(stats['failed'])}  {rate:.1f}건/초  남은 약 {eta:.0f}분"", flush=True)"
+A07_table16_evaluate_synthetic_question_index_expansion.py	273	"        print(f""실패 {len(stats['failed'])}건 (예: {stats['failed'][:5]}). 저널 보존됨, 재실행하면 이어서 시도"")"
+A07_table16_evaluate_synthetic_question_index_expansion.py	276	"        raise RuntimeError(f""{len(missing)} 질문 생성 실패; 저널 보존 및 재시도 가능. 첫 사례: {[(i, extra[i]['title']) for i in missing[:12]]}"")"
+A07_table16_evaluate_synthetic_question_index_expansion.py	280	    print('[PASS] 새 질문 50,000개 1:1 순서 일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	288	"    """"""생성 질문 품질 통계 (생성 결과는 바꾸지 않음). 표본 200개를 눈가림 수동 점검용으로 저장."""""""
+A07_table16_evaluate_synthetic_question_index_expansion.py	291	    need(qp.exists(), 'questions.jsonl 없음 (prepare 먼저)')
+A07_table16_evaluate_synthetic_question_index_expansion.py	293	    need(len(newq) == N and all((newq[i]['i'] == i and newq[i]['title'] == extra[i]['title'] for i in range(N))), '질문-문서 1:1 순서 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	323	    stats = {'n': N, 'words': {'mean': float(words.mean()), 'median': float(np.median(words)), 'min': int(words.min()), 'max': int(words.max())}, 'chars_mean': float(chars.mean()), 'exact_duplicates': exact_dup, 'normalized_duplicates': norm_dup, 'non_ascii_questions': non_ascii, 'generic_pattern_questions': generic, 'lexical_overlap_with_doc': {'mean': float(overlap.mean()), 'median': float(np.median(overlap)), 'below_0.3': low_overlap}, 'title_token_in_question': title_hit, 'journal': {'ok_rows': j_ok, 'conflicting_rows': j_conflict, 'non_ok_rows': j_bad}, 'questions_sha256': sha(qp), 'note': '어휘 중복은 연관성의 대리 지표. 의미 품질은 표본 수동 점검으로 확인'}
+A07_table16_evaluate_synthetic_question_index_expansion.py	328	        need(not p.exists(), f'기존 품질 파일 덮어쓰기 금지: {p.name}')
+A07_table16_evaluate_synthetic_question_index_expansion.py	331	"    lines = ['E1-B2 합성 질문 품질 통계 (생성 결과 불변, 참고용)', f""  질문 수 {N:,}  단어 수 평균 {stats['words']['mean']:.1f} (중앙값 {stats['words']['median']:.0f}, 범위 {stats['words']['min']}~{stats['words']['max']})"", f'  완전 중복 {exact_dup:,}  정규화 중복 {norm_dup:,}  비ASCII 포함 {non_ascii:,}', f'  일반 질문 패턴(this passage 등) {generic:,}', f'  문서 어휘 중복률 평균 {overlap.mean():.3f}  0.3 미만 {low_overlap:,}  제목 토큰 포함 {title_hit:,}', f'  저널: ok {j_ok:,} / 충돌 {j_conflict} / 비정상 {j_bad}', '  표본 200개(시드 0) -> quality_sample.jsonl 의 label_answerable / label_relevant 를 눈가림으로 채울 것', '  해석: 어휘 중복률은 연관성의 대리 지표일 뿐이며 의미적 품질을 보장하지 않는다.']"
+A07_table16_evaluate_synthetic_question_index_expansion.py	343	    need(prepare_meta.exists(), 'prepare 먼저 실행')
+A07_table16_evaluate_synthetic_question_index_expansion.py	344	    need(json.loads(_pkg_resolve(OUT / 'sources.json').read_text()) == config, '입력 설정이 prepare와 다름')
+A07_table16_evaluate_synthetic_question_index_expansion.py	347	    need(sha(qp) == pm['questions_sha256'], '질문 파일 변조/불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	353	    need(old_q.shape[0] == len(old_items), '기준 QI 임베딩과 인덱스 행 수 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	357	    need(len(newq) == N and all((newq[i]['title'] == extra[i]['title'] and newq[i]['i'] == i for i in range(N))), '새 질문 순서 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	359	    need(not existing_titles & {d['title'] for d in extra}, '신규 문서가 기존 제목과 겹침')
+A07_table16_evaluate_synthetic_question_index_expansion.py	367	        need(Enew.shape == (N, old_q.shape[1]), '새 임베딩 캐시 Shape 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	368	        need(_pkg_resolve(OUT / 'new_questions_e5_meta.json').exists(), '임베딩 메타 없음')
+A07_table16_evaluate_synthetic_question_index_expansion.py	370	        need(emeta['questions_sha256'] == sha(qp) and emeta['embedding_sha256'] == sha(cache), '임베딩 캐시 입력 SHA 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	371	        print('새 질문 임베딩 재사용')
+A07_table16_evaluate_synthetic_question_index_expansion.py	374	        need(Enew.shape == (N, old_q.shape[1]), '임베딩 크기 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	383	    need(set(devq) == hold, 'Holdout 질문 텍스트 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	385	    need(not pred.exists(), '검색 결과가 이미 존재함. 덮어쓰기 금지')
+A07_table16_evaluate_synthetic_question_index_expansion.py	397	            need(base_titles == main[qid]['qi_titles'], f'H1 QI 기준선 불일치: {qid}')
+A07_table16_evaluate_synthetic_question_index_expansion.py	420	            print(f'검색 {min(s + len(batchids), len(qids))}/{len(qids)}', flush=True)
+A07_table16_evaluate_synthetic_question_index_expansion.py	421	    need(len(rows) == 4405, '검색 결과 수 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	424	    print('[PASS] E1-B2 검색 완료; Gold 미사용, H1 QI 기준선 완전 일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	441	    need(sha(rp) == manifest['pred_sha256'], '검색 결과 해시 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	442	    need(sha(_pkg_resolve(OUT / 'prepare_manifest.json')) == manifest['prepare_manifest_sha256'], 'prepare 매니페스트 해시 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	443	    need(sha(_pkg_resolve(OUT / 'questions.jsonl')) == pre['questions_sha256'], '질문 인덱스 변경됨')
+A07_table16_evaluate_synthetic_question_index_expansion.py	445	    need(set(rows) == hold, '재검색 평가 ID 집합 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	446	    need(all((rows[q]['base_titles'] == main[q]['qi_titles'] for q in hold)), '기준선 검색 결과 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	452	    need(set(gold) == hold and all(gold.values()), 'Gold 문항 집합 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	460	"    lines = ['E1-B2 post-hoc exploratory QI question index expansion', 'N=4,405, P=2, Top-8 indexed questions; +25k and +50k same E1-B v2 docs', 'IMPORTANT: no new confirmatory claim; seen holdout; gold ONLY read by score.', '구조 차이: 합성 질문은 문서당 1개·1:1 연결, 기존 색인 질문은 1:N 연결. 따라서 이 실험이 보는 것은', '  ""동일 문서 코퍼스에서 1:1 연결 방식으로 질문 색인을 확장한 효과""이며 색인 규모만의 효과가 아니다.', '']"
+A07_table16_evaluate_synthetic_question_index_expansion.py	467	        lines.append(f'QI {budget}: 최종 문서 {n_docs:,}개 중 추가 문서(합성 질문 경유) {n_extra_docs:,}개, 추가 문서가 들어간 질문 {n_q_touched:,}/{len(qids):,}')
+A07_table16_evaluate_synthetic_question_index_expansion.py	485	        lines.append(f'QI {budget} Gold 문서 회수 증가/손실: {count_gain}/{count_loss}')
+A07_table16_evaluate_synthetic_question_index_expansion.py	486	    need(not _pkg_resolve(OUT / 'score.json').exists() and (not _pkg_resolve(OUT / 'score.txt').exists()), '기존 채점 결과 덮어쓰기 금지')
+A07_table16_evaluate_synthetic_question_index_expansion.py	490	    print('[PASS] score.json / score.txt 저장')
+A07_table16_evaluate_synthetic_question_index_expansion.py	496	    need(sources.exists() and json.loads(sources.read_text()) == confdata, '입력 동결 검증 실패')
+A07_table16_evaluate_synthetic_question_index_expansion.py	499	    need(sha(qp) == pman['questions_sha256'], '질문 인덱스 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	501	    need(len(newq) == N, f'질문 수 불일치: {len(newq)}')
+A07_table16_evaluate_synthetic_question_index_expansion.py	502	    need(all((newq[i]['i'] == i and newq[i]['title'] == extra[i]['title'] and newq[i]['question'].strip() for i in range(N))), '질문-문서 1:1 연결 또는 빈 질문')
+A07_table16_evaluate_synthetic_question_index_expansion.py	504	    need(journal.exists() and sha(journal) == pman.get('journal_sha256'), '저널 해시 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	509	            need(i not in seen or seen[i] == r['question'], f'저널 충돌: i={i}')
+A07_table16_evaluate_synthetic_question_index_expansion.py	511	    need(set(seen) == set(range(N)) and all((seen[i] == newq[i]['question'] for i in range(N))), '저널의 유효 질문과 questions.jsonl 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	512	    print(f'[PASS] 질문 {N:,} 개 1:1 연결, 저널 유효·충돌 없음')
+A07_table16_evaluate_synthetic_question_index_expansion.py	516	        need(em['questions_sha256'] == sha(qp) and em['embedding_sha256'] == sha(cache), '임베딩 SHA 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	517	        need(tuple(np.load(cache, mmap_mode='r').shape) == tuple(em['shape']) and em['shape'][0] == N, '임베딩 shape 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	518	        print('[PASS] 신규 질문 임베딩 SHA·shape 일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	522	        need(sha(rp) == rm['pred_sha256'], '검색 결과 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	523	        need(sha(_pkg_resolve(OUT / 'prepare_manifest.json')) == rm['prepare_manifest_sha256'], '준비 버전이 검색 버전과 다름')
+A07_table16_evaluate_synthetic_question_index_expansion.py	524	        need(cache.exists() and sha(cache) == rm['emb_sha256'], '검색에 쓴 임베딩 해시 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	526	        need(len(rows) == 4405 and {str(x['qid']) for x in rows} == hold, '검색 수/ID 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	527	        need(all((x['base_titles'] == main[x['qid']]['qi_titles'] for x in rows)), 'QI 기준선 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	534	"                need(len(t) <= P and len(set(t)) == len(t), f""{key} 개수/중복 위반: {x['qid']}"")"
+A07_table16_evaluate_synthetic_question_index_expansion.py	535	"                need(set(t) <= ok_set, f""{key} 에 허용되지 않은 문서: {x['qid']}"")"
+A07_table16_evaluate_synthetic_question_index_expansion.py	536	        print('[PASS] 4,405 문항 재검색, 원본 QI 기준선 일치, b1/b2 문서 수·중복·출처 정상')
+A07_table16_evaluate_synthetic_question_index_expansion.py	549	                need(abs(float(v) - float(sc['results'][k])) <= 1e-09, f'score.json {k} 재계산 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	550	            need(sc['input_sha256']['retrieval'] == sha(rp), 'score.json 이 가리키는 검색 결과 해시 불일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	551	            print('[PASS] score.json 재계산 일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	552	    print('[PASS] 준비 및 입력 파일 해시 일치')
+A07_table16_evaluate_synthetic_question_index_expansion.py	560	    ap.add_argument('--urls', nargs='+', default=['http://172.25.121.198:7777/v1/chat/completions', 'http://172.25.121.170:7777/v1/chat/completions'], help='생성 서버 목록. 문서 i 는 urls[i %% n] 에 먼저 보내고 실패 시 다음 서버로')
+A07_table16_evaluate_synthetic_question_index_expansion.py	561	    ap.add_argument('--workers', type=int, default=4, help='서버당 동시 요청 수')
+A09_table18_evaluate_matched_budget_selective_answering.py	35	"ABSTAIN = re.compile(""(?i)^(?:i (?:do not|don't) know|i cannot answer(?: this)?|cannot answer|unable to answer|no answer|unknown|not enough information|답변할 수 없습니다|모르겠습니다|알 수 없습니다|정보가 없습니다)[.!\\s]*$"")"
+S00_qi_common.py	2	qi_common.py  - 여러 실행 파일이 함께 쓰는 공통 함수 (읽기 전용 유틸리티)
+S00_qi_common.py	4	  split_paragraphs / build_corpus : 01_run_generate_v2.py 와 같은 규칙으로 코퍼스 재구성
+S00_qi_common.py	5	  content_present                 : E0-03 과 같은 내용 기준 Gold 존재 판정
+S00_qi_common.py	6	  corpus_fingerprint              : 코퍼스 본문 해시
+S00_qi_common.py	7	  find_cache                      : out/cache 아래 임베딩 파일 찾기
+S00_qi_common.py	53	"    """"""01_run_generate_v2.py 의 split_paragraphs 와 같은 규칙."""""""
+S00_qi_common.py	68	"    """"""01 의 build_corpus_index 와 같은 순서·중복 규칙으로 코퍼스를 만든다."""""""
+S00_qi_common.py	85	"    """"""제목 -> 정규화 본문 집합 (길이 필터 적용, E0-03 과 같은 기준)."""""""
+S00_qi_common.py	102	        raise FileNotFoundError(f'임베딩 캐시 없음: out/cache/{prefix}_*.npy')
+S00_retrieval_policy.py	2	retrieval_policy.py  (2단계: 고유 문서 P=2 정책과 Recall@2 채점)
+S00_retrieval_policy.py	4	검색 정책 함수는 정답을 입력으로 받지 않는다. 채점 함수만 Gold 제목을 받는다.
+S00_retrieval_policy.py	6	  unique_take      순위 목록을 앞에서부터 훑어 서로 다른 키를 P개까지 취함
+S00_retrieval_policy.py	7	  qi_policy        QI-RAG: 상위 질문들의 연결 문서를 검색 순서대로 순회 -> 고유 P개
+S00_retrieval_policy.py	8	  vanilla_policy   Vanilla: 상위 문서 목록 -> 고유 P개
+S00_retrieval_policy.py	9	  recall_at_p      Gold Document Recall@P (채점 전용)
+S00_retrieval_policy.py	11	반환 부족(후보 소진으로 P개를 못 채움)은 임의로 채우지 않고 short=True 로 표시한다.
+S00_retrieval_policy.py	13	테스트: python retrieval_policy.py --test
+S00_retrieval_policy.py	32	"    """"""top_item_ids: 질문 인덱스 상위 순위."
+S00_retrieval_policy.py	33	    item_doc_keys[j]: 질문 j 가 연결한 문서 키 목록 (원래 순서 유지).
+S00_retrieval_policy.py	34	"    순위대로 연결 문서를 펼친 뒤 고유 P개를 취한다. 질문 개수와 무관하게 문서 P개를 맞춘다."""""""
+S00_retrieval_policy.py	44	"    """"""Gold 문서 제목 중 반환된 것의 비율. Gold 가 비어 있으면 None."""""""
+S00_retrieval_policy.py	58	    check('unique_take: 중복 제거 후 2개', out == ['A', 'B'] and (not short))
+S00_retrieval_policy.py	60	    check('unique_take: 후보 부족은 short 표시', out == ['A'] and short)
+S00_retrieval_policy.py	63	    check('qi_policy: 첫 질문의 문서 2개로 충족', out == ['A', 'B'] and (not short))
+S00_retrieval_policy.py	66	    check('qi_policy: 같은 문서 중복은 건너뛰고 다음 문서 채움', out == ['A', 'B'] and (not short))
+S00_retrieval_policy.py	69	    check('qi_policy: 연결 문서가 부족하면 short 표시(임의 보충 없음)', out == ['A'] and short)
+S00_retrieval_policy.py	71	    check('vanilla_policy: 같은 규칙으로 고유 2개', out == ['A', 'B'] and (not short))
+S00_retrieval_policy.py	72	    check('recall: 두 Gold 중 1개 회수 = 0.5', recall_at_p(['A', 'C'], ['A', 'B']) == 0.5)
+S00_retrieval_policy.py	73	    check('recall: 두 Gold 모두 회수 = 1.0', recall_at_p(['A', 'B'], ['A', 'B']) == 1.0)
+S00_retrieval_policy.py	74	    check('recall: Gold 없음 = None', recall_at_p(['A'], []) is None)
+S00_retrieval_policy.py	75	    check('recall: 빈 제목은 매칭하지 않음', recall_at_p(['', ''], ['A', 'B']) == 0.0)
+S00_retrieval_policy.py	76	"    print(f""\n결과: {('전부 통과' if not fails else f'실패 {len(fails)}건')}"")"
+S00_retrieval_policy.py	81	    print('사용법: python retrieval_policy.py --test')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	4	01_run_generate_v2.py 가 만든 out/<모드>/*.jsonl 을 채점하고,
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	5	사전 등록한 주장별로 지지 / 반증 / 불확실을 판정한다.
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	7	두 집합에서 판정한다
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	8	  [주] 정답 문단 전부 코퍼스에 존재하는 문항 (gold_full = True)
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	9	       상한(ORACLE)과 비교가 공정한 집합. 판정은 여기서 한다.
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	10	  [참고] 전체 공통 문항
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	11	       코퍼스에 없는 정답 문단이 있는 문항까지 포함. 방향만 본다.
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	13	지표
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	14	  주 지표 F1 (보조 EM, contains)
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	15	  유보율 = 유보/전체, 오답률 = 오답/전체, 선택위험 = 오답/답변
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	16	  근거 내 정답 = contains 로 맞고 정답 문자열이 제시 문맥 안에 있는 정답 비율
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	17	  달성률 = 조건 F1 / ORACLE F1 (같은 집합에서 계산)
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	19	판정 규칙 (사전 등록)
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	20	  비교 쌍 (A -> B, 차이 = B - A, B 는 항상 QI-RAG)
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	21	    지지   : F1 차이 95% 부트스트랩 CI 하한 > 0  AND  Holm 보정 McNemar(EM) p < 0.05
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	22	    반증   : F1 차이 95% CI 상한 < 0  AND  Holm 보정 p < 0.05
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	23	    불확실 : 그 밖의 모든 경우
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	24	  Holm 보정은 같은 집합 안의 주장들끼리 적용한다.
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	25	  주장 목록 CLAIMS 는 전체 실행 전에 고정한다.
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	27	층화
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	28	  정답 문서 개수(0, 1, 2)별 F1. 같은 개수에서도 우위가 남는지 본다.
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	30	실행 (qi-rag-test 폴더에서)
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	32	  메뉴: 1) 샘플 결과 보고  2) 전체 결과 보고  3) 종료
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	33	산출물: out/<모드>/report_v2.txt
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	55	    CLAIMS.append({'id': f'A{_P}', 'A': f'VANILLA_P{_P}', 'B': f'QIRAG_P{_P}', 'text': f'같은 예산 P={_P} 에서 vanilla 대비 QI-RAG (문서공간 -> 질의공간)'})
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	56	    CLAIMS.append({'id': f'B{_P}', 'A': f'RANDOM_P{_P}', 'B': f'QIRAG_P{_P}', 'text': f'같은 문단 수 무작위 문맥 대비 QI-RAG (1:N 구조 효과)'})
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	57	    CLAIMS.append({'id': f'D{_P}', 'A': 'REPAQ_TOP1', 'B': f'QIRAG_P{_P}', 'text': 'RePAQ top-1 대비 QI-RAG (검색기가 달라 참고용)'})
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	58	CLAIMS.append({'id': 'C2', 'A': 'E5_TOP1', 'B': 'QIRAG_P2', 'text': '같은 E5 검색기에서 답만 반환 대비 문맥 생성 (페이로드 효과)'})
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	59	CLAIMS.append({'id': 'E2', 'A': f'QAGEN_K{QAGEN_K}', 'B': 'QIRAG_P2', 'text': '저장 답 페이로드 대비 문단 페이로드 (페이로드 효과)'})
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	88	"    """"""답이 ""['Japan']"" 같은 리스트 문자열이면 원소를 풀어서 돌려준다."""""""
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	154	"    """"""차이 = B - A. F1 차이의 부트스트랩 CI, EM 기준 정확 McNemar."""""""
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	169	        return '데이터 없음'
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	171	        return '지지 (QI 우위)'
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	173	        return '반증 (QI 열세)'
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	174	    return '불확실'
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	202	"    """"""한 집합(qs)에 대해 표, 층화, 주장 판정을 출력하고 판정 결과를 돌려준다."""""""
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	203	    L(f'\n  ── 집합: {label}  (n = {len(qs)}) ──')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	205	        L('  문항이 없습니다.')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	210	"    L(f""  {'조건':<18}{'유보':>7}{'F1':>7}{'EM':>7}{'ct':>7}{'오답률':>7}{'선택위험':>9}{'근거내':>7}{'단어':>7}{'문단/답':>8}{'적중':>7}{'달성률':>8}"")"
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	223	"        paras_txt = f""{s['paras']:.0f}답"" if is_qa else fmt(s['paras'], '.2f', na=is_rep)"
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	227	        L('  * QAGEN: 문단이 아니라 저장 답 개수. 적중은 항목 gold 제목 기준이라 문단 조건과 직접 비교 안 함')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	228	"    L(""  - REPAQ_TOP1, E5_TOP1: 생성하지 않고 답만 반환. 문맥 관련 칸은 '-'"")"
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	229	    L('\n  [층화] 회수한 정답 문서 개수별 F1')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	230	"    L(f""  {'조건':<16}{'0개':>14}{'1개':>14}{'2개':>14}"")"
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	239	    L('\n  [사전 등록 주장 판정]  차이 = B - A, 지지 조건: CI 하한 > 0 AND Holm p < 0.05')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	256	            r['verdict'] += ' (검색기 상이, 참고)'
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	258	"        L(f""     {r['A']} {r['a']:.3f} -> {r['B']} {r['b']:.3f}   차이 {r['diff']:+.4f}  95% CI [{r['lo']:+.4f}, {r['hi']:+.4f}]  n={r['n']}"")"
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	259	"        L(f""     McNemar(EM) B만 {r['n01']} / A만 {r['n10']}  p={r['p']:.2e}  Holm p={pa:.2e}  -> {r['verdict']}"")"
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	268	    L(f'\n[{v}]  공통 문항 {len(common)}  (모든 조건이 정상 응답한 문항만 비교)')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	270	        L(f'    {c:<16} 전체 행 {len(m)}, 공통에서 제외 {len(m) - len(common)}')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	274	        L(f'    정답 문단 전부 코퍼스에 있는 문항: {len(subset)}/{len(common)} ({_pkg_resolve(len(subset) / max(len(common), 1)):.3f})')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	277	        L('    ORACLE 결과가 없어 부분집합 판정을 건너뜁니다.')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	278	    res_sub = block(v, cmap, S, subset, '정답 문단 전부 코퍼스 존재 (판정 기준)', L)
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	279	    res_all = block(v, cmap, S, common, '전체 공통 문항 (참고)', L)
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	300	        print(f'  {d} 폴더가 없습니다. 01_run_generate_v2.py 를 먼저 실행하세요.')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	308	    L(f'==== 보고서 v2: {mode} ====')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	309	    L('  지표: 유보 = 유보/전체, 오답률 = 오답/전체, 선택위험 = 오답/답변, 근거내 = 문맥 안 정답 비율')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	310	    L(f'  판정 기준 집합 = 정답 문단 전부 코퍼스 존재. 주 변형 = {MAIN_VARIANT}')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	312	        L('  결과 파일이 없습니다.')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	321	        L('\n  [요약] 주 변형, 판정 기준 집합')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	323	"            L(f""    {r['id']:<4} {r['verdict']:<22} {r['A']} -> {r['B']}  (차이 {r['diff']:+.4f})"")"
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	324	    L('\n  해석 메모')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	325	    L('  - 판정은 정답 문단 전부 코퍼스 존재 집합에서만 한다. 나머지는 방향 참고용이다.')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	326	    L('  - 달성률은 같은 집합의 ORACLE F1 로 나눈 값이다. 1 에 가까울수록 정답 문맥 활용이 상한에 가깝다.')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	327	    L('  - 층화에서 같은 개수일 때 우위가 사라지면, 우위는 정답 문서 수 때문이다.')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	328	    L('  - 근거내 정답률은 문맥 밖 정답을 뺀다. 문맥적 정답을 보는 지표다.')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	329	    L('  - 주장 목록과 판정 규칙은 전체 실행 전에 고정했다. 결과를 보고 바꾸지 않는다.')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	333	    print(f'\n  보고서 저장: {fp}')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	336	    print('qi-rag-test 채점·판정 (v2)')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	338	        print('\n  1) 샘플 결과 보고')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	339	        print('  2) 전체 결과 보고')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	340	        print('  3) 종료')
+S00_table09_table19_table20_score_answers_em_f1_coverage.py	341	        c = input('  선택: ').strip()
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	2	llm_experiments_v2.py  (LLM 실험 v2: 검증·재시도·보고 수정, 기존 동결과 호환)
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	4	실행 위치: ~/2610-qi-rag
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	6	  python llm_experiments_v2.py --freeze-prompts   (이미 동결돼 있으면 중단. 기존 동결 유지)
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	7	  python llm_experiments_v2.py --run              생성 (오류·빈 답은 재시도, 완료된 문항은 건너뜀)
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	8	  python llm_experiments_v2.py --status           진행 상황
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	9	  python llm_experiments_v2.py --validate         생성 파일 완전성·무효 답변 검사 (채점 전 필수)
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	10	  python llm_experiments_v2.py --tokens           실제 토큰 수 재측정 (토크나이저, 생성 없음)
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	11	  python llm_experiments_v2.py --score            채점 (--validate 통과 후)
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	13	v1 과의 호환
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	14	  - 프롬프트, 설정, 조건 이름, 모델, 온도, 토큰 한도, P 는 v1 과 동일 -> 동결 해시 그대로.
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	15	  - v1 로 생성한 파일을 그대로 읽는다. 같은 문항에 기록이 여러 개면 마지막 기록을 쓴다.
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	17	보고 규칙 (수정)
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	18	  - H2 는 '정책 비교'다. QI_STRICT = 상위 고유 문서 2개 제공, QA_STRICT = 상위 질문 정답 2개 제공.
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	19	    두 조건은 제공 정보의 형식과 양이 다르므로 효과를 원문 근거의 가치로 인과 해석하지 않는다.
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	20	  - 프롬프트 길이는 '공백 단위 길이'로만 표기한다. 실제 토큰 수는 --tokens 로 따로 잰다.
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	21	  - H3-A 는 모든 문항에 유효한 후보 답이 있을 때만 주 결과로 보고한다. 무효 후보가 있으면 미완료로 표기하고,
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	22	    무효 답을 오답으로 센 민감도만 함께 보고한다.
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	23	  - AURC 차이에도 paired bootstrap CI 를 붙인다. 재표본마다 두 방법의 신뢰도 순위를 다시 매긴다.
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	93	        problems.append('FREEZE.json 없음')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	97	            problems.append('분할 해시가 동결 기록과 다름')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	99	        problems.append('H1 확증 결과가 없음')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	101	        problems.append('llm_prompts_FREEZE.json 없음')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	105	            problems.append('프롬프트/설정이 동결 기록과 다름')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	107	            problems.append('검색 결과 파일이 동결 기록과 다름')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	112	            problems.append(f'생성 서버 응답 없음: {type(e).__name__}')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	187	"    """"""같은 문항에 기록이 여러 개면 마지막 기록을 쓴다 (재시도 결과가 우선)."""""""
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	200	        print('이미 동결됨. 덮어쓰지 않습니다. 기존 동결 해시를 유지합니다.')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	203	        print('FREEZE.json 없음.')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	209	    print(f'동결 완료: {LLM_FREEZE}  설정 해시 {h[:16]}...')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	214	        print('[실행 안 함] 게이트 실패:')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	223	    print(f'Holdout {len(inp.rows):,}문항, 조건 {len(CONDS)}개')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	229	        print(f'\n[{cond}] 정상 완료 {len(inp.rows) - len(todo):,} / 생성·재시도 대상 {len(todo):,}')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	245	                print(f'  {n_done:,}/{len(todo):,}  {rate:.2f}건/초  남은 약 {_pkg_resolve(_pkg_resolve((len(todo) - n_done) / rate) / 60):.0f}분')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	246	    print(f'\n생성 종료. 총 {_pkg_resolve((time.time() - t_all) / 60):.1f}분. 다음: --validate')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	253	        print(f'  {cond:<11} 정상 {ok:>5,}/{len(qids):,}')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	281	"        line = f""  {cond:<11} 완료 {('예' if info['complete'] else '아니오')}  누락 {info['missing']}  오류 {info['errors']}  빈답 {info['empty_or_failed']}  유보 {info['abstain']}"""
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	283	"            line += f""  H3-A 주 분석 {('가능' if info['h3a_primary_eligible'] else '불가 (무효 후보 있음)')}"""
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	285	    print('\n전체 완료' if not fatal else '\n[주의] 미완료 조건이 있어 --score 가 중단됩니다.')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	286	"    print(f""저장: {_pkg_resolve(os.path.join(OUT_VAL, 'validation.json'))}"")"
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	291	    print(f'토크나이저 원본: {src}')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	307	        print(f'  {cond:<11} 토큰 평균 {a.mean():.1f}  중앙값 {np.median(a):.0f}  최대 {a.max()}')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	312	    print(f'저장: {path}')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	344	        print('[채점 안 함] 게이트 실패:')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	350	        print('[채점 안 함] 생성 파일이 완전하지 않습니다. --validate 결과를 확인하십시오.')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	353	        print('[채점 안 함] 기존 결과가 있음 (덮어쓰기 금지)')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	373	"        tok_line = f""  실제 토큰 평균  QI {tk['QI_STRICT']['mean']:.1f}  QA {tk['QA_STRICT']['mean']:.1f}  (토크나이저: {tk_all['tokenizer']})"""
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	375	        tok_line = '  실제 토큰 수: 미측정 (먼저 python llm_experiments_v2.py --tokens 실행)'
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	376	    lines = [f'LLM 실험 채점 v2 (Holdout {n:,}문항, 생성 완전성 통과)', '=' * 74, '']
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	378	"    lines += ['[H2] 정책 비교: QI_STRICT (상위 고유 문서 2개 제공) vs QA_STRICT (상위 질문의 저장 정답 2개 제공)', f""  EM  QI_STRICT {ok['QI_STRICT'].mean():.4f}   QA_STRICT {ok['QA_STRICT'].mean():.4f}"", f'  차이 {d_h2:+.4f}  95% CI [{lo_h2:+.4f}, {hi_h2:+.4f}]  (사전 지정 2차, 확증 주장 없음)', tok_line, f""  (참고) 공백 단위 길이 평균  QI {words['QI_STRICT'].mean():.1f}  QA {words['QA_STRICT'].mean():.1f}  — 토큰 수 아님"", '  해석 제한: 두 조건은 제공 정보의 형식과 양이 함께 다르다. 원문 근거의 가치로 인과 해석하지 않는다.', '']"
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	385	    head = '[H3-A] 동일 Coverage 선택적 위험 (후보 답변, 신뢰도 = 검색 Top-1 유사도)'
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	387	        lines.append(head + '  — 주 결과')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	389	        lines.append(head + '  — 미완료 (무효 후보 있음: QI ' + str(invalid_qi) + ', VAN ' + str(invalid_van) + '). 아래 수치는 무효 답을 오답으로 센 민감도 분석')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	390	"    lines.append(f""  {'Coverage':<10}{'k':>6}{'QI 위험':>10}{'VAN 위험':>10}{'차이':>10}{'CI':>26}"")"
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	409	    lines.append(f'  AURC  QI {aq:.4f}   VAN {av:.4f}   차이 {aq - av:+.4f}   CI [{alo:+.4f}, {ahi:+.4f}]')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	410	    lines.append('  해석: 검색 유사도 기반 선택 정책의 결과. 정답 확률로 해석하지 않는다.')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	412	    lines.append('[H3-B] Strict Prompt 운영 성능 (보조, 응답률이 방법마다 다름)')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	413	"    lines.append(f""  {'방법':<12}{'응답률':>9}{'전체 정답':>11}{'응답 중 오답':>14}{'전체 오답':>11}{'유보율':>9}"")"
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	420	    lines.append('  응답률이 다르면 답변 중 오답률로 방법 간 우열을 판정하지 않는다 (명세).')
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	421	    lines += ['', '결과는 생성기와 설정에 대한 것이며, 명세에 없는 설정 변경의 근거로 쓰지 않는다.']
+S00_table10_table15_table18_generate_and_evaluate_holdout_response_policies.py	428	    print(f'\n저장: {OUT_SCORE}')

@@ -1,0 +1,672 @@
+{
+  "H3": {
+    "by_type": {
+      "bridge": {
+        "H2_original_paired_delta": {
+          "answered": {
+            "ci95": [
+              -0.001984141047970081,
+              0.00594900849858357
+            ],
+            "clusters": 3487,
+            "delta": 0.001989766913018761,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          },
+          "em": {
+            "ci95": [
+              -0.003419802085726457,
+              0.002281818899412704
+            ],
+            "clusters": 3487,
+            "delta": -0.0005685048322910744,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          },
+          "f1": {
+            "ci95": [
+              -0.0028950085874429096,
+              0.003030314545697877
+            ],
+            "clusters": 3487,
+            "delta": 6.285089428921174e-05,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          },
+          "wrong": {
+            "ci95": [
+              -0.0008532483893989193,
+              0.005974395448079659
+            ],
+            "clusters": 3487,
+            "delta": 0.002558271745309835,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          }
+        },
+        "change_in_policy_contrast": {
+          "answered": {
+            "ci95": [
+              -0.006532235160465777,
+              0.000851063829787234
+            ],
+            "clusters": 3487,
+            "delta": -0.0028425241614553724,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          },
+          "em": {
+            "ci95": [
+              -0.0022688598979013048,
+              0.003400396712949844
+            ],
+            "clusters": 3487,
+            "delta": 0.0005685048322910744,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          },
+          "f1": {
+            "ci95": [
+              -0.0034763695181190208,
+              0.002005013963347297
+            ],
+            "clusters": 3487,
+            "delta": -0.0007316336622760725,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          },
+          "wrong": {
+            "ci95": [
+              -0.006543385490753912,
+              -0.0002844950213371266
+            ],
+            "clusters": 3487,
+            "delta": -0.0034110289937464467,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          }
+        },
+        "changed_n": 44,
+        "changed_only_conditions": {
+          "G0": {
+            "answered": 0.36363636363636365,
+            "em": 0.13636363636363635,
+            "f1": 0.251061753902663,
+            "wrong": 0.22727272727272727
+          },
+          "G2": {
+            "answered": 0.29545454545454547,
+            "em": 0.13636363636363635,
+            "f1": 0.1975895316804408,
+            "wrong": 0.1590909090909091
+          }
+        },
+        "n": 3518,
+        "paired_delta": {
+          "answered": {
+            "ci95": [
+              -0.002836899558045741,
+              0.0008537279453614115
+            ],
+            "clusters": 3487,
+            "delta": -0.0008527572484366117,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          },
+          "em": {
+            "ci95": [
+              -0.0011370096645821489,
+              0.0011370096645821489
+            ],
+            "clusters": 3487,
+            "delta": 0.0,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          },
+          "f1": {
+            "ci95": [
+              -0.00188927773411268,
+              0.0005486417831318685
+            ],
+            "clusters": 3487,
+            "delta": -0.0006687827679868612,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          },
+          "wrong": {
+            "ci95": [
+              -0.002559726962457338,
+              0.0008522727272727272
+            ],
+            "clusters": 3487,
+            "delta": -0.0008527572484366117,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 3518,
+            "reps": 10000
+          }
+        }
+      },
+      "comparison": {
+        "H2_original_paired_delta": {
+          "answered": {
+            "ci95": [
+              0.0665163472378805,
+              0.11499436302142052
+            ],
+            "clusters": 887,
+            "delta": 0.09019165727170236,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          },
+          "em": {
+            "ci95": [
+              0.036076662908680945,
+              0.07666290868094701
+            ],
+            "clusters": 887,
+            "delta": 0.05636978579481398,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          },
+          "f1": {
+            "ci95": [
+              0.04740685169219886,
+              0.08993489316057125
+            ],
+            "clusters": 887,
+            "delta": 0.06850044790558087,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          },
+          "wrong": {
+            "ci95": [
+              0.018038331454340473,
+              0.0496054114994363
+            ],
+            "clusters": 887,
+            "delta": 0.033821871476888386,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          }
+        },
+        "change_in_policy_contrast": {
+          "answered": {
+            "ci95": [
+              -0.012401352874859075,
+              0.018038331454340473
+            ],
+            "clusters": 887,
+            "delta": 0.002254791431792559,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          },
+          "em": {
+            "ci95": [
+              -0.002254791431792559,
+              0.02480270574971815
+            ],
+            "clusters": 887,
+            "delta": 0.011273957158962795,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          },
+          "f1": {
+            "ci95": [
+              -0.004536208508205988,
+              0.022977824726282837
+            ],
+            "clusters": 887,
+            "delta": 0.009298804076309217,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          },
+          "wrong": {
+            "ci95": [
+              -0.020293122886133032,
+              0.0011273957158962795
+            ],
+            "clusters": 887,
+            "delta": -0.009019165727170236,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          }
+        },
+        "changed_n": 139,
+        "changed_only_conditions": {
+          "G0": {
+            "answered": 0.19424460431654678,
+            "em": 0.10071942446043165,
+            "f1": 0.1228608322133502,
+            "wrong": 0.09352517985611511
+          },
+          "G2": {
+            "answered": 0.7841726618705036,
+            "em": 0.5323741007194245,
+            "f1": 0.6193208070905913,
+            "wrong": 0.2517985611510791
+          }
+        },
+        "n": 887,
+        "paired_delta": {
+          "answered": {
+            "ci95": [
+              0.07215332581736189,
+              0.11273957158962795
+            ],
+            "clusters": 887,
+            "delta": 0.09244644870349493,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          },
+          "em": {
+            "ci95": [
+              0.05073280721533258,
+              0.08568207440811725
+            ],
+            "clusters": 887,
+            "delta": 0.06764374295377677,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          },
+          "f1": {
+            "ci95": [
+              0.05978566060020399,
+              0.09675591882750847
+            ],
+            "clusters": 887,
+            "delta": 0.07779925198189008,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          },
+          "wrong": {
+            "ci95": [
+              0.012401352874859075,
+              0.038331454340473504
+            ],
+            "clusters": 887,
+            "delta": 0.02480270574971815,
+            "method": "paired gold-title-pair cluster percentile bootstrap",
+            "n": 887,
+            "reps": 10000
+          }
+        }
+      }
+    },
+    "changed_only": {
+      "H2_original_paired_delta": {
+        "answered": {
+          "ci95": [
+            0.32786885245901637,
+            0.5027322404371585
+          ],
+          "clusters": 183,
+          "delta": 0.41530054644808745,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        },
+        "em": {
+          "ci95": [
+            0.22404371584699453,
+            0.3770491803278688
+          ],
+          "clusters": 183,
+          "delta": 0.3005464480874317,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        },
+        "f1": {
+          "ci95": [
+            0.2646474650880389,
+            0.4229269348905318
+          ],
+          "clusters": 183,
+          "delta": 0.34416675595556984,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        },
+        "wrong": {
+          "ci95": [
+            0.04371584699453552,
+            0.18579234972677597
+          ],
+          "clusters": 183,
+          "delta": 0.11475409836065574,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        }
+      },
+      "change_in_policy_contrast": {
+        "answered": {
+          "ci95": [
+            -0.0273224043715847,
+            0.060109289617486336
+          ],
+          "clusters": 183,
+          "delta": 0.01639344262295082,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        },
+        "em": {
+          "ci95": [
+            -0.02185792349726776,
+            0.07103825136612021
+          ],
+          "clusters": 183,
+          "delta": 0.0273224043715847,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        },
+        "f1": {
+          "ci95": [
+            -0.024982690708341623,
+            0.06275443510737626
+          ],
+          "clusters": 183,
+          "delta": 0.02006908409994234,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        },
+        "wrong": {
+          "ci95": [
+            -0.04918032786885246,
+            0.0273224043715847
+          ],
+          "clusters": 183,
+          "delta": -0.01092896174863388,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        }
+      },
+      "changed_n": 183,
+      "changed_only_conditions": {
+        "G0": {
+          "answered": 0.23497267759562843,
+          "em": 0.1092896174863388,
+          "f1": 0.15368509753755658,
+          "wrong": 0.12568306010928962
+        },
+        "G2": {
+          "answered": 0.6666666666666666,
+          "em": 0.4371584699453552,
+          "f1": 0.5179209375930688,
+          "wrong": 0.22950819672131148
+        }
+      },
+      "n": 183,
+      "paired_delta": {
+        "answered": {
+          "ci95": [
+            0.3442622950819672,
+            0.5191256830601093
+          ],
+          "clusters": 183,
+          "delta": 0.43169398907103823,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        },
+        "em": {
+          "ci95": [
+            0.25136612021857924,
+            0.40437158469945356
+          ],
+          "clusters": 183,
+          "delta": 0.32786885245901637,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        },
+        "f1": {
+          "ci95": [
+            0.2840582444270968,
+            0.44104502775609333
+          ],
+          "clusters": 183,
+          "delta": 0.36423584005551213,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        },
+        "wrong": {
+          "ci95": [
+            0.03278688524590164,
+            0.17486338797814208
+          ],
+          "clusters": 183,
+          "delta": 0.10382513661202186,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 183,
+          "reps": 10000
+        }
+      }
+    },
+    "overall": {
+      "H2_original_paired_delta": {
+        "answered": {
+          "ci95": [
+            0.013850887321104118,
+            0.025675982731197457
+          ],
+          "clusters": 4374,
+          "delta": 0.01975028376844495,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        },
+        "em": {
+          "ci95": [
+            0.006130755396239721,
+            0.015844542582157718
+          ],
+          "clusters": 4374,
+          "delta": 0.010896708286038592,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        },
+        "f1": {
+          "ci95": [
+            0.008890032706234214,
+            0.018889069790828227
+          ],
+          "clusters": 4374,
+          "delta": 0.013843588362851234,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        },
+        "wrong": {
+          "ci95": [
+            0.004766227871084884,
+            0.012963457848152319
+          ],
+          "clusters": 4374,
+          "delta": 0.008853575482406357,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        }
+      },
+      "change_in_policy_contrast": {
+        "answered": {
+          "ci95": [
+            -0.006130790190735695,
+            0.002497176491085908
+          ],
+          "clusters": 4374,
+          "delta": -0.0018161180476730988,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        },
+        "em": {
+          "ci95": [
+            -0.0009066183136899365,
+            0.006363636363636364
+          ],
+          "clusters": 4374,
+          "delta": 0.002724177071509648,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        },
+        "f1": {
+          "ci95": [
+            -0.002284217063471402,
+            0.0049805057486087745
+          ],
+          "clusters": 4374,
+          "delta": 0.001288116229693314,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        },
+        "wrong": {
+          "ci95": [
+            -0.007931112621799229,
+            -0.0013602280666092125
+          ],
+          "clusters": 4374,
+          "delta": -0.004540295119182747,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        }
+      },
+      "changed_n": 183,
+      "changed_only_conditions": {
+        "G0": {
+          "answered": 0.23497267759562843,
+          "em": 0.1092896174863388,
+          "f1": 0.15368509753755658,
+          "wrong": 0.12568306010928962
+        },
+        "G2": {
+          "answered": 0.6666666666666666,
+          "em": 0.4371584699453552,
+          "f1": 0.5179209375930688,
+          "wrong": 0.22950819672131148
+        }
+      },
+      "n": 4405,
+      "paired_delta": {
+        "answered": {
+          "ci95": [
+            0.013623978201634877,
+            0.022438930439088137
+          ],
+          "clusters": 4374,
+          "delta": 0.01793416572077185,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        },
+        "em": {
+          "ci95": [
+            0.009977267715066076,
+            0.017480136208853577
+          ],
+          "clusters": 4374,
+          "delta": 0.01362088535754824,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        },
+        "f1": {
+          "ci95": [
+            0.011344024132573936,
+            0.01915317986416376
+          ],
+          "clusters": 4374,
+          "delta": 0.015131704592544544,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        },
+        "wrong": {
+          "ci95": [
+            0.0013626995094377689,
+            0.007276034561164165
+          ],
+          "clusters": 4374,
+          "delta": 0.004313280363223609,
+          "method": "paired gold-title-pair cluster percentile bootstrap",
+          "n": 4405,
+          "reps": 10000
+        }
+      }
+    }
+  },
+  "category_counts": {
+    "document_set_changed": 183,
+    "identical": 3367,
+    "order_only": 855
+  },
+  "config": {
+    "max_tokens": 128,
+    "model": "Qwen2.5-7B-Instruct-AWQ",
+    "prompt_template_sha256": "69a9b1875f2fcd7a15dd7b776661ae890c443a3e5fd38abc54419827741f7872",
+    "temperature": 0.0
+  },
+  "experiment": "POST-18D-H3-v2 Fixed-Order Fresh-Paired QA",
+  "fixed_order": "title.casefold(), title, document_key",
+  "items_sha256": "7ea4ccd1b511a9c51b43f75f6c1e23de4b7aa9dd2e29ce7bd56dea6b7c7d885f",
+  "jobs_sha256": "1394114944357f161e32742febcdc4a02b939fafbdf24fb3ef474b7afa823e5b",
+  "limitations": [
+    "Post-hoc mechanistic control on previously inspected Holdout",
+    "Same-set 4222 QIDs have paired delta=0; absolute H3 outcomes not generated",
+    "All changed-set G0/G2 generations are fresh and not H2-reused",
+    "Deterministic order does not eliminate all positional effects or stochasticity",
+    "Cluster CI descriptive, no preregistration",
+    "Wrong is answered and EM=0, NOT semantic hallucination"
+  ],
+  "model": "Qwen2.5-7B-Instruct-AWQ",
+  "n": 4405,
+  "n_new_jobs": 366,
+  "n_reused_exact_prompt": 0,
+  "qa_responses_sha256": "f5a1d2ea4d1ff7a6b222aca36fff2577f1da1a1300f6a090c0a8c00d5f344294",
+  "source_hashes": {
+    "h2_jobs": "b647e47be9606340c42d1057791bb3cebc1f70cb6a83860c7d7a97db480467b3",
+    "h2_manifest": "a75f2c427e0391d9a1600096fd63282ab1a9e6ba5914732835d42d109998b975",
+    "h2_responses": "65ca4033d5aca45435e9f5bcea874cbe2d0d3c6e243a95b51ad8308a75d9f833",
+    "h2_score_items": "f591813ffb151c1a71f9ccec23d1c13df9b6ffc1d37a04236fd2e314577048e1",
+    "h2_score_report": "5ccc3a39f2a30b1fda9c17a589f078530ab76b612984d863d750126506000cc1",
+    "h2_script": "17bf88ecc4f2db9387a2e7c8501463377e192e431460e57d0f004de82163ab7f",
+    "qa_source_code": "17bf88ecc4f2db9387a2e7c8501463377e192e431460e57d0f004de82163ab7f",
+    "stage1_manifest": "fb6272e9e090f3d92e2e22c47d64e378bd65d91a42f43f8dd1f4394af4ddf1ed",
+    "stage1_plan": "b6e29db3d393bfc9e19b73f054ac663fefd70f7856601cf325d2c7f9956ad0d7",
+    "stage1_score_items": "a7ab43ef3b3fe43e75fcb68c7a772f3f45c1ebbc3826b0f170f67df9746fdea5",
+    "stage1_score_report": "0804fa9f94b6916dd58ec5a67cee585d0a9a1ad8578db3684b96139083f42e70"
+  },
+  "status": "posthoc_mechanistic_control"
+}

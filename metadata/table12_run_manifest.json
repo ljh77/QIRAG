@@ -1,0 +1,151 @@
+{
+  "created": "2026-10-23T18:14:40",
+  "script_sha256": "7b0f9cae8954455936c4dd54a57a1255f879d4a37f5fa6439d1f4acf71fcb9f9",
+  "qi_common": {
+    "path": "/home/jun/2610-qi-rag/qi_common.py",
+    "sha256": "e09b39bb9112819cfe58326fca446a8c2c92b21bf6e3c11d9d998cb3dd43b92c"
+  },
+  "retrieval_policy": {
+    "path": "/home/jun/2610-qi-rag/retrieval_policy.py",
+    "sha256": "00e443d0ba1c42b8ade17e9c8429021d236923205cd4046a45e2653f7c2936b0",
+    "func": "qi_policy",
+    "P": 2
+  },
+  "inputs": {
+    "index_items": {
+      "path": "/home/jun/2610-qi-rag/data/_split/index_items.jsonl",
+      "sha256": "82b2e2b82546cb93f3506f463afe5321802a29d6951ad8a29cc3e35ec0b25f96",
+      "rows": 90447
+    },
+    "split_ids": {
+      "path": "/home/jun/2610-qi-rag/out/holdout_locked/split_ids.json",
+      "sha256": "b33fb99e4ce27330b2e5b5461b36b6ea18fb68aa7fc3fd6bc38b4a523d28cc09",
+      "holdout_n": 4405
+    },
+    "frozen_predictions": {
+      "path": "/home/jun/2610-qi-rag/out/holdout_locked/retrieval_predictions.jsonl",
+      "sha256": "4592253a0c4c46711e3525f38a51f89cf64b56e181986b9ce2acdafc9f6cfff7",
+      "rows": 4405
+    },
+    "gold_source_hotpot_dev": {
+      "path": "/home/jun/2610-qi-rag/data/hotpotqa/hotpot_dev_distractor.jsonl",
+      "sha256": "c301b4d689fabff61df514e4511a4688e8e10a16ed2cee28484bc85ed8dc72e4",
+      "dev_rows": 7405,
+      "matched_holdout": 4405,
+      "validation_scope": "id 연결과 정답 문자열 형식만 검사"
+    },
+    "overlap_holdout_index": 0,
+    "holdout_qid_list_sha256": "1b3eb9c9404d9f6a601ab885973e3a7b332aee1e57d1defc672b99ca8df535be"
+  },
+  "frozen_validation_scope": "title_level",
+  "frozen_document_identity_verified": false,
+  "frozen_validation_limit": "Document titles match frozen qi_titles; paragraph identity is not independently verified.",
+  "A2_supplier_audit": {
+    "n": 3843,
+    "rows_with_multi_supplier": 1419,
+    "rate_with_multi_supplier": 0.3692,
+    "total_multi_supplier_docs": 1795,
+    "max_suppliers_per_doc": 8
+  },
+  "A2_supplier_sensitivity": {
+    "n": 3843,
+    "first_supplier_coverage": 0.0781,
+    "last_supplier_coverage": 0.0913,
+    "delta_last_minus_first": 0.0133,
+    "n_changed_hit": 119,
+    "method": "first_vs_last_ranked_supplier"
+  },
+  "A2_cluster_mapping": {
+    "unfiltered_clusters": 2737,
+    "filtered_clusters": 2521,
+    "mapping_consistent": true
+  },
+  "A2_zero_length_QA_count": 0,
+  "A2_ratio_strata_n": 3843,
+  "A2_supplier_rule": "first_ranked_supplier",
+  "LOO_definition": "shared_document_cross_question_reuse",
+  "LOO_document_removed": false,
+  "doc_checks": {
+    "key_collisions_diff_text": 73,
+    "collision_unique_keys": 28,
+    "collision_keys": [
+      "\"sic\"",
+      "...",
+      "1",
+      "Apple II series",
+      "Facebook",
+      "New Jersey",
+      "O.S. 11 April",
+      "O.S. 12 February",
+      "O.S. 16 March",
+      "O.S. 16 November",
+      "O.S. 17 December",
+      "O.S. 18 July",
+      "O.S. 2 January",
+      "O.S. 24 May",
+      "O.S. 3 April",
+      "O.S. 6 November",
+      "O.S. 8 June",
+      "O.S. February 1",
+      "and",
+      "he was",
+      "her",
+      "his",
+      "ing",
+      "s",
+      "sic",
+      "that",
+      "the",
+      "who"
+    ],
+    "empty_paragraphs_skipped": 0
+  },
+  "collision_policy": "exclude_selected_collision_keys",
+  "collision_selected_A2": 1,
+  "collision_selected_A2_unfiltered": 1,
+  "collision_selected_A1": 1,
+  "title_mismatch_top1": 0,
+  "frozen_title_mismatch": 0,
+  "excluded_A2": {
+    "numeric": 263,
+    "short": 167,
+    "yesno": 130,
+    "no_gold": 1,
+    "collision_key_selected": 1
+  },
+  "excluded_A1": {
+    "numeric": 263,
+    "short": 167,
+    "yesno": 130,
+    "no_gold": 1,
+    "collision_key_selected": 1
+  },
+  "excluded_loo": {
+    "no_neighbor": 14428,
+    "target_short": 3328,
+    "target_numeric": 7616,
+    "target_yesno": 2748,
+    "no_eligible_neighbor": 17,
+    "target_no_gold": 1
+  },
+  "analyzed_A2_qid_sha256": "2a95e627ef3801e028a47fe473a2a12134932d68cf80901bdeb9a47f720dc6c8",
+  "analyzed_loo_qid_sha256": "eec2cf7eed3e40728ccebbcf99febeda3c90c8b7532cfb654301dfc70b9e09de",
+  "consistency": "PASS",
+  "smoke": false,
+  "limit_holdout": null,
+  "limit_loo": null,
+  "salts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "main_salt": 0,
+  "seed": 0,
+  "bootstrap_iters": 10000,
+  "min_clusters": 30,
+  "max_cluster_share": 0.5,
+  "expect_holdout_n": 4405,
+  "allow_overlap": false
+}

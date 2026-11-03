@@ -1,0 +1,34 @@
+{
+  "source_hashes": {
+    "out/holdout_locked/split_ids.json": "b33fb99e4ce27330b2e5b5461b36b6ea18fb68aa7fc3fd6bc38b4a523d28cc09",
+    "out/holdout_locked/retrieval_predictions.jsonl": "4592253a0c4c46711e3525f38a51f89cf64b56e181986b9ce2acdafc9f6cfff7",
+    "data/hotpotqa/hotpot_dev_distractor.jsonl": "c301b4d689fabff61df514e4511a4688e8e10a16ed2cee28484bc85ed8dc72e4",
+    "out/holdout_llm/QI_CAND.jsonl": "00999cb40db3effd567eb6e85b90b731dfe9c5f0373f986c4f00efa9691a6896",
+    "out/holdout_llm/QI_STRICT.jsonl": "80f948b81c639efcb58cfa36d1df9cc0baa8d75363b9c05f9c2a2c1cd2310cc1",
+    "out/holdout_llm/VAN_CAND.jsonl": "fe2821448e8639572230213daff3ff1610ab7732c7b6f60ba388c32dffbdfef8",
+    "out/holdout_llm/VAN_STRICT.jsonl": "1fe4b8001994fdf9f1a273f0145c777bbb6a3c067838053855d4a5df434b722f",
+    "FREEZE.json": "5c6f63a67f57ad6c07c786ff992c982bb7b05acb28b7edc41365424f41855d41",
+    "llm_prompts_FREEZE.json": "ee27c7c2296e3cc569da018606a3c53876643baf44799fb9fcd302fd549894d1"
+  },
+  "code_sha256": "5b9444d23fb4111df1dc48ce09b70a9759eef31d1d1976343401f27e8433d934",
+  "llm_config": {
+    "model": "Qwen2.5-7B-Instruct-AWQ",
+    "temperature": 0.0,
+    "max_tokens": 128,
+    "P": 2,
+    "conds": [
+      "QI_STRICT",
+      "VAN_STRICT",
+      "QA_STRICT",
+      "QI_CAND",
+      "VAN_CAND"
+    ],
+    "strict_sha": "69a9b1875f2fcd7a15dd7b776661ae890c443a3e5fd38abc54419827741f7872",
+    "cand_sha": "20903b8eee965d5c43bc8188cc79eb935b6ead4a76513042fec6314aa655ed81"
+  },
+  "n_holdout": 4405,
+  "n_calibration_qids": 1000,
+  "calibration_predictions_used": false,
+  "gold_blind_ranking": "CAND top1_score is copied verbatim from frozen retrieval",
+  "gold_qa_sha256": "c301b4d689fabff61df514e4511a4688e8e10a16ed2cee28484bc85ed8dc72e4"
+}

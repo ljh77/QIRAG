@@ -1,0 +1,219 @@
+=== 1. REFERENCE ===
+N: 2000 Unique: 2000
+SHA256: 3b9bb040be5ea551b315862c857414daab3eb1cea057f7c90cacc4751cc268ba
+
+=== 2. ORIGINAL SYSTEMS / A-C' CANDIDATES ===
+
+out/full/E5_TOP1_original.jsonl
+ROWS: 2000
+UNIQUE: 2000
+DUPLICATES: 0
+QID_EQUAL_2000: True
+FIELDS: ['cond', 'ctx', 'err', 'gold', 'gold_titles', 'hit_all', 'level', 'n_paras', 'pred', 'qid', 'query', 'retrieved_titles', 'src_qids', 'status', 'type', 'variant', 'words']
+STATUS: {'ok': 2000}
+
+out/full/QAGEN_K2_original.jsonl
+ROWS: 2000
+UNIQUE: 2000
+DUPLICATES: 0
+QID_EQUAL_2000: True
+FIELDS: ['cond', 'ctx', 'err', 'gold', 'gold_titles', 'hit_all', 'level', 'n_paras', 'pred', 'qid', 'query', 'retrieved_titles', 'src_qids', 'status', 'type', 'variant', 'words']
+STATUS: {'ok': 2000}
+
+out/full/QIRAG_P2_original.jsonl
+ROWS: 2000
+UNIQUE: 2000
+DUPLICATES: 0
+QID_EQUAL_2000: True
+FIELDS: ['cond', 'ctx', 'err', 'gold', 'gold_titles', 'hit_all', 'level', 'n_paras', 'pred', 'qid', 'query', 'retrieved_titles', 'src_qids', 'status', 'type', 'variant', 'words']
+STATUS: {'ok': 2000}
+
+out/full/QIRAG_P4_original.jsonl
+ROWS: 2000
+UNIQUE: 2000
+DUPLICATES: 0
+QID_EQUAL_2000: True
+FIELDS: ['cond', 'ctx', 'err', 'gold', 'gold_titles', 'hit_all', 'level', 'n_paras', 'pred', 'qid', 'query', 'retrieved_titles', 'src_qids', 'status', 'type', 'variant', 'words']
+STATUS: {'ok': 2000}
+
+out/full/REPAQ_TOP1_original.jsonl
+ROWS: 2000
+UNIQUE: 2000
+DUPLICATES: 0
+QID_EQUAL_2000: True
+FIELDS: ['cond', 'ctx', 'err', 'gold', 'gold_titles', 'hit_all', 'level', 'n_paras', 'pred', 'qid', 'query', 'retrieved_titles', 'src_qids', 'status', 'type', 'variant', 'words']
+STATUS: {'ok': 2000}
+
+out/full/VANILLA_P2_original.jsonl
+ROWS: 2000
+UNIQUE: 2000
+DUPLICATES: 0
+QID_EQUAL_2000: True
+FIELDS: ['cond', 'ctx', 'err', 'gold', 'gold_titles', 'hit_all', 'level', 'n_paras', 'pred', 'qid', 'query', 'retrieved_titles', 'src_qids', 'status', 'type', 'variant', 'words']
+STATUS: {'ok': 2000}
+
+out/full/VANILLA_P4_original.jsonl
+ROWS: 2000
+UNIQUE: 2000
+DUPLICATES: 0
+QID_EQUAL_2000: True
+FIELDS: ['cond', 'ctx', 'err', 'gold', 'gold_titles', 'hit_all', 'level', 'n_paras', 'pred', 'qid', 'query', 'retrieved_titles', 'src_qids', 'status', 'type', 'variant', 'words']
+STATUS: {'ok': 2000}
+
+=== 3. QPN FULL 2000 PAIRING ===
+QIRAG original rows 2000 unique 2000 reference_equal True
+QIRAG paraphrase_llm rows 2000 unique 2000 reference_equal True
+QIRAG noisy rows 2000 unique 2000 reference_equal True
+QIRAG ALL_VARIANTS_EQUAL: True
+VANILLA original rows 2000 unique 2000 reference_equal True
+VANILLA paraphrase_llm rows 2000 unique 2000 reference_equal True
+VANILLA noisy rows 2000 unique 2000 reference_equal True
+VANILLA ALL_VARIANTS_EQUAL: True
+
+=== 4. RAW REPAQ QUESTION ALIGNMENT ===
+RAW_ROWS: 2000
+RAW_UNIQUE_QUESTIONS: 2000
+REFERENCE_UNIQUE_QUESTIONS: 2000
+QUESTION_MULTISET_EQUAL: True
+REFERENCE_DUPLICATE_QUESTIONS: 0
+
+=== 5. PAPER NUMBERS / QPN GENERATION CONFIG ===
+
+SOURCE: data/_result/paper_numbers.json
+.split.config.seed = 0
+.split.config.noise_word_frac = 0.25
+.split.stats.llm_paraphrase_fallback = 1
+.q13.config.st_model = intfloat/e5-base-v2
+.judge.d_llm_judge.model = /home/jun/models/Qwen2.5-7B-Instruct-AWQ
+
+SOURCE: out/qpn_audit_v1_1/20261026_175609/evidence/data/_result/paper_numbers.json
+.split.config.seed = 0
+.split.config.noise_word_frac = 0.25
+.split.stats.llm_paraphrase_fallback = 1
+.q13.config.st_model = intfloat/e5-base-v2
+.judge.d_llm_judge.model = /home/jun/models/Qwen2.5-7B-Instruct-AWQ
+
+=== 6. GENERATION SOURCE CODE EVIDENCE ===
+
+FILE: 01_run_generate_v2.py
+  L76: VLLM_MODEL = "Qwen2.5-7B-Instruct-AWQ"
+  L251: body = {"model": VLLM_MODEL,
+
+FILE: 89_hypqi.py
+  L92: VLLM_MODEL = "/home/jun/models/Qwen2.5-7B-Instruct-AWQ"
+  L165: body = {"model": VLLM_MODEL,
+  L638: "gen_model": VLLM_MODEL, "qgen_prompt": QGEN_PROMPT,
+
+FILE: e1b2_qi_expansion.py
+  L135: 'llm_model': mod.VLLM_MODEL, 'encoder': ENCODER, 'P': P, 'top_items': K,
+
+FILE: e2_korquad_single_v2.py
+  L263: from llm_experiments_v2 import STRICT, gen_one, call_llm, VLLM_MODEL, TEMPERATURE, MAX_TOKENS
+  L274: meta = {"created_at": now(), "encoder": ENC, "generator": VLLM_MODEL, "temperature": TEMPERATURE,
+
+FILE: e2_korquad_single_v3.py
+  L293: from llm_experiments_v2 import STRICT, gen_one, call_llm, VLLM_MODEL, TEMPERATURE, MAX_TOKENS, VLLM_URL
+  L296: meta_now = {"encoder": ENC, "generator": VLLM_MODEL, "server": VLLM_URL, "temperature": TEMPERATURE,
+
+FILE: hypqi_adapter.py
+  L71: VLLM_MODEL = "Qwen2.5-7B-Instruct-AWQ"
+  L211: body = {"model": VLLM_MODEL,
+
+FILE: hypqi_aligned_rerun_v3.py
+  L149: "model": ref.VLLM_MODEL, "budgets": ref.BUDGETS, "top_items": ref.TOP_ITEMS}
+  L202: response = ask(args.url, src_01().VLLM_MODEL, prompt, max_tokens, args.timeout)
+
+FILE: llm_experiments.py
+  L47: VLLM_MODEL = "Qwen2.5-7B-Instruct-AWQ"
+  L97: cfg = {"model": VLLM_MODEL, "temperature": TEMPERATURE, "max_tokens": MAX_TOKENS,
+  L130: body = {"model": VLLM_MODEL, "messages": [{"role": "user", "content": prompt}],
+
+FILE: llm_experiments_v2.py
+  L45: VLLM_MODEL = "Qwen2.5-7B-Instruct-AWQ"
+  L99: cfg = {"model": VLLM_MODEL, "temperature": TEMPERATURE, "max_tokens": MAX_TOKENS,
+  L150: body = {"model": VLLM_MODEL, "messages": [{"role": "user", "content": prompt}],
+
+FILE: no/01_01_run_generate.py
+  L68: VLLM_MODEL = "Qwen2.5-7B-Instruct-AWQ"
+  L234: body = {"model": VLLM_MODEL,
+
+FILE: no/01_02_run_generate.py
+  L73: VLLM_MODEL = "Qwen2.5-7B-Instruct-AWQ"
+  L242: body = {"model": VLLM_MODEL,
+
+FILE: no/01_03_run_generate_final.py
+  L75: VLLM_MODEL = "Qwen2.5-7B-Instruct-AWQ"
+  L250: body = {"model": VLLM_MODEL,
+
+FILE: p18h_context_swap_v3.py
+  L74: p.add_argument('--model',default=os.environ.get('VLLM_MODEL','Qwen2.5-7B-Instruct-AWQ'))
+
+FILE: post18f_calibration_generate_v1.py
+  L168: if llm.VLLM_MODEL != "Qwen2.5-7B-Instruct-AWQ":
+
+FILE: post18f_calibration_generate_v2.py
+  L221: if llm.VLLM_MODEL != "Qwen2.5-7B-Instruct-AWQ":
+  L233: original_llm.VLLM_MODEL) != (P, 0.0, 128, llm.VLLM_MODEL):
+  L438: probe_remote_model(endpoint, llm.VLLM_MODEL)
+  L448: check_checkpoint_identity(recs, llm.VLLM_MODEL, endpoint, allow_endpoint_change)
+  L476: "model": llm.VLLM_MODEL,
+  L526: if rec.get("model") != llm.VLLM_MODEL or rec.get("temperature") != 0.0 or rec.get("max_tokens") != 128:
+
+FILE: qi_abl05_delivery_reconstruct_v6.py
+  L91: config={ 'model':orig.VLLM_MODEL, 'temperature':orig.TEMPERATURE,
+
+FILE: qi_abl05_delivery_reconstruct_v6_1.py
+  L94: config={ 'model':orig.VLLM_MODEL, 'temperature':orig.TEMPERATURE,
+
+FILE: regen_errors.py
+  L33: VLLM_MODEL = "Qwen2.5-7B-Instruct-AWQ"
+  L55: body = {"model": VLLM_MODEL,
+
+FILE: test_hypqi_aligned_v3.py
+  L54: VLLM_MODEL='TEST'
+
+=== 7. GENERATION RUN LOGS ===
+
+LOG: out/full/run_log.txt
+L124:   생성 VANILLA_P2 (2000건)
+L126:   생성 VANILLA_P4 (2000건)
+L134:   생성 QAGEN_K2 (2000건)
+L137:   저장 out/full/E5_TOP1_noisy.jsonl
+L138:   저장 out/full/QIRAG_P2_noisy.jsonl
+L139:   저장 out/full/QIRAG_P4_noisy.jsonl
+L140:   저장 out/full/VANILLA_P2_noisy.jsonl
+L141:   저장 out/full/VANILLA_P4_noisy.jsonl
+L145:   저장 out/full/QAGEN_K2_noisy.jsonl
+L148:   E5_TOP1           2000     0   0.000     0.0  0.00    0.118
+L149:   QIRAG_P2          2000     0   0.793   138.3  2.00    0.118
+L150:   QIRAG_P4          2000     0   0.738   277.2  4.00    0.190
+L151:   VANILLA_P2        2000     0   0.660   143.3  2.00    0.162
+L152:   VANILLA_P4        2000     0   0.629   287.5  4.00    0.222
+L156:   QAGEN_K2          2000     0   0.899     6.3  2.00    0.178
+L162: 인덱스 90,447 / 평가 2,000 / 변형 ['paraphrase_llm']
+L163: 예산 P=[2, 4]  TOP_ITEMS=8  코퍼스=index  QAGEN_K=2
+L164: 대조군: E5_TOP1=True  RANDOM=True  ORACLE=True  VANILLA=True  QAGEN=True
+L173:   생성 QIRAG_P2 (2000건)
+L175:   생성 QIRAG_P4 (2000건)
+L177:   생성 VANILLA_P2 (2000건)
+L179:   생성 VANILLA_P4 (2000건)
+L187:   생성 QAGEN_K2 (2000건)
+L190:   저장 out/full/E5_TOP1_paraphrase_llm.jsonl
+L191:   저장 out/full/QIRAG_P2_paraphrase_llm.jsonl
+L192:   저장 out/full/QIRAG_P4_paraphrase_llm.jsonl
+L193:   저장 out/full/VANILLA_P2_paraphrase_llm.jsonl
+L194:   저장 out/full/VANILLA_P4_paraphrase_llm.jsonl
+L198:   저장 out/full/QAGEN_K2_paraphrase_llm.jsonl
+L201:   E5_TOP1           2000     0   0.000     0.0  0.00    0.130
+L202:   QIRAG_P2          2000     0   0.776   139.7  2.00    0.130
+L203:   QIRAG_P4          2000     0   0.694   278.9  4.00    0.241
+L204:   VANILLA_P2        2000     0   0.599   145.5  2.00    0.235
+L205:   VANILLA_P4        2000     0   0.564   291.9  4.00    0.292
+L209:   QAGEN_K2          2000     0   0.886     6.2  2.00    0.222
+
+=== TABLE A1 PROVENANCE INSPECTION COMPLETE ===
+QID equality alone does not prove matching generation
+models, prompts, scoring policies, or data leakage absence.
+
+AUDIT_STATUS=0
+=== 이 실험은 [Table A1 최종 누락 항목과 원본 실행 계보 검증]의 실험입니다 ===

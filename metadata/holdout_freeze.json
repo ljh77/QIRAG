@@ -1,0 +1,25 @@
+{
+  "frozen_at": "2026-10-23T10:58:57+09:00",
+  "protocol_version": "QI-RAG-v2.1",
+  "host": "DESKTOP-1P9JQV2",
+  "python": "3.10.22",
+  "numpy": "1.26.4",
+  "git_commit": "no_git",
+  "split_ids_sha256": "b33fb99e4ce27330b2e5b5461b36b6ea18fb68aa7fc3fd6bc38b4a523d28cc09",
+  "manifest_sha256": "5b4569e48a35864d859b5e88d55a57ff155e82679ec77c4cc6e976f9343ab4dc",
+  "sample50_report_sha256": "74db44f4cf4823824790cb93c7e6f82804d784bd30f84cfbb37da4f54ba878cf",
+  "checks_report_sha256": "295f79a8a14a3a1726aea7972fd5511dcf907f6975065dddbd5a3e4f7a656d8d",
+  "protocol_document_sha256": "bfeb60f097376ca58f96dc8aa9d550aa6c64b65d2d34ef6fe1264e4baec80178",
+  "code_sha256": {
+    "qi_common.py": "e09b39bb9112819cfe58326fca446a8c2c92b21bf6e3c11d9d998cb3dd43b92c",
+    "make_split_manifest.py": "4f7cb5c2a7dc5a58eac1665cf8ab6cf22bfac6bb5710eee3c5c600abc14ee315",
+    "retrieval_policy.py": "00e443d0ba1c42b8ade17e9c8429021d236923205cd4046a45e2653f7c2936b0",
+    "sample_check_50.py": "e0937fbd8c1c88a3475ad6dbfb00cdefb5ed3b0fc8019526560811fa053b5b07",
+    "freeze_protocol.py": "874c17aeab8cdb79e53b49f34be82a29d7aaddaccab0cf2ce45acbda96e9e3ff",
+    "01_run_generate_v2.py": "afe9720c41bced918c6efca37fdbaec8f16951db548704e3181edd570f50d0f8",
+    "02_score_report_v2.py": "041e6463caf9e1df997e84489108f0da9b280f10faf044d04b6cae5b90e94767",
+    "e0_audit.py": "191177366e8f2ebced2b51554233b89f52ff62f0598b0f05e1cb2d45257839c7",
+    "qi_rag_checks.py": "b83b1fa3df7b15fb7ae05c23237a15849fd727102135fee8e93c1a97c177abca"
+  },
+  "rule": "동결 이후 E1-A 채점 전 이 파일을 확인한다. 설정 변경 금지. 버그 수정은 사전 명세 위반의 증거가 있을 때만, 원본과 함께 기록한다."
+}

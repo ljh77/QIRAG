@@ -1,0 +1,133 @@
+{
+  "status": "PASS_TABLE9_REPRODUCED_AND_QPN_UNIFIED",
+  "root": "/home/jun/2610-qi-rag",
+  "scorer": "02_score_report_v2.score_row",
+  "scorer_sha256": "041e6463caf9e1df997e84489108f0da9b280f10faf044d04b6cae5b90e94767",
+  "evaluation_n": 2000,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 0,
+  "bootstrap_unit": "paired parent QID",
+  "bootstrap_ci": "percentile CI Bonferroni alpha=0.05/3 (2-sided)",
+  "source_sha256": {
+    "eval": "580b8bf495190099850e1340c633da18d24943319b73f5fb2bd30fb53fd824d5",
+    "scorer": "041e6463caf9e1df997e84489108f0da9b280f10faf044d04b6cae5b90e94767",
+    "REPAQ_TOP1_original.jsonl": "42b57ec1a988fa86e1356ef1db8b835f0d15d2ecbc1ccec2ffcf70d2396f4908",
+    "QIRAG_P2_original.jsonl": "c6143273044943f7221ddc242b32db3eb48d3166d95fc0a54191b3179227a863",
+    "QIRAG_P4_original.jsonl": "12017aafc75112d60f2f5165974c58fc2ef52a2830366609ec1f5cae5f57fdb5",
+    "VANILLA_P2_original.jsonl": "7caeae1aa510b6617e6392391816d42cba988dbcf73eb0085e0492cad5d55d2a",
+    "VANILLA_P4_original.jsonl": "943d15ecf4512e1550afb80c094019307ef81f31961e8a2ebbfdd58b0f3c2e14",
+    "QIRAG_P2_paraphrase_llm.jsonl": "7f529ab139867c95f6ca3304cb4c63a466c30efb9a4da484ef39feb632a7c643",
+    "VANILLA_P2_paraphrase_llm.jsonl": "43b37b44f6610c457b6423102e0ca7df801b3820f0d368c8948bbc570f55bc62",
+    "QIRAG_P2_noisy.jsonl": "6e673142be5210b65d58c05af8bddd28a0c8f6557eeeeeb70dc8bdba1507ea7d",
+    "VANILLA_P2_noisy.jsonl": "0c9ea669cc5563146a9fd92b9428faa8fc322db423f91d168cbd9ea0d7ea876b"
+  },
+  "Table9_verification_percent": {
+    "REPAQ": {
+      "EM": 6.6000000000000005,
+      "F1": 9.212467948717949,
+      "coverage": 100.0
+    },
+    "QI_P2": {
+      "EM": 13.25,
+      "F1": 17.03547952047952,
+      "coverage": 23.799999999999997
+    },
+    "QI_P4": {
+      "EM": 16.1,
+      "F1": 20.73970301920302,
+      "coverage": 30.75
+    },
+    "VAN_P2": {
+      "EM": 21.9,
+      "F1": 27.55783896658897,
+      "coverage": 41.75
+    },
+    "VAN_P4": {
+      "EM": 23.45,
+      "F1": 29.527533993783994,
+      "coverage": 45.85
+    }
+  },
+  "Table19_new": {
+    "original": {
+      "arms": {
+        "QI": {
+          "em": 0.1325,
+          "f1": 0.1703547952047952,
+          "coverage": 0.238
+        },
+        "VAN": {
+          "em": 0.219,
+          "f1": 0.2755783896658897,
+          "coverage": 0.4175
+        }
+      },
+      "delta_f1": -0.10522359446109446,
+      "n": 2000,
+      "bonferroni_95ci": [
+        -0.12758775509213008,
+        -0.08249476013569759
+      ]
+    },
+    "paraphrase_llm": {
+      "arms": {
+        "QI": {
+          "em": 0.1155,
+          "f1": 0.15070116217116217,
+          "coverage": 0.224
+        },
+        "VAN": {
+          "em": 0.191,
+          "f1": 0.24722238539238542,
+          "coverage": 0.4015
+        }
+      },
+      "delta_f1": -0.09652122322122321,
+      "n": 2000,
+      "bonferroni_95ci": [
+        -0.11942060966810966,
+        -0.07434752906815399
+      ]
+    },
+    "noisy": {
+      "arms": {
+        "QI": {
+          "em": 0.11,
+          "f1": 0.1417656870906871,
+          "coverage": 0.2065
+        },
+        "VAN": {
+          "em": 0.17,
+          "f1": 0.2165362715062715,
+          "coverage": 0.34
+        }
+      },
+      "delta_f1": -0.07477058441558442,
+      "n": 2000,
+      "bonferroni_95ci": [
+        -0.0955643079004329,
+        -0.0530495164141413
+      ]
+    }
+  },
+  "Table20_new": {
+    "QI": {
+      "original": 0.1703547952047952,
+      "paraphrase": 0.15070116217116217,
+      "noisy": 0.1417656870906871,
+      "original_to_noisy": -0.028589108114108114
+    },
+    "VAN": {
+      "original": 0.2755783896658897,
+      "paraphrase": 0.24722238539238542,
+      "noisy": 0.2165362715062715,
+      "original_to_noisy": -0.05904211815961821
+    }
+  },
+  "non_ok_source_status_count": {},
+  "limitations": [
+    "Existing outputs only; no independent generalization test",
+    "All Table-9 and Table-19 statistics refer to their original recorded response policies",
+    "Bootstrap reproduces paired parent-ID CI design, not necessarily historical RNG sequence"
+  ]
+}

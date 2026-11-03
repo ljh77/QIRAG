@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "scope": "STRICT independent scoring + existing STRICT coverage flags",
+  "qids": 4405,
+  "response_rows": 8810,
+  "flag_mismatches": 0,
+  "results": {
+    "QI": {
+      "n": 4405,
+      "answered": 994,
+      "abstained": 3411,
+      "coverage": 0.22565266742338252,
+      "em_all": 0.12009080590238365,
+      "f1_all": 0.15158210662350338,
+      "em_answered": 0.5321931589537223,
+      "f1_answered": 0.6717496777429903
+    },
+    "VAN": {
+      "n": 4405,
+      "answered": 1776,
+      "abstained": 2629,
+      "coverage": 0.4031782065834279,
+      "em_all": 0.21929625425652668,
+      "f1_all": 0.2703278502821133,
+      "em_answered": 0.543918918918919,
+      "f1_answered": 0.6704922187458947
+    }
+  },
+  "delta_QI_minus_VAN": {
+    "coverage": -0.17752553916004538,
+    "em_all": -0.09920544835414304,
+    "f1_all": -0.11874574365860993
+  },
+  "source_hashes": {
+    "post18f_exact_batch_holdout_v3_2.py": "5b9444d23fb4111df1dc48ce09b70a9759eef31d1d1976343401f27e8433d934",
+    "out/post18f_exact_v3_2_20261026_165247/selection_audit.csv": "40df9d58c3f4cacf9b8e45a47613e87e4c232b99343ce7deb0fbfea350143c08"
+  },
+  "first_errors": []
+}
