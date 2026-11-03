@@ -1,0 +1,104 @@
+p_16 POST-16 v8 질문 유형별 검색 실패 진단 (사후 탐색, H1 확증 판정 불변)
+[실행 상태] CONDITIONAL_NO_HASH_REFERENCE  <- 논문용 공식 결과 아님
+==============================================================================
+
+[검증]
+  [PASS] 분할 파일 SHA256 = FREEZE
+  [PASS] 검색 결과 SHA256 = manifest
+  [PASS] Holdout 고유 QID 4,405  n=4405
+  [PASS] 검색 결과 QID 중복 없음
+  [PASS] 검색 결과 QID = Holdout
+  [WARN] 기준 해시 기록 없음: INDEX  FREEZE/manifest/e1a 에 파일명 또는 stem 에 대응하는 키가 없음
+  [WARN] 기준 해시 기록 없음: DEV  FREEZE/manifest/e1a 에 파일명 또는 stem 에 대응하는 키가 없음
+  [PASS] 기준 해시 일치: qi_common.py  2개 기록 대조
+  [PASS] 기준 해시 일치: retrieval_policy.py  2개 기록 대조
+  [PASS] DEV 에서 Holdout 전부 발견, 중복 없음
+  [PASS] Gold 제목 비어 있지 않음
+  [WARN] 문항 내 Gold 제목 중복  1414문항 (집합으로 정리)
+  [PASS] Gold 문서 수 분포  {2: 4405}
+  [PASS] DEV 원본 type 분포  {'bridge': 3518, 'comparison': 887}
+  [PASS] P=2 로 모든 Gold 회수 가능한 문항  4405/4405 (나머지는 구조적으로 Both-Gold 불가)
+  [PASS] E1-A Gold-Corpus 분포 재현  actual={0: 803, 1: 1767, 2: 1835}, expected={0: 803, 1: 1767, 2: 1835}
+  [PASS] E1-A 코퍼스 부재 Gold 총수 재현  3373/3373
+  [PASS] QI 항목 인덱스 범위 내  위반 0
+  [PASS] QI 후보 항목 중복 없음  중복 문항 0
+  [PASS] 후보 개수가 저장 정책 범위 내  QI {8: 4405} / VAN {10: 4405}
+  [PASS] 후보 개수 정책 일치  QI 8 x 4405, VAN 10 x 4405
+  [PASS] QI P=2 문항별 재계산 = 저장  불일치 0
+  [PASS] Vanilla P=2 문항별 재계산 = 저장  불일치 0
+  [PASS] QI 평균 = e1a 저장값 (원시, 1e-12)
+  [PASS] Vanilla 평균 = e1a 저장값 (원시, 1e-12)
+  [PASS] H1 상수 재현 (5e-7)  QI 0.279114642 / VAN 0.434733258
+  [PASS] 후보 전부 코퍼스에 존재 (QI 연결 문서, Vanilla 상위 10개)  불일치 0
+  [PASS] Gold 제목 코퍼스 정확 일치 판정  정확 불일치 3373건
+  [PASS] 정규화 후 추가 일치 없음
+  [PASS] P=2 최종 문서 검증 (후보 포함, 수, 중복)  위반 0
+  [PASS] P=4 최종 문서 검증 (후보 포함, 수, 중복)  위반 0
+  [PASS] P=2 QI 문서 분류 합계 = Gold 문서 수  8810/8810
+  [PASS] P=2 VAN 문서 분류 합계 = Gold 문서 수  8810/8810
+  [PASS] P=4 QI 문서 분류 합계 = Gold 문서 수  8810/8810
+  [PASS] P=4 VAN 문서 분류 합계 = Gold 문서 수  8810/8810
+  [PASS] 실행 상태  CONDITIONAL_NO_HASH_REFERENCE
+  [WARN] 공식 판정 미충족 조건  CONDITIONAL_NO_HASH_REFERENCE
+  [PASS] 지표 표에 NaN 없음
+  [PASS] 교차표 합계 = 4,405
+
+[공식 조건] 후보-코퍼스 불일치 0 / 해시 불일치 없음 및 대조 가능 / H1 재현 / 최종 문서 검증
+  미충족 또는 예외: {'issues': ['CONDITIONAL_NO_HASH_REFERENCE'], 'gold_title_normalized_only_matches': 0, 'gold_title_check': 'PASS', 'candidate_corpus': 'PASS', 'hash_reference': {'INDEX': 'NO_REFERENCE', 'DEV': 'NO_REFERENCE', 'qi_common.py': 'PASS', 'retrieval_policy.py': 'PASS'}, 'h1_reproduction': 'PASS', 'final_document_check': 'PASS', 'run_status': 'CONDITIONAL_NO_HASH_REFERENCE'}
+
+[P=2 주 분석] Recall@2 = 회수 Gold 제목 비율, Both = 모든 Gold 회수
+  bridge      N=3518  QI 0.2278 / VAN 0.3260  차이 -0.0982 [-0.1092, -0.0874]  Both QI 0.1418 / VAN 0.1148
+  comparison  N=887   QI 0.4825 / VAN 0.8658  차이 -0.3833 [-0.3985, -0.3681]  Both QI 0.0135 / VAN 0.7475
+  전체          N=4405  QI 0.2791 / VAN 0.4347  차이 -0.1556 [-0.1654, -0.1457]  Both QI 0.1160 / VAN 0.2422
+
+[유형 간 차이] (bridge 의 QI-VAN) - (comparison 의 QI-VAN)
+  P=2: +0.2851 [+0.2658, +0.3033]
+  P=4: +0.0827 [+0.0627, +0.1023]
+
+[교차표] 둘다성공 / QI만성공 / Vanilla만성공 / 둘다실패
+  bridge      233 / 266 / 171 / 2848  (합계 3518)
+  comparison  10 / 2 / 653 / 222  (합계 887)
+  전체          243 / 268 / 824 / 3070  (합계 4405)
+
+[실패 원인 A~D] 전체 Gold 문서 대비 / 미회수 Gold 문서(A+B+C) 대비, P=2 전체 행
+  QI   미회수 6351  A 0.383/0.531  B 0.173/0.240  C 0.165/0.229
+  VAN  미회수 4980  A 0.383/0.677  B 0.099/0.174  C 0.084/0.148
+
+[사례] 유형별 QI만 성공 / Vanilla만 성공 최대 3건
+  [bridge/QI만성공] 5a70f6425542994082a3e44c  Q: Renamed in 2014, what was the vehicle offered as a prize to contestants on the first seaso
+      Gold ['Chevrolet Corvette (C7)', 'The Amazing Race Canada 1']  QI ['The Amazing Race Canada 1', 'Chevrolet Corvette (C7)']  VAN ['The Amazing Race Canada 1', 'The Amazing Race Canada 3']
+  [bridge/QI만성공] 5a710bb15542994082a3e50d  Q: Which American professional poker player also starred in the 2015 movie "Extraction"?
+      Gold ['Dan Bilzerian', 'Extraction (film)']  QI ['Extraction (film)', 'Dan Bilzerian']  VAN ['Extraction (film)', 'Jason Lester']
+  [bridge/QI만성공] 5a71419f5542994082a3e70d  Q: Riema Juhani Karppinen won the silver medal at what event held outside of Munich, Germany?
+      Gold ['1981 World Rowing Championships', 'Reima Karppinen']  QI ['Reima Karppinen', '1981 World Rowing Championships']  VAN ['Reima Karppinen', '1972 Summer Olympics']
+  [bridge/Vanilla만성공] 5a7137dc5542994082a3e68a  Q: Kevin Wayne Durant was named what ?(An Award initiated following 1952-53 NBA Season?
+      Gold ['Kevin Durant', 'NBA Rookie of the Year Award']  QI ['Victor Oladipo', 'NBA All-Rookie Team']  VAN ['NBA Rookie of the Year Award', 'Kevin Durant']
+  [bridge/Vanilla만성공] 5a716dc15542994082a3e82b  Q: Who is younger Kirk Humphreys or Tom Coburn?
+      Gold ['Kirk Humphreys', 'Tom Coburn']  QI ['Sarah Coburn', 'Tom Coburn']  VAN ['Kirk Humphreys', 'Tom Coburn']
+  [bridge/Vanilla만성공] 5a719bf25542994082a3e891  Q: The astronomer who formulated the theory of stellar nucleosynthesis co-authored what landm
+      Gold ['B2FH paper', 'Fred Hoyle']  QI ['B2FH paper', 'Margaret Burbidge']  VAN ['Fred Hoyle', 'B2FH paper']
+  [comparison/QI만성공] 5a77dbaf5542997042120b5b  Q: Mikael Åkerfeldt and Lee Ranaldo were this kind of instrumentalist in their respective ban
+      Gold ['Lee Ranaldo', 'Mikael Åkerfeldt']  QI ['Mikael Åkerfeldt', 'Lee Ranaldo']  VAN ['Mikael Åkerfeldt', 'Opeth']
+  [comparison/QI만성공] 5a8bbfb15542995e66a474f6  Q: Peter Curtis and Scott Draper are both what?
+      Gold ['Peter Curtis (tennis)', 'Scott Draper']  QI ['Scott Draper', 'Peter Curtis (tennis)']  VAN ['Peter Curtis (tennis)', 'Paul Draper (musician)']
+  [comparison/Vanilla만성공] 5a70f0e75542994082a3e408  Q: Which of these universities, Northwestern University or Johns Hopkins University, have a c
+      Gold ['Johns Hopkins University', 'Northwestern University']  QI ['Johns Hopkins University', 'Johns Hopkins Hospital']  VAN ['Northwestern University', 'Johns Hopkins University']
+  [comparison/Vanilla만성공] 5a70f11a5542994082a3e40b  Q: Which dog breed, the Schapendoes or the Bull Terrier, has its origins in a greater number 
+      Gold ['Bull Terrier (Miniature)', 'Schapendoes']  QI ['Lakeland Terrier', 'Schapendoes']  VAN ['Schapendoes', 'Bull Terrier (Miniature)']
+  [comparison/Vanilla만성공] 5a7108fa5542994082a3e4ef  Q: Which battle, the Battle of Cold Harbor, or the Second Battle of Bull Run, was fought firs
+      Gold ['Battle of Cold Harbor', 'Second Battle of Bull Run']  QI ['Battle of Okinawa', 'Second Battle of Bull Run']  VAN ['Second Battle of Bull Run', 'Battle of Cold Harbor']
+
+[P=4 탐색] 저장 후보에서 같은 정책으로 재구성. 주 결과 아님.
+  bridge      QI 0.2669 / VAN 0.3748  차이 -0.1079 [-0.1185, -0.0975]
+  comparison  QI 0.7182 / VAN 0.9087  차이 -0.1905 [-0.2074, -0.1742]
+  전체          QI 0.3578 / VAN 0.4823  차이 -0.1245 [-0.1338, -0.1154]
+
+[한계]
+- 사후 탐색이며 H1 확증을 대체하지 않는다. 유형 분할은 탐색적 하위집단이다.
+- A~D 는 문서 단위 상호배타 분류다. B 는 방법마다 의미가 다르다 (QI: 질문 색인 연결 누락, VAN: 상위 10개 밖).
+  두 B 의 발생률 차이를 같은 검색 단계의 실패율로 해석하지 않는다.
+- A 는 정확 일치 기준이다. 정규화 후 일치하는 제목은 p_16_title_mismatch.csv 에서 따로 확인한다.
+- 해시 대조는 파일명 전체 키(FULL)를 우선했고, stem 만 있는 기록은 PASS_STEM_ONLY 로 구분했다.
+- Bootstrap 은 문항 단위이며 문항 독립을 가정한다. 같은 문단에서 파생된 문항이 있으면 CI 가 좁게 나올 수 있다.
+- 문항 수가 작은 집단(N<100)의 CI 는 불안정하다.
+- 질문 색인의 leave-one-out 검증은 포함하지 않았다.

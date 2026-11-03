@@ -1,0 +1,30 @@
+{
+  "label": "확증 (Holdout)",
+  "created_at": "2026-10-23T11:05:47+09:00",
+  "n_scored": 4405,
+  "n_excluded_no_gold": 0,
+  "qi_mean": 0.2791146424517594,
+  "va_mean": 0.43473325766174803,
+  "delta_mean": -0.15561861520998865,
+  "delta_ci95": [
+    -0.16538024971623155,
+    -0.14574347332576618
+  ],
+  "bootstrap": {
+    "n": 10000,
+    "seed": 0,
+    "rng": "PCG64"
+  },
+  "gold_count_distribution": {
+    "2": 4405
+  },
+  "gold_in_corpus_distribution": {
+    "0": 803,
+    "1": 1767,
+    "2": 1835
+  },
+  "qi_short_count": 0,
+  "va_short_count": 0,
+  "decision": "H1 미지지 (CI 하한 <= 0). 결과 그대로 보고",
+  "pred_sha256": "4592253a0c4c46711e3525f38a51f89cf64b56e181986b9ce2acdafc9f6cfff7"
+}
