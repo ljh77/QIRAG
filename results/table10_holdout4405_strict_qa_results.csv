@@ -1,0 +1,3 @@
+policy,n,EM_percent,F1_percent,coverage_percent,source_file,source_key
+QI_STRICT,4405,12.01,15.27,22.47,metadata/table10_strict_scores.json,scores.QI_STRICT
+VAN_STRICT,4405,21.93,27.23,40.30,metadata/table10_strict_scores.json,scores.VAN_STRICT

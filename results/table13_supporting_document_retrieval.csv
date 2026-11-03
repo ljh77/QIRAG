@@ -1,0 +1,6 @@
+metric,question_type,n,QI_percent,Vanilla_percent,source_file,source_locator
+Recall@2,Overall,4405,27.91,43.47,metadata/table13_overall_recall.json,n_scored; qi_mean; va_mean
+Recall@2,Bridge,3518,22.78,32.60,metadata/table13_recall_by_type.csv,"label=bridge (QI vs Vanilla P2); columns=qi,va"
+Recall@2,Comparison,887,48.25,86.58,metadata/table13_recall_by_type.csv,"label=comparison (QI vs Vanilla P2); columns=qi,va"
+Both-Gold Hit,Bridge,3518,14.18,11.48,metadata/table13_both_gold_conditional.txt,bridge N=3518; Both QI / VAN
+Both-Gold Hit,Comparison,887,1.35,74.75,metadata/table13_both_gold_conditional.txt,comparison N=887; Both QI / VAN
