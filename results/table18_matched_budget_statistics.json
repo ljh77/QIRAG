@@ -1,0 +1,2689 @@
+{
+  "experiment": "POST-18F exact matched-coverage retrieval-score selective-risk",
+  "evaluation_status": "exploratory_posthoc_holdout_previously_inspected",
+  "version": "v3.2",
+  "mode": "CAND answers; exact global batch top-k by frozen retrieval top1_score",
+  "policy_boundary": "STRICT and CAND use different prompts; results cannot be attributed to original STRICT policy",
+  "selection_policy": "CAND non-abstaining answers only; gold-blind score ranks selected per-arm; round(coverage*N) distinct QIDs.",
+  "primary": {
+    "coverage": 0.3,
+    "k_per_arm": 1322,
+    "delta_selective_risk": 0.0,
+    "paired_cluster_ci95": [
+      -0.0324779550961036,
+      0.03181818181818186
+    ],
+    "observed_holdout_direction_support": false,
+    "claim_scope": "EXPLORATORY_POSTHOC_ONLY; no prospective confirmatory claim"
+  },
+  "point_estimates": {
+    "0.2": {
+      "k_per_arm": 881,
+      "arms": {
+        "QI": {
+          "n": 4405,
+          "answered": 881,
+          "coverage": 0.2,
+          "answered_em": 0.4858115777525539,
+          "answered_f1": 0.6071090442419425,
+          "selective_risk": 0.5141884222474461,
+          "wrong_answer_rate": 0.10283768444948922,
+          "correct_yield": 0.09716231555051079,
+          "correct_answers": 428,
+          "wrong_answers": 453,
+          "partial_aurc": 0.41906074415828526
+        },
+        "VAN": {
+          "n": 4405,
+          "answered": 881,
+          "coverage": 0.2,
+          "answered_em": 0.45970488081725314,
+          "answered_f1": 0.5859642942138422,
+          "selective_risk": 0.5402951191827469,
+          "wrong_answer_rate": 0.10805902383654938,
+          "correct_yield": 0.09194097616345062,
+          "correct_answers": 405,
+          "wrong_answers": 476,
+          "partial_aurc": 0.5319693058215863
+        }
+      },
+      "delta_QI_minus_VAN": {
+        "selective_risk": -0.026106696935300766,
+        "answered_em": 0.026106696935300766,
+        "answered_f1": 0.021144750028100234,
+        "wrong_answer_rate": -0.005221339387060153,
+        "correct_yield": 0.005221339387060167,
+        "partial_aurc": -0.11290856166330104
+      }
+    },
+    "0.3": {
+      "k_per_arm": 1322,
+      "arms": {
+        "QI": {
+          "n": 4405,
+          "answered": 1322,
+          "coverage": 0.3001135073779796,
+          "answered_em": 0.4462934947049924,
+          "answered_f1": 0.5525346234230009,
+          "selective_risk": 0.5537065052950075,
+          "wrong_answer_rate": 0.16617480136208854,
+          "correct_yield": 0.13393870601589103,
+          "correct_answers": 590,
+          "wrong_answers": 732,
+          "partial_aurc": 0.4568666620267099
+        },
+        "VAN": {
+          "n": 4405,
+          "answered": 1322,
+          "coverage": 0.3001135073779796,
+          "answered_em": 0.4462934947049924,
+          "answered_f1": 0.5788574075389739,
+          "selective_risk": 0.5537065052950075,
+          "wrong_answer_rate": 0.16617480136208854,
+          "correct_yield": 0.13393870601589103,
+          "correct_answers": 590,
+          "wrong_answers": 732,
+          "partial_aurc": 0.5363032807453878
+        }
+      },
+      "delta_QI_minus_VAN": {
+        "selective_risk": 0.0,
+        "answered_em": 0.0,
+        "answered_f1": -0.026322784115972997,
+        "wrong_answer_rate": 0.0,
+        "correct_yield": 0.0,
+        "partial_aurc": -0.07943661871867791
+      }
+    },
+    "0.4": {
+      "k_per_arm": 1762,
+      "arms": {
+        "QI": {
+          "n": 4405,
+          "answered": 1762,
+          "coverage": 0.4,
+          "answered_em": 0.4097616345062429,
+          "answered_f1": 0.5142374060836176,
+          "selective_risk": 0.5902383654937571,
+          "wrong_answer_rate": 0.23609534619750283,
+          "correct_yield": 0.16390465380249716,
+          "correct_answers": 722,
+          "wrong_answers": 1040,
+          "partial_aurc": 0.48587992676660247
+        },
+        "VAN": {
+          "n": 4405,
+          "answered": 1762,
+          "coverage": 0.4,
+          "answered_em": 0.43643586833144155,
+          "answered_f1": 0.5651873468811407,
+          "selective_risk": 0.5635641316685585,
+          "wrong_answer_rate": 0.22542565266742337,
+          "correct_yield": 0.17457434733257662,
+          "correct_answers": 769,
+          "wrong_answers": 993,
+          "partial_aurc": 0.5416468177758872
+        }
+      },
+      "delta_QI_minus_VAN": {
+        "selective_risk": 0.026674233825198623,
+        "answered_em": -0.026674233825198623,
+        "answered_f1": -0.05094994079752313,
+        "wrong_answer_rate": 0.01066969353007946,
+        "correct_yield": -0.01066969353007946,
+        "partial_aurc": -0.055766891009284725
+      }
+    }
+  },
+  "subgroups_global_selection": {
+    "0.2": {
+      "Bridge": {
+        "arms": {
+          "QI": {
+            "n": 3518,
+            "answered": 595,
+            "coverage": 0.16913018760659465,
+            "answered_em": 0.5008403361344538,
+            "answered_f1": 0.6402021588903737,
+            "selective_risk": 0.4991596638655462,
+            "wrong_answer_rate": 0.08442296759522457,
+            "correct_yield": 0.0847072200113701,
+            "correct_answers": 298,
+            "wrong_answers": 297,
+            "partial_aurc": null
+          },
+          "VAN": {
+            "n": 3518,
+            "answered": 622,
+            "coverage": 0.17680500284252415,
+            "answered_em": 0.39067524115755625,
+            "answered_f1": 0.533642956440763,
+            "selective_risk": 0.6093247588424437,
+            "wrong_answer_rate": 0.10773166571915861,
+            "correct_yield": 0.06907333712336555,
+            "correct_answers": 243,
+            "wrong_answers": 379,
+            "partial_aurc": null
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "coverage": -0.0076748152359295,
+          "answered_em": 0.11016509497689753,
+          "answered_f1": 0.1065592024496107,
+          "selective_risk": -0.11016509497689753,
+          "wrong_answer_rate": -0.023308698123934046,
+          "correct_yield": 0.015633882888004547
+        }
+      },
+      "Comparison": {
+        "arms": {
+          "QI": {
+            "n": 887,
+            "answered": 286,
+            "coverage": 0.322435174746336,
+            "answered_em": 0.45454545454545453,
+            "answered_f1": 0.5382614805502759,
+            "selective_risk": 0.5454545454545454,
+            "wrong_answer_rate": 0.17587373167981962,
+            "correct_yield": 0.14656144306651633,
+            "correct_answers": 130,
+            "wrong_answers": 156,
+            "partial_aurc": null
+          },
+          "VAN": {
+            "n": 887,
+            "answered": 259,
+            "coverage": 0.2919954904171364,
+            "answered_em": 0.6254826254826255,
+            "answered_f1": 0.7116163100240942,
+            "selective_risk": 0.3745173745173745,
+            "wrong_answer_rate": 0.10935738444193913,
+            "correct_yield": 0.1826381059751973,
+            "correct_answers": 162,
+            "wrong_answers": 97,
+            "partial_aurc": null
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "coverage": 0.03043968432919958,
+          "answered_em": -0.17093717093717092,
+          "answered_f1": -0.1733548294738183,
+          "selective_risk": 0.17093717093717092,
+          "wrong_answer_rate": 0.0665163472378805,
+          "correct_yield": -0.03607666290868097
+        }
+      }
+    },
+    "0.3": {
+      "Bridge": {
+        "arms": {
+          "QI": {
+            "n": 3518,
+            "answered": 833,
+            "coverage": 0.23678226264923252,
+            "answered_em": 0.44537815126050423,
+            "answered_f1": 0.5644403311841999,
+            "selective_risk": 0.5546218487394958,
+            "wrong_answer_rate": 0.1313246162592382,
+            "correct_yield": 0.10545764638999432,
+            "correct_answers": 371,
+            "wrong_answers": 462,
+            "partial_aurc": null
+          },
+          "VAN": {
+            "n": 3518,
+            "answered": 901,
+            "coverage": 0.2561114269471291,
+            "answered_em": 0.3751387347391787,
+            "answered_f1": 0.5250891463828273,
+            "selective_risk": 0.6248612652608213,
+            "wrong_answer_rate": 0.16003411028993747,
+            "correct_yield": 0.09607731665719159,
+            "correct_answers": 338,
+            "wrong_answers": 563,
+            "partial_aurc": null
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "coverage": -0.01932916429789655,
+          "answered_em": 0.07023941652132554,
+          "answered_f1": 0.03935118480137256,
+          "selective_risk": -0.07023941652132548,
+          "wrong_answer_rate": -0.02870949403069928,
+          "correct_yield": 0.009380329732802728
+        }
+      },
+      "Comparison": {
+        "arms": {
+          "QI": {
+            "n": 887,
+            "answered": 489,
+            "coverage": 0.5512965050732808,
+            "answered_em": 0.44785276073619634,
+            "answered_f1": 0.5322535302428806,
+            "selective_risk": 0.5521472392638037,
+            "wrong_answer_rate": 0.3043968432919955,
+            "correct_yield": 0.24689966178128522,
+            "correct_answers": 219,
+            "wrong_answers": 270,
+            "partial_aurc": null
+          },
+          "VAN": {
+            "n": 887,
+            "answered": 421,
+            "coverage": 0.4746335963923337,
+            "answered_em": 0.5985748218527316,
+            "answered_f1": 0.6939291493482092,
+            "selective_risk": 0.4014251781472684,
+            "wrong_answer_rate": 0.19052987598647125,
+            "correct_yield": 0.28410372040586246,
+            "correct_answers": 252,
+            "wrong_answers": 169,
+            "partial_aurc": null
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "coverage": 0.07666290868094705,
+          "answered_em": -0.15072206111653524,
+          "answered_f1": -0.16167561910532857,
+          "selective_risk": 0.1507220611165353,
+          "wrong_answer_rate": 0.11386696730552426,
+          "correct_yield": -0.037204058624577235
+        }
+      }
+    },
+    "0.4": {
+      "Bridge": {
+        "arms": {
+          "QI": {
+            "n": 3518,
+            "answered": 1115,
+            "coverage": 0.31694144400227403,
+            "answered_em": 0.39103139013452914,
+            "answered_f1": 0.50745030211099,
+            "selective_risk": 0.6089686098654709,
+            "wrong_answer_rate": 0.1930073905628198,
+            "correct_yield": 0.12393405343945424,
+            "correct_answers": 436,
+            "wrong_answers": 679,
+            "partial_aurc": null
+          },
+          "VAN": {
+            "n": 3518,
+            "answered": 1205,
+            "coverage": 0.34252416145537234,
+            "answered_em": 0.366804979253112,
+            "answered_f1": 0.510726520446886,
+            "selective_risk": 0.6331950207468879,
+            "wrong_answer_rate": 0.2168845935190449,
+            "correct_yield": 0.12563956793632747,
+            "correct_answers": 442,
+            "wrong_answers": 763,
+            "partial_aurc": null
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "coverage": -0.025582717453098314,
+          "answered_em": 0.024226410881417137,
+          "answered_f1": -0.003276218335896086,
+          "selective_risk": -0.024226410881417082,
+          "wrong_answer_rate": -0.023877202956225113,
+          "correct_yield": -0.0017055144968732283
+        }
+      },
+      "Comparison": {
+        "arms": {
+          "QI": {
+            "n": 887,
+            "answered": 647,
+            "coverage": 0.7294250281848929,
+            "answered_em": 0.4420401854714065,
+            "answered_f1": 0.5259338835634934,
+            "selective_risk": 0.5579598145285936,
+            "wrong_answer_rate": 0.4069898534385569,
+            "correct_yield": 0.322435174746336,
+            "correct_answers": 286,
+            "wrong_answers": 361,
+            "partial_aurc": null
+          },
+          "VAN": {
+            "n": 887,
+            "answered": 557,
+            "coverage": 0.6279594137542277,
+            "answered_em": 0.5870736086175943,
+            "answered_f1": 0.6830065494902553,
+            "selective_risk": 0.4129263913824057,
+            "wrong_answer_rate": 0.2593010146561443,
+            "correct_yield": 0.3686583990980834,
+            "correct_answers": 327,
+            "wrong_answers": 230,
+            "partial_aurc": null
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "coverage": 0.10146561443066515,
+          "answered_em": -0.14503342314618778,
+          "answered_f1": -0.15707266592676195,
+          "selective_risk": 0.14503342314618783,
+          "wrong_answer_rate": 0.14768883878241262,
+          "correct_yield": -0.046223224351747416
+        }
+      }
+    }
+  },
+  "subgroups_exact_matched": {
+    "Bridge": {
+      "0.2": {
+        "k_per_arm": 704,
+        "arms": {
+          "QI": {
+            "n": 3518,
+            "answered": 704,
+            "coverage": 0.20011370096645822,
+            "answered_em": 0.48295454545454547,
+            "answered_f1": 0.6072686186999292,
+            "selective_risk": 0.5170454545454546,
+            "wrong_answer_rate": 0.10346787947697555,
+            "correct_yield": 0.09664582148948266,
+            "correct_answers": 340,
+            "wrong_answers": 364,
+            "partial_aurc": 0.40892633100657994
+          },
+          "VAN": {
+            "n": 3518,
+            "answered": 704,
+            "coverage": 0.20011370096645822,
+            "answered_em": 0.3849431818181818,
+            "answered_f1": 0.5278224858199797,
+            "selective_risk": 0.6150568181818182,
+            "wrong_answer_rate": 0.12308129619101763,
+            "correct_yield": 0.07703240477544059,
+            "correct_answers": 271,
+            "wrong_answers": 433,
+            "partial_aurc": 0.5800667191166468
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "selective_risk": -0.09801136363636365,
+          "answered_em": 0.09801136363636365,
+          "answered_f1": 0.0794461328799495,
+          "wrong_answer_rate": -0.01961341671404207,
+          "correct_yield": 0.01961341671404207,
+          "partial_aurc": -0.17114038811006682
+        }
+      },
+      "0.3": {
+        "k_per_arm": 1055,
+        "arms": {
+          "QI": {
+            "n": 3518,
+            "answered": 1055,
+            "coverage": 0.2998862990335418,
+            "answered_em": 0.4,
+            "answered_f1": 0.5164736824050973,
+            "selective_risk": 0.6,
+            "wrong_answer_rate": 0.17993177942012506,
+            "correct_yield": 0.11995451961341672,
+            "correct_answers": 422,
+            "wrong_answers": 633,
+            "partial_aurc": 0.4606101344932485
+          },
+          "VAN": {
+            "n": 3518,
+            "answered": 1055,
+            "coverage": 0.2998862990335418,
+            "answered_em": 0.37251184834123224,
+            "answered_f1": 0.5164348672863693,
+            "selective_risk": 0.6274881516587678,
+            "wrong_answer_rate": 0.18817509948834565,
+            "correct_yield": 0.11171119954519614,
+            "correct_answers": 393,
+            "wrong_answers": 662,
+            "partial_aurc": 0.5937652937547593
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "selective_risk": -0.027488151658767834,
+          "answered_em": 0.02748815165876778,
+          "answered_f1": 3.8815118727941744e-05,
+          "wrong_answer_rate": -0.008243320068220594,
+          "correct_yield": 0.00824332006822058,
+          "partial_aurc": -0.13315515926151078
+        }
+      },
+      "0.4": {
+        "k_per_arm": 1407,
+        "arms": {
+          "QI": {
+            "n": 3518,
+            "answered": 1407,
+            "coverage": 0.3999431495167709,
+            "answered_em": 0.34754797441364604,
+            "answered_f1": 0.45674394577013755,
+            "selective_risk": 0.652452025586354,
+            "wrong_answer_rate": 0.2609437180216032,
+            "correct_yield": 0.13899943149516772,
+            "correct_answers": 489,
+            "wrong_answers": 918,
+            "partial_aurc": 0.5024427682622101
+          },
+          "VAN": {
+            "n": 3518,
+            "answered": 1407,
+            "coverage": 0.3999431495167709,
+            "answered_em": 0.34754797441364604,
+            "answered_f1": 0.4850563990372728,
+            "selective_risk": 0.652452025586354,
+            "wrong_answer_rate": 0.2609437180216032,
+            "correct_yield": 0.13899943149516772,
+            "correct_answers": 489,
+            "wrong_answers": 918,
+            "partial_aurc": 0.6045110341587543
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "selective_risk": 0.0,
+          "answered_em": 0.0,
+          "answered_f1": -0.028312453267135274,
+          "wrong_answer_rate": 0.0,
+          "correct_yield": 0.0,
+          "partial_aurc": -0.10206826589654416
+        }
+      },
+      "cluster_diagnostics": {
+        "independent_clusters": 3487,
+        "effective_clusters": 3453.215401785714,
+        "largest_cluster_share": 0.0008527572484366117,
+        "cluster_CI_estimable": true,
+        "gate": "heuristic G>=20, G_eff>=20, max share<=20%; not a validity proof"
+      }
+    },
+    "Comparison": {
+      "0.2": {
+        "k_per_arm": 177,
+        "arms": {
+          "QI": {
+            "n": 887,
+            "answered": 177,
+            "coverage": 0.1995490417136415,
+            "answered_em": 0.4971751412429379,
+            "answered_f1": 0.5861712273836314,
+            "selective_risk": 0.5028248587570622,
+            "wrong_answer_rate": 0.10033821871476889,
+            "correct_yield": 0.0992108229988726,
+            "correct_answers": 88,
+            "wrong_answers": 89,
+            "partial_aurc": 0.4640962520317794
+          },
+          "VAN": {
+            "n": 887,
+            "answered": 177,
+            "coverage": 0.1995490417136415,
+            "answered_em": 0.6497175141242938,
+            "answered_f1": 0.7317968260771429,
+            "selective_risk": 0.3502824858757062,
+            "wrong_answer_rate": 0.06989853438556934,
+            "correct_yield": 0.12965050732807215,
+            "correct_answers": 115,
+            "wrong_answers": 62,
+            "partial_aurc": 0.3640832483417075
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "selective_risk": 0.15254237288135597,
+          "answered_em": -0.15254237288135591,
+          "answered_f1": -0.14562559869351155,
+          "wrong_answer_rate": 0.03043968432919955,
+          "correct_yield": -0.03043968432919955,
+          "partial_aurc": 0.10001300369007188
+        }
+      },
+      "0.3": {
+        "k_per_arm": 266,
+        "arms": {
+          "QI": {
+            "n": 887,
+            "answered": 266,
+            "coverage": 0.29988726042841035,
+            "answered_em": 0.45864661654135336,
+            "answered_f1": 0.542904604162482,
+            "selective_risk": 0.5413533834586466,
+            "wrong_answer_rate": 0.16234498308906425,
+            "correct_yield": 0.1375422773393461,
+            "correct_answers": 122,
+            "wrong_answers": 144,
+            "partial_aurc": 0.4856648581210086
+          },
+          "VAN": {
+            "n": 887,
+            "answered": 266,
+            "coverage": 0.29988726042841035,
+            "answered_em": 0.6278195488721805,
+            "answered_f1": 0.7145784025017713,
+            "selective_risk": 0.37218045112781956,
+            "wrong_answer_rate": 0.11161217587373168,
+            "correct_yield": 0.1882750845546787,
+            "correct_answers": 167,
+            "wrong_answers": 99,
+            "partial_aurc": 0.36346216284492816
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "selective_risk": 0.16917293233082703,
+          "answered_em": -0.16917293233082714,
+          "answered_f1": -0.1716737983392893,
+          "wrong_answer_rate": 0.050732807215332576,
+          "correct_yield": -0.050732807215332604,
+          "partial_aurc": 0.12220269527608046
+        }
+      },
+      "0.4": {
+        "k_per_arm": 355,
+        "arms": {
+          "QI": {
+            "n": 887,
+            "answered": 355,
+            "coverage": 0.40022547914317924,
+            "answered_em": 0.4591549295774648,
+            "answered_f1": 0.5476373241083864,
+            "selective_risk": 0.5408450704225352,
+            "wrong_answer_rate": 0.21645997745208567,
+            "correct_yield": 0.18376550169109357,
+            "correct_answers": 163,
+            "wrong_answers": 192,
+            "partial_aurc": 0.49926423175468254
+          },
+          "VAN": {
+            "n": 887,
+            "answered": 355,
+            "coverage": 0.40022547914317924,
+            "answered_em": 0.6140845070422535,
+            "answered_f1": 0.6980997652231246,
+            "selective_risk": 0.38591549295774646,
+            "wrong_answer_rate": 0.1544532130777903,
+            "correct_yield": 0.24577226606538896,
+            "correct_answers": 218,
+            "wrong_answers": 137,
+            "partial_aurc": 0.3678092188001128
+          }
+        },
+        "delta_QI_minus_VAN": {
+          "selective_risk": 0.1549295774647887,
+          "answered_em": -0.1549295774647887,
+          "answered_f1": -0.15046244111473817,
+          "wrong_answer_rate": 0.062006764374295364,
+          "correct_yield": -0.06200676437429539,
+          "partial_aurc": 0.13145501295456974
+        }
+      },
+      "cluster_diagnostics": {
+        "independent_clusters": 887,
+        "effective_clusters": 887.0,
+        "largest_cluster_share": 0.0011273957158962795,
+        "cluster_CI_estimable": true,
+        "gate": "heuristic G>=20, G_eff>=20, max share<=20%; not a validity proof"
+      }
+    }
+  },
+  "subgroups_exact_matched_ci": {
+    "Bridge": {
+      "0.2": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              -0.13778409090909094,
+              -0.04971590909090906
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.13920949582956169,
+              -0.04971590909090906
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              0.04971590909090906,
+              0.13778409090909088
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.049715909090909116,
+              0.1392094958295616
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              0.03223088815708924,
+              0.11610707319382488
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.031012440558960196,
+              0.11767792059611862
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              -0.027572484366117103,
+              -0.009948834565093809
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.027856934797167273,
+              -0.00994600738846263
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              0.009948834565093809,
+              0.027572484366117103
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.00994600738846263,
+              0.02785693479716727
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "partial_aurc": {
+          "paired_question": {
+            "ci95": [
+              -0.23587523932053356,
+              -0.10551594641946417
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.2358771864671974,
+              -0.10515688968095438
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      },
+      "0.3": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              -0.06350710900473933,
+              0.005687203791469253
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.06344696969696972,
+              0.005692599620493399
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.0056872037914691975,
+              0.06350710900473933
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.005692599620493344,
+              0.06344696969696972
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.03303041395602463,
+              0.03337502465350696
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.03283044206743392,
+              0.03308256900948941
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              -0.019044911881750975,
+              0.0017055144968732283
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.01903949985791417,
+              0.001706994423071551
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.0017055144968732283,
+              0.01904491188175099
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.0017069944230715516,
+              0.019039499857914186
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "partial_aurc": {
+          "paired_question": {
+            "ci95": [
+              -0.18414869654740346,
+              -0.08151152451642839
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.18488559606680413,
+              -0.08090539666074588
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      },
+      "0.4": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              -0.026297085998578607,
+              0.030561478322672312
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.027027027027026973,
+              0.030432244395926882
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.030561478322672364,
+              0.02629708599857855
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.030432244395926945,
+              0.02702702702702703
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.057467907309865895,
+              -0.001053863612706521
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.057624209756280055,
+              -0.0009911990834889912
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              -0.010517339397384917,
+              0.01222285389425809
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.010807812932386324,
+              0.0121745778780169
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.01222285389425809,
+              0.01051733939738489
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.012174577878016957,
+              0.010807812932386323
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "partial_aurc": {
+          "paired_question": {
+            "ci95": [
+              -0.14480716927309878,
+              -0.058571326568690726
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.1456120041020391,
+              -0.05785463573110864
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      }
+    },
+    "Comparison": {
+      "0.2": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              0.05649717514124292,
+              0.24293785310734467
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.05649717514124292,
+              0.24293785310734461
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.24293785310734461,
+              -0.05649717514124297
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.24293785310734461,
+              -0.05649717514124286
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.22841801527627612,
+              -0.06355177920850455
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.22729256243492987,
+              -0.062274926855373246
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              0.011273957158962802,
+              0.048478015783540024
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.011273957158962788,
+              0.048478015783540024
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.048478015783540024,
+              -0.011273957158962802
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.048478015783540024,
+              -0.011273957158962788
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "partial_aurc": {
+          "paired_question": {
+            "ci95": [
+              -0.02582867314231908,
+              0.23159978672627285
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.027208941390802564,
+              0.23100536397561516
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      },
+      "0.3": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              0.09398496240601506,
+              0.24060150375939848
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.09398496240601512,
+              0.23684210526315796
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.24060150375939848,
+              -0.09398496240601506
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.23684210526315796,
+              -0.09398496240601512
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.23537464553338,
+              -0.1020905628306761
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.23318249484033773,
+              -0.1007566267236016
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              0.028184892897407,
+              0.07215332581736189
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.028184892897407,
+              0.07102593010146563
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.07215332581736189,
+              -0.028184892897407
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.07102593010146563,
+              -0.028184892897407
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "partial_aurc": {
+          "paired_question": {
+            "ci95": [
+              0.0216452655017599,
+              0.22469465378584594
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.0195837642453154,
+              0.22483452256326783
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      },
+      "0.4": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              0.09295774647887323,
+              0.21408450704225357
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.09014084507042253,
+              0.2140845070422535
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.21408450704225357,
+              -0.09295774647887323
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.2140845070422535,
+              -0.09014084507042258
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.20680962242358494,
+              -0.09482995670812176
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.20590864020240401,
+              -0.09288998570331833
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              0.037204058624577235,
+              0.08568207440811726
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.036076662908680945,
+              0.08568207440811723
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.08568207440811726,
+              -0.03720405862457721
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.08568207440811723,
+              -0.03607666290868097
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "partial_aurc": {
+          "paired_question": {
+            "ci95": [
+              0.04643676635988825,
+              0.2181038583987141
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.04391740224989385,
+              0.21824648208564323
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      }
+    }
+  },
+  "abstention_sensitivity": {
+    "0.2": {
+      "arms": {
+        "QI": {
+          "feasible": true,
+          "eligible_n": 3871,
+          "new_abstentions": 1,
+          "metrics": {
+            "n": 4405,
+            "answered": 881,
+            "coverage": 0.2,
+            "answered_em": 0.4858115777525539,
+            "answered_f1": 0.6071090442419425,
+            "selective_risk": 0.5141884222474461,
+            "wrong_answer_rate": 0.10283768444948922,
+            "correct_yield": 0.09716231555051079,
+            "correct_answers": 428,
+            "wrong_answers": 453,
+            "partial_aurc": null
+          }
+        },
+        "VAN": {
+          "feasible": true,
+          "eligible_n": 4142,
+          "new_abstentions": 0,
+          "metrics": {
+            "n": 4405,
+            "answered": 881,
+            "coverage": 0.2,
+            "answered_em": 0.45970488081725314,
+            "answered_f1": 0.5859642942138422,
+            "selective_risk": 0.5402951191827469,
+            "wrong_answer_rate": 0.10805902383654938,
+            "correct_yield": 0.09194097616345062,
+            "correct_answers": 405,
+            "wrong_answers": 476,
+            "partial_aurc": null
+          }
+        }
+      },
+      "delta_risk": -0.026106696935300766
+    },
+    "0.3": {
+      "arms": {
+        "QI": {
+          "feasible": true,
+          "eligible_n": 3871,
+          "new_abstentions": 1,
+          "metrics": {
+            "n": 4405,
+            "answered": 1322,
+            "coverage": 0.3001135073779796,
+            "answered_em": 0.4462934947049924,
+            "answered_f1": 0.5525346234230009,
+            "selective_risk": 0.5537065052950075,
+            "wrong_answer_rate": 0.16617480136208854,
+            "correct_yield": 0.13393870601589103,
+            "correct_answers": 590,
+            "wrong_answers": 732,
+            "partial_aurc": null
+          }
+        },
+        "VAN": {
+          "feasible": true,
+          "eligible_n": 4142,
+          "new_abstentions": 0,
+          "metrics": {
+            "n": 4405,
+            "answered": 1322,
+            "coverage": 0.3001135073779796,
+            "answered_em": 0.4462934947049924,
+            "answered_f1": 0.5788574075389739,
+            "selective_risk": 0.5537065052950075,
+            "wrong_answer_rate": 0.16617480136208854,
+            "correct_yield": 0.13393870601589103,
+            "correct_answers": 590,
+            "wrong_answers": 732,
+            "partial_aurc": null
+          }
+        }
+      },
+      "delta_risk": 0.0
+    },
+    "0.4": {
+      "arms": {
+        "QI": {
+          "feasible": true,
+          "eligible_n": 3871,
+          "new_abstentions": 1,
+          "metrics": {
+            "n": 4405,
+            "answered": 1762,
+            "coverage": 0.4,
+            "answered_em": 0.4097616345062429,
+            "answered_f1": 0.5142374060836176,
+            "selective_risk": 0.5902383654937571,
+            "wrong_answer_rate": 0.23609534619750283,
+            "correct_yield": 0.16390465380249716,
+            "correct_answers": 722,
+            "wrong_answers": 1040,
+            "partial_aurc": null
+          }
+        },
+        "VAN": {
+          "feasible": true,
+          "eligible_n": 4142,
+          "new_abstentions": 0,
+          "metrics": {
+            "n": 4405,
+            "answered": 1762,
+            "coverage": 0.4,
+            "answered_em": 0.43643586833144155,
+            "answered_f1": 0.5651873468811407,
+            "selective_risk": 0.5635641316685585,
+            "wrong_answer_rate": 0.22542565266742337,
+            "correct_yield": 0.17457434733257662,
+            "correct_answers": 769,
+            "wrong_answers": 993,
+            "partial_aurc": null
+          }
+        }
+      },
+      "delta_risk": 0.026674233825198623
+    }
+  },
+  "shared_doc_cluster_diagnostics": {
+    "independent_clusters": 4049,
+    "effective_clusters": 3681.279643331436,
+    "largest_cluster_share": 0.001362088535754824,
+    "cluster_CI_estimable": true,
+    "gate": "heuristic G>=20, G_eff>=20, max share<=20%; not a validity proof"
+  },
+  "natural_baselines": {
+    "STRICT": {
+      "QI": {
+        "n": 4405,
+        "answered": 994,
+        "coverage": 0.22565266742338252,
+        "answered_em": 0.5321931589537223,
+        "answered_f1": 0.6717496777429905,
+        "selective_risk": 0.4678068410462777,
+        "wrong_answer_rate": 0.10556186152099886,
+        "correct_yield": 0.12009080590238365,
+        "correct_answers": 529,
+        "wrong_answers": 465,
+        "partial_aurc": null
+      },
+      "VAN": {
+        "n": 4405,
+        "answered": 1776,
+        "coverage": 0.4031782065834279,
+        "answered_em": 0.543918918918919,
+        "answered_f1": 0.6704922187458953,
+        "selective_risk": 0.4560810810810811,
+        "wrong_answer_rate": 0.18388195232690124,
+        "correct_yield": 0.21929625425652668,
+        "correct_answers": 966,
+        "wrong_answers": 810,
+        "partial_aurc": null
+      }
+    },
+    "CAND_UNFILTERED": {
+      "QI": {
+        "n": 4405,
+        "answered": 3872,
+        "coverage": 0.8790011350737797,
+        "answered_em": 0.2693698347107438,
+        "answered_f1": 0.35617582482730814,
+        "selective_risk": 0.7306301652892562,
+        "wrong_answer_rate": 0.6422247446083995,
+        "correct_yield": 0.23677639046538024,
+        "correct_answers": 1043,
+        "wrong_answers": 2829,
+        "partial_aurc": null
+      },
+      "VAN": {
+        "n": 4405,
+        "answered": 4142,
+        "coverage": 0.9402951191827469,
+        "answered_em": 0.31699661999034284,
+        "answered_f1": 0.42051403883564364,
+        "selective_risk": 0.6830033800096572,
+        "wrong_answer_rate": 0.6422247446083995,
+        "correct_yield": 0.2980703745743473,
+        "correct_answers": 1313,
+        "wrong_answers": 2829,
+        "partial_aurc": null
+      }
+    }
+  },
+  "confidence_intervals": {
+    "0.2": {
+      "all": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              -0.06810442678774126,
+              0.012485811577752528
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.06916099773242623,
+              0.013605442176870763
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.012485811577752581,
+              0.0681044267877412
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.013605442176870763,
+              0.06916099773242623
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.014835091668265958,
+              0.060902176188059313
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.014973486120655688,
+              0.06106386233180018
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              -0.01362088535754824,
+              0.0024971623155505135
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.013826007644286618,
+              0.002721721038347979
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.0024971623155505135,
+              0.01362088535754824
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.0027217210383479796,
+              0.01382600764428663
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "partial_aurc": {
+          "paired_question": {
+            "ci95": [
+              -0.170995557571475,
+              -0.05426189742767028
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.17147876520858715,
+              -0.05355103977099921
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      },
+      "Bridge": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              -0.16125711044189306,
+              -0.06598950547028601
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.16188207631630425,
+              -0.0657232307930816
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              0.06598950547028605,
+              0.16125711044189298
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.06572323079308141,
+              0.1618820763163042
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              0.06372606648005683,
+              0.15469828843286554
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.06338559465920769,
+              0.1543264595980354
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              -0.03283840089052777,
+              -0.014414884983869893
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.032995156544213984,
+              -0.014309939225035323
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              0.007417868562853913,
+              0.02545968882602545
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.007082052717525562,
+              0.025488891291069772
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "coverage": {
+          "paired_question": {
+            "ci95": [
+              -0.014990092129774864,
+              0.000286041189931336
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.01488308241881704,
+              0.0005696423369450954
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      },
+      "Comparison": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              0.09895373629832167,
+              0.24390934797453498
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.10222053643677406,
+              0.2437621565691228
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.24390934797453498,
+              -0.09895373629832167
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.24376215656912292,
+              -0.10222053643677402
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.23673756832140674,
+              -0.10655399206555892
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.2377227537902592,
+              -0.10695566862569758
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              0.039172435995744825,
+              0.0933180028930123
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.03973509933774835,
+              0.09343767217988833
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.0646939614661654,
+              -0.010798264233586818
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.065470711924118,
+              -0.010158013544018074
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "coverage": {
+          "paired_question": {
+            "ci95": [
+              -0.0011508476468133854,
+              0.05958903024445887
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.0022805667931876717,
+              0.05947167465155719
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      }
+    },
+    "0.3": {
+      "all": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              -0.031013615733736732,
+              0.031013615733736736
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.0324779550961036,
+              0.03181818181818186
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.031013615733736788,
+              0.031013615733736732
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.03181818181818186,
+              0.03247795509610354
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.05593619642705825,
+              0.0035349900734893405
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.05658898102161694,
+              0.004944349198688366
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              -0.00930760499432462,
+              0.00930760499432462
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.009739745149634918,
+              0.00954762446010457
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.009307604994324634,
+              0.00930760499432462
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.00954762446010457,
+              0.009739745149634943
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "partial_aurc": {
+          "paired_question": {
+            "ci95": [
+              -0.12566064165988214,
+              -0.032104863919787036
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.12672187032619914,
+              -0.03218894332598472
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      },
+      "Bridge": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              -0.10906466546335053,
+              -0.03049799045099651
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.10996227099673725,
+              -0.03017151133794585
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              0.030497990450996507,
+              0.10906466546335053
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.030171511337945885,
+              0.10996227099673729
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              0.000994240754622509,
+              0.07676488740774395
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.00037500769569528996,
+              0.07745854682377326
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              -0.03985226205042514,
+              -0.018036072144288595
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.04012575852734304,
+              -0.017918088737201382
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.0011428653084554741,
+              0.019142249119557597
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.0011412512597244267,
+              0.019513820278326658
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "coverage": {
+          "paired_question": {
+            "ci95": [
+              -0.02826176658142934,
+              -0.01137963907070352
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.02818916038321709,
+              -0.011347437274471696
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      },
+      "Comparison": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              0.09956661269706484,
+              0.2040629520959837
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.09893177753108437,
+              0.20530036262220855
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.20406295209598363,
+              -0.09956661269706484
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.20530036262220855,
+              -0.09893177753108444
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.21035461931350702,
+              -0.11460759086584858
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.2104661986278369,
+              -0.11330802055254759
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              0.08414163868977406,
+              0.1461725353206828
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.0832334619173752,
+              0.14674664784756528
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.06830324437310947,
+              -0.004576528277214765
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.06892658457886736,
+              -0.004459060792184571
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "coverage": {
+          "paired_question": {
+            "ci95": [
+              0.04565701559020047,
+              0.11177440900120272
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.04523617511520744,
+              0.11175379385354484
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      }
+    },
+    "0.4": {
+      "all": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              0.0005675368898977462,
+              0.05278093076049939
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.0,
+              0.0522430437251562
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.052780930760499445,
+              -0.0005675368898978017
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.0522430437251562,
+              0.0
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.07561496747431885,
+              -0.025320584799878955
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.07553425969290826,
+              -0.02511763287950981
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              0.00022701475595912624,
+              0.021112372304199767
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.0,
+              0.020899591094956815
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.021112372304199767,
+              -0.00022701475595912624
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.020899591094956843,
+              0.0
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "partial_aurc": {
+          "paired_question": {
+            "ci95": [
+              -0.09460054707500981,
+              -0.015634779494433152
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.0956995093653865,
+              -0.0159398989779759
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      },
+      "Bridge": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              -0.05647946624815288,
+              0.007889767219745531
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.058382021877086375,
+              0.007515565116739657
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.007889767219745544,
+              0.05647946624815291
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.007515565116739688,
+              0.05838202187708641
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.03411648635319126,
+              0.029193497326861422
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.03410193226118772,
+              0.03014047167886394
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              -0.035310734463276844,
+              -0.011549246983053055
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.03577563593774199,
+              -0.01162461015026936
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.012271689497716898,
+              0.00967572113109554
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.012226416191403171,
+              0.009966115523775139
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "coverage": {
+          "paired_question": {
+            "ci95": [
+              -0.03311470970546091,
+              -0.01656372824256036
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.033181045815278254,
+              -0.016411997736276163
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      },
+      "Comparison": {
+        "selective_risk": {
+          "paired_question": {
+            "ci95": [
+              0.10259343750621867,
+              0.18832671098444942
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.1021314984641112,
+              0.1885531110512166
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_em": {
+          "paired_question": {
+            "ci95": [
+              -0.18832671098444942,
+              -0.10259343750621874
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.1885531110512166,
+              -0.10213149846411122
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "answered_f1": {
+          "paired_question": {
+            "ci95": [
+              -0.1973348351782702,
+              -0.11690184587891103
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.19744073849443922,
+              -0.11703039061364551
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "wrong_answer_rate": {
+          "paired_question": {
+            "ci95": [
+              0.11273926411806912,
+              0.1802925451002984
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.11214873889988465,
+              0.179954984918047
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "correct_yield": {
+          "paired_question": {
+            "ci95": [
+              -0.08101585367326646,
+              -0.014387893000516743
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              -0.08017817371937641,
+              -0.014705466932535735
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        },
+        "coverage": {
+          "paired_question": {
+            "ci95": [
+              0.06658690945725808,
+              0.13126582579524187
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          },
+          "paired_cluster": {
+            "ci95": [
+              0.06530877631195452,
+              0.13123749492368186
+            ],
+            "valid": 10000,
+            "requested": 10000,
+            "status": "OK"
+          }
+        }
+      }
+    }
+  },
+  "cluster_diagnostics": {
+    "independent_clusters": 4374,
+    "effective_clusters": 4339.974278684858,
+    "largest_cluster_share": 0.000681044267877412,
+    "cluster_CI_estimable": true,
+    "gate": "heuristic G>=20, G_eff>=20, max share<=20%; not a validity proof"
+  },
+  "missing_supporting_facts_singleton_clusters": 0,
+  "bootstrap": {
+    "replicates_each": 10000,
+    "seed": 0,
+    "question_invalid": {},
+    "cluster_invalid": {}
+  },
+  "caveats": [
+    "Gold-blind ranking verified only for retrieved score provenance, not full producer provenance.",
+    "LLM CAND/STRICT file hashes are captured at run-time, not externally pre-registered pins.",
+    "Coverage is exactly matched, but selected QIDs can differ between arms.",
+    "Automatic EM/F1 error != semantic hallucination.",
+    "Already inspected Holdout. No confirmatory inference label irrespective of CI.",
+    "No Calibration thresholds learned; Fixed Threshold is NOT evaluated here.",
+    "Paired cluster CI is heuristic-gated, not guaranteed valid.",
+    "Global Top-K selection before subgroup analysis.",
+    "Subgroup-specific exact coverage is a SEPARATE reselected policy.",
+    "Extended abstention sensitivity is not the primary policy.",
+    "Shared-title connected components diagnostic is not a primary bootstrap CI."
+  ]
+}
